@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Smartphone, RotateCw, Volume2 } from 'lucide-react';
+import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import './index.css';
 
@@ -128,7 +128,9 @@ function ChatFeed({ active }) {
 
 export default function App() {
   const [screen, setScreen] = useState('splash'); // 'splash' | 'main' | 'results'
-  const [isPortrait, setIsPortrait] = useState(true);
+  const [isPortrait, setIsPortrait] = useState(
+    () => window.matchMedia('(orientation: portrait)').matches
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSide, setSelectedSide] = useState(null);
   const [votedSide, setVotedSide] = useState(null);
@@ -215,6 +217,14 @@ export default function App() {
     setDisplayVotesA(VS_DATA[currentIndex].votesA);
     setDisplayVotesB(VS_DATA[currentIndex].votesB);
   }, [currentIndex]);
+
+  // 방향 자동 감지
+  useEffect(() => {
+    const mq = window.matchMedia('(orientation: portrait)');
+    const handler = (e) => setIsPortrait(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   // 언마운트 시 정리
   useEffect(() => {
@@ -385,27 +395,8 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white font-sans overflow-hidden">
-      {/* Portrait/Landscape 토글 (데모용) */}
-      <div className="fixed top-4 z-50 flex gap-2">
-        <button
-          onClick={() => setIsPortrait(!isPortrait)}
-          className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20 hover:bg-white/20 transition"
-        >
-          {isPortrait ? <Smartphone size={18} /> : <RotateCw size={18} />}
-          {isPortrait ? "가로 모드로 보기" : "세로 모드로 보기"}
-        </button>
-      </div>
-
-      {/* 디바이스 프레임 */}
-      <div
-        className={`relative transition-all duration-500 shadow-2xl overflow-hidden
-          ${isPortrait
-            ? 'w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800'
-            : 'w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800'
-          }`}
-      >
-        <div className={`flex w-full h-full ${isPortrait ? 'flex-col' : 'flex-row'}`}>
+    <div className="relative w-screen h-screen bg-black text-white font-sans overflow-hidden">
+      <div className={`flex w-full h-full ${isPortrait ? 'flex-row' : 'flex-col'}`}>
 
           {/* Section A */}
           <div
@@ -580,12 +571,7 @@ export default function App() {
               <Heart size={80} fill="currentColor" />
             </div>
           )}
-        </div>
       </div>
-
-      <p className="mt-8 text-gray-500 text-xs text-center max-w-xs px-4">
-        더블 탭으로 투표 · 좌우 버튼으로 다음 세트
-      </p>
     </div>
   );
 }
