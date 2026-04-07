@@ -12,7 +12,16 @@
       "WebFetch(domain:namu.wiki)",
       "WebFetch(domain:corp.kt.com)",
       "WebFetch(domain:www.brandb.net)",
-      "WebFetch(domain:play.google.com)"
+      "WebFetch(domain:play.google.com)",
+      "Bash(git branch:*)",
+      "Bash(git remote:*)",
+      "Bash(git push:*)",
+      "Bash(gh auth:*)",
+      "Bash(ssh:*)",
+      "Bash(ssh-keyscan github.com)",
+      "Bash(git add:*)",
+      "Bash(git commit -m 'Add GitHub Pages deploy workflow:*)",
+      "Bash(git commit -m 'Add workflow_dispatch trigger:*)"
     ]
   }
 }
