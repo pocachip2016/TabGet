@@ -1,7 +1,23 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
+import { fetchPolls, submitVote, ApiError } from './api/client';
+import { getVisitorId } from './lib/visitor';
 import './index.css';
+
+function normalizePoll(p) {
+  const a = p.productA ?? {};
+  const b = p.productB ?? {};
+  return {
+    id: p.id,
+    itemA: a.name ?? '',
+    itemB: b.name ?? '',
+    imgA: a.imageUrl ?? '',
+    imgB: b.imageUrl ?? '',
+    votesA: p.votesA ?? 0,
+    votesB: p.votesB ?? 0,
+  };
+}
 
 const VS_DATA = [
   {
@@ -138,13 +154,49 @@ export default function App() {
   const [isWinnerRevealed, setIsWinnerRevealed] = useState(false);
   const [showAlreadyVoted, setShowAlreadyVoted] = useState(false);
   const alreadyVotedTimerRef = useRef(null);
-  const [displayVotesA, setDisplayVotesA] = useState(() => VS_DATA[0].votesA);
-  const [displayVotesB, setDisplayVotesB] = useState(() => VS_DATA[0].votesB);
+  const [displayVotesA, setDisplayVotesA] = useState(0);
+  const [displayVotesB, setDisplayVotesB] = useState(0);
   const heartTimeoutRef = useRef(null);
   const liveIntervalRef = useRef(null);
   const animFrameRef = useRef(null);
 
-  const currentSet = VS_DATA[currentIndex];
+  const [polls, setPolls] = useState([]);
+  const [votedPollIds, setVotedPollIds] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
+  const [toast, setToast] = useState(null);
+  const toastTimerRef = useRef(null);
+  const visitorIdRef = useRef(null);
+  if (visitorIdRef.current === null) {
+    visitorIdRef.current = getVisitorId();
+  }
+
+  const showToast = (message) => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setToast(message);
+    toastTimerRef.current = setTimeout(() => setToast(null), 2500);
+  };
+
+  useEffect(() => {
+    let cancelled = false;
+    setIsLoading(true);
+    setLoadError(null);
+    fetchPolls(visitorIdRef.current)
+      .then((data) => {
+        if (cancelled) return;
+        setPolls((data.polls ?? []).map(normalizePoll));
+        setVotedPollIds(data.votedPollIds ?? []);
+      })
+      .catch((e) => {
+        if (cancelled) return;
+        setLoadError(e instanceof Error ? e.message : 'Failed to load');
+      })
+      .finally(() => { if (!cancelled) setIsLoading(false); });
+    return () => { cancelled = true; };
+  }, []);
+
+  const currentSet = polls[currentIndex];
+  const hasCurrentVoted = currentSet ? votedPollIds.includes(currentSet.id) : false;
   const totalDisplay = displayVotesA + displayVotesB;
   const pctA = totalDisplay > 0 ? Math.round((displayVotesA / totalDisplay) * 100) : 50;
   const pctB = totalDisplay > 0 ? 100 - pctA : 50;
@@ -172,7 +224,15 @@ export default function App() {
 
   // 단일 클릭: 상품 선택
   const handleClick = (side) => {
+    if (!currentSet) return;
     if (selectedSide === side) return;
+
+    if (hasCurrentVoted) {
+      if (alreadyVotedTimerRef.current) clearTimeout(alreadyVotedTimerRef.current);
+      setShowAlreadyVoted(true);
+      alreadyVotedTimerRef.current = setTimeout(() => setShowAlreadyVoted(false), 2500);
+      return;
+    }
 
     // 이미 응모한 세트에서 다른 상품 클릭 시 안내 메시지
     if (votedSide && side !== votedSide) {
@@ -214,9 +274,12 @@ export default function App() {
   useEffect(() => {
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
-    setDisplayVotesA(VS_DATA[currentIndex].votesA);
-    setDisplayVotesB(VS_DATA[currentIndex].votesB);
-  }, [currentIndex]);
+    const p = polls[currentIndex];
+    if (p) {
+      setDisplayVotesA(p.votesA);
+      setDisplayVotesB(p.votesB);
+    }
+  }, [currentIndex, polls]);
 
   // 방향 자동 감지
   useEffect(() => {
@@ -231,13 +294,25 @@ export default function App() {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
       if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     };
   }, []);
 
   // 더블클릭: 이벤트 참여 (하트 + 위너 공개)
-  const handleDoubleClick = (side, e) => {
+  const handleDoubleClick = async (side, e) => {
+    if (!currentSet) return;
+    if (votedPollIds.includes(currentSet.id) || votedSide) {
+      if (alreadyVotedTimerRef.current) clearTimeout(alreadyVotedTimerRef.current);
+      setShowAlreadyVoted(true);
+      alreadyVotedTimerRef.current = setTimeout(() => setShowAlreadyVoted(false), 2500);
+      return;
+    }
+
+    // Optimistic UI
     setVotedSide(side);
     setSelectedSide(side);
+    if (side === 'A') setDisplayVotesA((v) => v + 1);
+    else setDisplayVotesB((v) => v + 1);
 
     setShowHeart({ active: true, x: e.clientX, y: e.clientY });
     if (heartTimeoutRef.current) clearTimeout(heartTimeoutRef.current);
@@ -246,8 +321,31 @@ export default function App() {
       800
     );
 
-    setTimeout(() => setIsWinnerRevealed(true), 2000);
     if (navigator.vibrate) navigator.vibrate(80);
+
+    const pollId = currentSet.id;
+    try {
+      await submitVote(pollId, side, visitorIdRef.current);
+      setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
+      setTimeout(() => setIsWinnerRevealed(true), 2000);
+    } catch (err) {
+      // Rollback optimistic counter
+      if (side === 'A') setDisplayVotesA((v) => Math.max(0, v - 1));
+      else setDisplayVotesB((v) => Math.max(0, v - 1));
+
+      if (err instanceof ApiError && err.code === 'already_voted') {
+        setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
+        setTimeout(() => setIsWinnerRevealed(true), 2000);
+      } else if (err instanceof ApiError && err.code === 'voting_closed') {
+        setVotedSide(null);
+        setSelectedSide(null);
+        showToast('투표 마감 시간입니다 (00시~01시)');
+      } else {
+        setVotedSide(null);
+        setSelectedSide(null);
+        showToast('투표 전송 실패. 잠시 후 다시 시도해주세요');
+      }
+    }
   };
 
   const resetSet = () => {
@@ -261,13 +359,15 @@ export default function App() {
   };
 
   const nextSet = () => {
+    if (polls.length === 0) return;
     resetSet();
-    setCurrentIndex((prev) => (prev + 1) % VS_DATA.length);
+    setCurrentIndex((prev) => (prev + 1) % polls.length);
   };
 
   const prevSet = () => {
+    if (polls.length === 0) return;
     resetSet();
-    setCurrentIndex((prev) => (prev - 1 + VS_DATA.length) % VS_DATA.length);
+    setCurrentIndex((prev) => (prev - 1 + polls.length) % polls.length);
   };
 
   if (screen === 'splash') {
@@ -390,6 +490,37 @@ export default function App() {
             </button>
           </div>
         </div>
+      </div>
+    );
+  }
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center w-screen h-screen bg-black text-white/70 text-sm">
+        불러오는 중...
+      </div>
+    );
+  }
+
+  if (loadError) {
+    return (
+      <div className="flex flex-col items-center justify-center w-screen h-screen bg-black text-white gap-3 px-6 text-center">
+        <p className="text-sm text-red-400">데이터를 불러오지 못했습니다</p>
+        <p className="text-xs text-white/50">{loadError}</p>
+        <button
+          onClick={() => window.location.reload()}
+          className="mt-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs"
+        >
+          다시 시도
+        </button>
+      </div>
+    );
+  }
+
+  if (!currentSet) {
+    return (
+      <div className="flex items-center justify-center w-screen h-screen bg-black text-white/60 text-sm">
+        표시할 투표가 없습니다
       </div>
     );
   }
@@ -531,7 +662,7 @@ export default function App() {
               <ChevronLeft size={24} />
             </button>
             <div className="flex gap-2 items-center">
-              {VS_DATA.map((_, i) => (
+              {polls.map((_, i) => (
                 <div
                   key={i}
                   className={`h-2 rounded-full transition-all ${i === currentIndex ? 'bg-white w-4' : 'bg-white/40 w-2'}`}
@@ -561,6 +692,13 @@ export default function App() {
             </div>
           )}
 
+
+          {/* 에러/마감 토스트 */}
+          {toast && (
+            <div className="absolute bottom-40 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg whitespace-nowrap">
+              {toast}
+            </div>
+          )}
 
           {/* 하트 애니메이션 */}
           {showHeart.active && (

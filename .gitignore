@@ -1,0 +1,17 @@
+# Environment variables - never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+
+# Build output
+dist/
+
+# Serper 일일 사용량 추적 (ephemeral)
+**/data/serper-usage.json
+
+# OS
+.DS_Store
+Thumbs.db

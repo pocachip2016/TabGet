@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: tabget
+      POSTGRES_PASSWORD: tabget
+      POSTGRES_DB: tabget
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  # 선택 사항: 호스트에서 이미 'ollama serve'를 실행 중이면 이 서비스는 제거해도 됨
+  # 첫 실행 후 모델 다운로드: docker compose exec ollama ollama pull qwen2.5:7b
+  ollama:
+    image: ollama/ollama:latest
+    ports: ["11434:11434"]
+    volumes: [ollama_data:/root/.ollama]
+
+  api:
+    build: .
+    depends_on: [db]
+    environment:
+      DATABASE_URL: postgresql://tabget:tabget@db:5432/tabget
+      LLM_PROVIDER: ${LLM_PROVIDER:-ollama}
+      OLLAMA_BASE_URL: http://ollama:11434  # compose 내부 서비스명
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-qwen2.5:7b}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      SERPER_API_KEY: ${SERPER_API_KEY}
+    ports: ["3000:3000"]
+
+volumes:
+  pgdata:
+  ollama_data:
