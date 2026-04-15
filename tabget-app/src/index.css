@@ -28,6 +28,21 @@
   animation: blink 0.9s step-start infinite;
 }
 
+/* 스플래시 배경 카메라 앵글 효과 */
+@keyframes cameraAngle {
+  0%   { transform: scale(1.35) rotate(-2deg)   translate(0%,    0%);   }
+  25%  { transform: scale(1.5)  rotate(0deg)    translate(-3%,   2%);   }
+  50%  { transform: scale(1.45) rotate(2.5deg)  translate(2%,   -3%);   }
+  75%  { transform: scale(1.55) rotate(-1deg)   translate(-1.5%, 1.5%); }
+  100% { transform: scale(1.35) rotate(-2deg)   translate(0%,    0%);   }
+}
+
+.bg-camera-angle {
+  animation: cameraAngle 14s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
