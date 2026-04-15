@@ -12,6 +12,9 @@ dist/
 # Serper 일일 사용량 추적 (ephemeral)
 **/data/serper-usage.json
 
+# Agent 로그
+backend/data/agent.log
+
 # OS
 .DS_Store
 Thumbs.db

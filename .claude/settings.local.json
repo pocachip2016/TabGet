@@ -79,7 +79,8 @@
       "Bash(kill 370410 370412)",
       "Bash(kill -9 370412)",
       "Bash(lsof -ti:5173)",
-      "Bash(pkill -f \"npm run dev\")"
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(git rm *)"
     ]
   }
 }
