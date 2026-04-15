@@ -144,9 +144,6 @@ function ChatFeed({ active }) {
 
 export default function App() {
   const [screen, setScreen] = useState('splash'); // 'splash' | 'main' | 'results'
-  const [isPortrait, setIsPortrait] = useState(
-    () => window.matchMedia('(orientation: portrait)').matches
-  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedSide, setSelectedSide] = useState(null);
   const [votedSide, setVotedSide] = useState(null);
@@ -159,9 +156,13 @@ export default function App() {
   const heartTimeoutRef = useRef(null);
   const liveIntervalRef = useRef(null);
   const animFrameRef = useRef(null);
+  const frameRef = useRef(null);
+  const voteCastRef = useRef(false); // 이번 세션에 투표 발생 여부
 
   const [polls, setPolls] = useState([]);
   const [votedPollIds, setVotedPollIds] = useState([]);
+  const [votedSides, setVotedSides] = useState({}); // { [pollId]: 'A' | 'B' }
+  const [showAllDone, setShowAllDone] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [toast, setToast] = useState(null);
@@ -270,24 +271,36 @@ export default function App() {
     }
   };
 
-  // 세트 변경 시 실제 투표수로 초기화
+  // 세트 변경 시 투표수·투표 상태 복원
   useEffect(() => {
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
     const p = polls[currentIndex];
-    if (p) {
-      setDisplayVotesA(p.votesA);
-      setDisplayVotesB(p.votesB);
-    }
+    if (!p) return;
+    setDisplayVotesA(p.votesA);
+    setDisplayVotesB(p.votesB);
+    const prevSide = votedSides[p.id] ?? null;
+    setVotedSide(prevSide);
+    setSelectedSide(prevSide);
+    setIsWinnerRevealed(!!prevSide);
   }, [currentIndex, polls]);
 
-  // 방향 자동 감지
+  // 모든 세트 응모 완료 감지 (이번 세션에 투표가 1번 이상 발생한 경우만)
   useEffect(() => {
-    const mq = window.matchMedia('(orientation: portrait)');
-    const handler = (e) => setIsPortrait(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
+    if (!voteCastRef.current) return;
+    if (polls.length === 0) return;
+    if (polls.every((p) => votedPollIds.includes(p.id))) {
+      const t1 = setTimeout(() => {
+        setShowAllDone(true);
+        const t2 = setTimeout(() => {
+          setShowAllDone(false);
+          setScreen('results');
+        }, 4000);
+        return () => clearTimeout(t2);
+      }, 2500);
+      return () => clearTimeout(t1);
+    }
+  }, [votedPollIds, polls]);
 
   // 언마운트 시 정리
   useEffect(() => {
@@ -314,7 +327,10 @@ export default function App() {
     if (side === 'A') setDisplayVotesA((v) => v + 1);
     else setDisplayVotesB((v) => v + 1);
 
-    setShowHeart({ active: true, x: e.clientX, y: e.clientY });
+    const rect = frameRef.current?.getBoundingClientRect();
+    const hx = rect ? e.clientX - rect.left : e.clientX;
+    const hy = rect ? e.clientY - rect.top : e.clientY;
+    setShowHeart({ active: true, x: hx, y: hy });
     if (heartTimeoutRef.current) clearTimeout(heartTimeoutRef.current);
     heartTimeoutRef.current = setTimeout(
       () => setShowHeart((h) => ({ ...h, active: false })),
@@ -327,6 +343,8 @@ export default function App() {
     try {
       await submitVote(pollId, side, visitorIdRef.current);
       setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
+      setVotedSides((s) => ({ ...s, [pollId]: side }));
+      voteCastRef.current = true;
       setTimeout(() => setIsWinnerRevealed(true), 2000);
     } catch (err) {
       // Rollback optimistic counter
@@ -349,9 +367,7 @@ export default function App() {
   };
 
   const resetSet = () => {
-    setSelectedSide(null);
-    setVotedSide(null);
-    setIsWinnerRevealed(false);
+    // votedSide/isWinnerRevealed는 currentIndex useEffect에서 복원
     setShowAlreadyVoted(false);
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
@@ -375,6 +391,7 @@ export default function App() {
       <SplashScreen
         onEnter={() => setScreen('main')}
         onResults={() => setScreen('results')}
+        isExhausted={polls.length > 0 && polls.every((p) => votedPollIds.includes(p.id))}
       />
     );
   }
@@ -392,7 +409,7 @@ export default function App() {
     ];
 
     return (
-      <div className="flex items-center justify-center min-h-screen bg-black">
+      <div className="flex items-center justify-center min-h-screen bg-white">
         <div className="relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950">
           {/* 헤더 */}
           <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10">
@@ -465,7 +482,7 @@ export default function App() {
           {/* 메인으로 버튼 - 하단 고정 */}
           <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-10 pt-6 bg-gradient-to-t from-zinc-950 to-transparent">
             <button
-              onClick={() => setScreen('main')}
+              onClick={() => setScreen('splash')}
               className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <div className="absolute -inset-1 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300"
@@ -496,38 +513,61 @@ export default function App() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black text-white/70 text-sm">
-        불러오는 중...
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/70 text-sm bg-zinc-950">
+          불러오는 중...
+        </div>
       </div>
     );
   }
 
   if (loadError) {
     return (
-      <div className="flex flex-col items-center justify-center w-screen h-screen bg-black text-white gap-3 px-6 text-center">
-        <p className="text-sm text-red-400">데이터를 불러오지 못했습니다</p>
-        <p className="text-xs text-white/50">{loadError}</p>
-        <button
-          onClick={() => window.location.reload()}
-          className="mt-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs"
-        >
-          다시 시도
-        </button>
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex flex-col items-center justify-center gap-3 bg-zinc-950 text-white px-10 text-center">
+          <p className="text-sm text-red-400">데이터를 불러오지 못했습니다</p>
+          <p className="text-xs text-white/50">{loadError}</p>
+          <button onClick={() => window.location.reload()} className="mt-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs">
+            다시 시도
+          </button>
+        </div>
       </div>
     );
   }
 
   if (!currentSet) {
     return (
-      <div className="flex items-center justify-center w-screen h-screen bg-black text-white/60 text-sm">
-        표시할 투표가 없습니다
+      <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/60 text-sm bg-zinc-950">
+          표시할 투표가 없습니다
+        </div>
       </div>
     );
   }
 
+  const handleDebugReset = () => {
+    localStorage.removeItem('tabget:visitorId');
+    visitorIdRef.current = getVisitorId();
+    setPolls([]);
+    setVotedPollIds([]);
+    setCurrentIndex(0);
+    resetSet();
+    setIsLoading(true);
+    setLoadError(null);
+    fetchPolls(visitorIdRef.current)
+      .then((data) => {
+        setPolls((data.polls ?? []).map(normalizePoll));
+        setVotedPollIds(data.votedPollIds ?? []);
+      })
+      .catch((e) => setLoadError(e instanceof Error ? e.message : 'Failed to load'))
+      .finally(() => setIsLoading(false));
+  };
+
   return (
-    <div className="relative w-screen h-screen bg-black text-white font-sans overflow-hidden">
-      <div className={`flex w-full h-full ${isPortrait ? 'flex-col' : 'flex-row'}`}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
+      {/* 핸드폰 프레임 */}
+      <div ref={frameRef} className="relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden">
+        <div className="flex w-full h-full flex-row">
 
           {/* Section A */}
           <div
@@ -539,52 +579,37 @@ export default function App() {
             onClick={() => handleClick('A')}
             onDoubleClick={(e) => handleDoubleClick('A', e)}
           >
-            <img
-              src={currentSet.imgA}
-              alt={currentSet.itemA}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            <img src={currentSet.imgA} alt={currentSet.itemA} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className={`text-xl font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'A' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemA}</h3>
-              <div className="flex items-center gap-2 mt-1 text-sm text-white/80">
-                <Users size={14} />
+            <div className="absolute bottom-4 left-4 right-4">
+              <h3 className={`text-base font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'A' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemA}</h3>
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-white/80">
+                <Users size={12} />
                 <span>{displayVotesA.toLocaleString()}명 참여 중</span>
               </div>
-              <div className="mt-2 h-1.5 rounded-full bg-white/20 overflow-hidden">
-                <div
-                  className="h-full bg-blue-400 rounded-full transition-all duration-300"
-                  style={{ width: `${pctA}%` }}
-                />
+              <div className="mt-1.5 h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <div className="h-full bg-blue-400 rounded-full transition-all duration-300" style={{ width: `${pctA}%` }} />
               </div>
-              <p className="text-xs text-white/60 mt-1">{pctA}%</p>
+              <p className="text-[10px] text-white/60 mt-0.5">{pctA}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'A' && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 py-3 rounded-2xl font-black text-xl flex items-center gap-2 shadow-xl animate-bounce">
-                  <Trophy size={24} /> 응모완료!
+                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black text-lg flex items-center gap-2 shadow-xl animate-bounce">
+                  <Trophy size={20} /> 응모완료!
                 </div>
               </div>
             )}
 
-            <div className="absolute top-12 left-6 bg-black/40 p-2 rounded-full backdrop-blur-sm border border-white/10">
-              <Volume2 size={16} />
+            <div className="absolute top-4 left-4 bg-black/40 p-1.5 rounded-full backdrop-blur-sm border border-white/10">
+              <Volume2 size={14} />
             </div>
 
-            {/* 툴팁 - Section A */}
-            {!votedSide && selectedSide === 'A' && (
-              <div className="animate-blink absolute top-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs font-medium z-20 whitespace-nowrap pointer-events-none">
+            {!votedSide && (selectedSide === 'A' || !selectedSide) && (
+              <div className="animate-blink absolute top-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-medium z-20 whitespace-nowrap pointer-events-none">
                 <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
-                <span className="mx-2"> </span>
-                <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
-              </div>
-            )}
-            {!votedSide && !selectedSide && (
-              <div className="animate-blink absolute top-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs font-medium z-20 whitespace-nowrap pointer-events-none">
-                <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
-                <span className="mx-2"> </span>
+                <span className="mx-1.5"> </span>
                 <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
               </div>
             )}
@@ -593,7 +618,7 @@ export default function App() {
           </div>
 
           {/* VS 배지 */}
-          <div className="absolute z-10 w-12 h-12 rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute z-10 w-10 h-10 rounded-full bg-white text-black font-black text-sm flex items-center justify-center shadow-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
             VS
           </div>
 
@@ -607,45 +632,37 @@ export default function App() {
             onClick={() => handleClick('B')}
             onDoubleClick={(e) => handleDoubleClick('B', e)}
           >
-            <img
-              src={currentSet.imgB}
-              alt={currentSet.itemB}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
+            <img src={currentSet.imgB} alt={currentSet.itemB} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className="absolute bottom-6 left-6 right-6">
-              <h3 className={`text-xl font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'B' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemB}</h3>
-              <div className="flex items-center gap-2 mt-1 text-sm text-white/80">
-                <Users size={14} />
+            <div className="absolute bottom-4 left-4 right-4">
+              <h3 className={`text-base font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'B' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemB}</h3>
+              <div className="flex items-center gap-1.5 mt-1 text-xs text-white/80">
+                <Users size={12} />
                 <span>{displayVotesB.toLocaleString()}명 참여 중</span>
               </div>
-              <div className="mt-2 h-1.5 rounded-full bg-white/20 overflow-hidden">
-                <div
-                  className="h-full bg-pink-400 rounded-full transition-all duration-300"
-                  style={{ width: `${pctB}%` }}
-                />
+              <div className="mt-1.5 h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <div className="h-full bg-pink-400 rounded-full transition-all duration-300" style={{ width: `${pctB}%` }} />
               </div>
-              <p className="text-xs text-white/60 mt-1">{pctB}%</p>
+              <p className="text-[10px] text-white/60 mt-0.5">{pctB}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'B' && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-6 py-3 rounded-2xl font-black text-xl flex items-center gap-2 shadow-xl animate-bounce">
-                  <Trophy size={24} /> 응모완료!
+                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black text-lg flex items-center gap-2 shadow-xl animate-bounce">
+                  <Trophy size={20} /> 응모완료!
                 </div>
               </div>
             )}
 
-            <div className="absolute top-12 right-6 bg-black/40 p-2 rounded-full backdrop-blur-sm border border-white/10">
-              <Volume2 size={16} />
+            <div className="absolute top-4 right-4 bg-black/40 p-1.5 rounded-full backdrop-blur-sm border border-white/10">
+              <Volume2 size={14} />
             </div>
 
-            {/* 툴팁 - Section B */}
             {!votedSide && selectedSide === 'B' && (
-              <div className="animate-blink absolute top-5 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 text-xs font-medium z-20 whitespace-nowrap pointer-events-none">
+              <div className="animate-blink absolute top-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-medium z-20 whitespace-nowrap pointer-events-none">
                 <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
-                <span className="mx-2"> </span>
+                <span className="mx-1.5"> </span>
                 <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
               </div>
             )}
@@ -653,62 +670,66 @@ export default function App() {
             <ChatFeed active={selectedSide === 'B'} />
           </div>
 
-          {/* 하단 네비게이션 */}
-          <div className="absolute bottom-12 left-0 right-0 flex justify-between px-4 pointer-events-none z-20">
-            <button
-              onClick={(e) => { e.stopPropagation(); prevSet(); }}
-              className={`w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <div className="flex gap-2 items-center">
-              {polls.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-2 rounded-full transition-all ${i === currentIndex ? 'bg-white w-4' : 'bg-white/40 w-2'}`}
-                />
-              ))}
-            </div>
-            <button
-              onClick={(e) => { e.stopPropagation(); nextSet(); }}
-              className={`w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
-            >
-              <ChevronRight size={24} />
-            </button>
+          {/* 네비게이션 — 좌우 버튼 세로 중앙, 도트 하단 */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prevSet(); }}
+            className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); nextSet(); }}
+            className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
+          >
+            <ChevronRight size={20} />
+          </button>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 items-center z-20 pointer-events-none">
+            {polls.map((_, i) => (
+              <div key={i} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? 'bg-white w-3' : 'bg-white/40 w-1.5'}`} />
+            ))}
           </div>
 
-          {/* 이미 응모 안내 메시지 */}
+          {/* 이미 응모 안내 */}
           {showAlreadyVoted && (
-            <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/20 px-4 py-2.5 rounded-xl text-center pointer-events-none">
+            <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl text-center pointer-events-none">
               <p className="text-white text-xs font-bold">이미 응모하셨어요 🎁</p>
               <p className="text-white/60 text-[10px] mt-0.5">다른 상품도 응모해보세요</p>
             </div>
           )}
 
-          {/* 이벤트 참여 완료 토스트 */}
+          {/* 참여 완료 토스트 */}
           {votedSide && !isWinnerRevealed && (
-            <div className="absolute bottom-24 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-2 rounded-lg font-bold animate-pulse shadow-lg z-20 whitespace-nowrap">
+            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold animate-pulse shadow-lg z-20 whitespace-nowrap text-sm">
               참여 완료! 결과를 기다려주세요 🎁
             </div>
           )}
 
-
           {/* 에러/마감 토스트 */}
           {toast && (
-            <div className="absolute bottom-40 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg whitespace-nowrap">
+            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-1.5 rounded-lg text-xs font-bold shadow-lg whitespace-nowrap">
               {toast}
             </div>
           )}
 
           {/* 하트 애니메이션 */}
           {showHeart.active && (
-            <div
-              className="fixed pointer-events-none z-50 text-red-500 animate-ping"
-              style={{ left: showHeart.x - 40, top: showHeart.y - 40 }}
-            >
+            <div className="absolute pointer-events-none z-50 text-red-500 animate-ping" style={{ left: showHeart.x - 40, top: showHeart.y - 40 }}>
               <Heart size={80} fill="currentColor" />
             </div>
           )}
+
+          {/* 전체 응모 완료 오버레이 */}
+          {showAllDone && (
+            <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm pointer-events-none">
+              <div className="text-5xl mb-4 animate-bounce">🎉</div>
+              <p className="text-white text-lg font-black text-center leading-snug px-6">
+                오늘은 다 참여하셨습니다.<br />두둥~~
+              </p>
+              <p className="text-white/70 text-sm mt-3 font-medium">24:30분에 발표합니다.</p>
+              <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

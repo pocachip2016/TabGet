@@ -39,21 +39,35 @@ async function runCuration(): Promise<{ success: boolean; data?: unknown; error?
       finalJson: result.finalJson,
     });
 
-    const saved = await Promise.all(
-      result.finalJson.map((d: PollDraft, i: number) =>
-        prisma.poll.create({
-          data: {
-            category: d.category,
-            themeTitle: d.themeTitle,
-            productA: toInputJson(d.productA),
-            productB: toInputJson(d.productB),
-            curatorNote: d.curatorNote,
-            status: "PENDING",
-            scheduledAt: new Date(Date.now() + i * 60_000),
-          },
+    // 기존 themeTitle과 중복이면 건너뜀
+    const existingTitles = new Set(
+      (await prisma.poll.findMany({ select: { themeTitle: true } }))
+        .map((p) => p.themeTitle)
+    );
+
+    let insertOffset = 0;
+    const saved = (
+      await Promise.all(
+        result.finalJson.map(async (d: PollDraft) => {
+          if (existingTitles.has(d.themeTitle)) {
+            agentLog("INFO", "curation:skip:duplicate", { themeTitle: d.themeTitle });
+            return null;
+          }
+          const poll = await prisma.poll.create({
+            data: {
+              category: d.category,
+              themeTitle: d.themeTitle,
+              productA: toInputJson(d.productA),
+              productB: toInputJson(d.productB),
+              curatorNote: d.curatorNote,
+              status: "ACTIVE",
+              scheduledAt: new Date(Date.now() + insertOffset++ * 60_000),
+            },
+          });
+          return poll;
         })
       )
-    );
+    ).filter(Boolean);
 
     await prisma.trendLog.create({
       data: {
@@ -106,14 +120,28 @@ interface PollQuery {
 app.get<{ Querystring: PollQuery }>("/polls", async (req) => {
   const { visitorId } = req.query;
 
-  const rawPolls = await prisma.poll.findMany({
-    where: { status: "ACTIVE" },
-    orderBy: { scheduledAt: "asc" },
-    take: 5,
+  // 풀 = ARCHIVED가 아닌 전체 poll (최신순)
+  const poolPolls = await prisma.poll.findMany({
+    where: { status: { not: "ARCHIVED" } },
+    orderBy: { scheduledAt: "desc" },
     include: { votes: { select: { side: true } } },
   });
 
-  const polls = rawPolls.map((p) => ({
+  let votedPollIds: string[] = [];
+  if (visitorId) {
+    const myVotes = await prisma.vote.findMany({
+      where: { visitorId },
+      select: { pollId: true },
+    });
+    votedPollIds = myVotes.map((v) => v.pollId);
+  }
+
+  // 미투표 먼저, 부족하면 투표한 것으로 채워 항상 최대 5개 반환
+  const unvoted = poolPolls.filter((p) => !votedPollIds.includes(p.id));
+  const voted   = poolPolls.filter((p) =>  votedPollIds.includes(p.id));
+  const selected = [...unvoted, ...voted].slice(0, 5);
+
+  const polls = selected.map((p) => ({
     id: p.id,
     category: p.category,
     themeTitle: p.themeTitle,
@@ -125,15 +153,6 @@ app.get<{ Querystring: PollQuery }>("/polls", async (req) => {
     votesA: p.baseVotesA + p.votes.filter((v) => v.side === "A").length,
     votesB: p.baseVotesB + p.votes.filter((v) => v.side === "B").length,
   }));
-
-  let votedPollIds: string[] = [];
-  if (visitorId) {
-    const myVotes = await prisma.vote.findMany({
-      where: { visitorId },
-      select: { pollId: true },
-    });
-    votedPollIds = myVotes.map((v) => v.pollId);
-  }
 
   return { polls, votedPollIds };
 });

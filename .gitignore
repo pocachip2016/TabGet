@@ -9,8 +9,18 @@ node_modules/
 # Build output
 dist/
 
-# Serper 일일 사용량 추적 (ephemeral)
+# Serper 런타임 데이터 (ephemeral)
 **/data/serper-usage.json
+**/data/serper-cache.json
+**/data/agent.log
+
+# Claude Code 로컬 설정
+.claude/settings.local.json
+
+# Editor swap/temp files
+*.swp
+*.swo
+*~
 
 # Agent 로그
 backend/data/agent.log

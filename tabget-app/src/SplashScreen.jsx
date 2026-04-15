@@ -1,30 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy } from 'lucide-react';
 
+// 다음 00:30까지 남은 ms
+function msUntilAnnouncement() {
+  const now = new Date();
+  const target = new Date(now);
+  target.setHours(0, 30, 0, 0);
+  if (target <= now) target.setDate(target.getDate() + 1);
+  return target - now;
+}
+
+function formatHMS(ms) {
+  const s = Math.max(0, Math.floor(ms / 1000));
+  const hh = String(Math.floor(s / 3600)).padStart(2, '0');
+  const mm = String(Math.floor((s % 3600) / 60)).padStart(2, '0');
+  const ss = String(s % 60).padStart(2, '0');
+  return `${hh}시 ${mm}분 ${ss}초`;
+}
+
 const BG_IMAGE = "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=1200";
 const KT_LOGO = "https://api.brandb.net/api/v2/common/image?fileId=2887";
 
 // KT알파쇼핑 브랜드 컬러: #E30B5C
 const BRAND = '#E30B5C';
 
-export default function SplashScreen({ onEnter, onResults }) {
+export default function SplashScreen({ onEnter, onResults, isExhausted = false }) {
   const [count, setCount] = useState(8);
+  const [remaining, setRemaining] = useState(() => msUntilAnnouncement());
 
+  // 일반 카운트다운 (exhausted 아닐 때)
   useEffect(() => {
-    if (count === 0) {
-      onEnter();
-      return;
-    }
+    if (isExhausted) return;
+    if (count === 0) { onEnter(); return; }
     const t = setTimeout(() => setCount((c) => c - 1), 1000);
     return () => clearTimeout(t);
-  }, [count]);
+  }, [count, isExhausted]);
+
+  // 발표 카운트다운 (exhausted 일 때)
+  useEffect(() => {
+    if (!isExhausted) return;
+    const t = setInterval(() => setRemaining(msUntilAnnouncement()), 1000);
+    return () => clearInterval(t);
+  }, [isExhausted]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex items-center justify-center min-h-screen bg-white">
       {/* 핸드폰 프레임 */}
       <div className="relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden">
-        {/* 배경 이미지 */}
-        <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        {/* 배경 이미지 — 카메라 앵글 효과 */}
+        <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover bg-camera-angle" />
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Powered by - 맨 아래 고정 */}
@@ -87,18 +111,32 @@ export default function SplashScreen({ onEnter, onResults }) {
 
           {/* 2/3 - 카운트다운 */}
           <div className="flex flex-col items-center justify-center gap-3">
-            <div
-              key={count}
-              onClick={onEnter}
-              className="w-24 h-24 rounded-full flex items-center justify-center countdown-pop shadow-xl cursor-pointer transition-all duration-200 active:scale-95"
-              style={{
-                border: `2px solid ${BRAND}55`,
-                background: `radial-gradient(circle, ${BRAND}22 0%, transparent 70%)`,
-              }}
-            >
-              <span className="text-5xl font-black text-white">{count}</span>
-            </div>
-            <p className="text-white/40 text-xs tracking-widest">Click to Start!</p>
+            {isExhausted ? (
+              <>
+                <div className="flex flex-col items-center gap-2 px-6 text-center">
+                  <p className="text-white/60 text-xs tracking-widest">발표시간까지</p>
+                  <p className="text-white text-2xl font-black tabular-nums tracking-tight">
+                    {formatHMS(remaining)}
+                  </p>
+                  <p className="text-white/40 text-xs">남았습니다</p>
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  key={count}
+                  onClick={onEnter}
+                  className="w-24 h-24 rounded-full flex items-center justify-center countdown-pop shadow-xl cursor-pointer transition-all duration-200 active:scale-95"
+                  style={{
+                    border: `2px solid ${BRAND}55`,
+                    background: `radial-gradient(circle, ${BRAND}22 0%, transparent 70%)`,
+                  }}
+                >
+                  <span className="text-5xl font-black text-white">{count}</span>
+                </div>
+                <p className="text-white/40 text-xs tracking-widest">Click to Start!</p>
+              </>
+            )}
           </div>
 
           {/* 3/3 - 버튼 */}
