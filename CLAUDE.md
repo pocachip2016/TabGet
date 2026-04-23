@@ -17,8 +17,12 @@ npm run preview  # 빌드 결과 미리보기
 tabget-app/          # Vite + React 앱
   src/
     App.jsx          # 메인 컴포넌트 (전체 앱 로직)
-    main.jsx         # React 진입점
+    AdminPage.jsx    # 관리자 페이지 (#admin 해시로 진입)
+    SplashScreen.jsx # 스플래시 화면
+    main.jsx         # React 진입점 — hash 라우팅 (#admin → AdminPage)
     index.css        # Tailwind 4 + 글로벌 스타일
+    api/client.js    # API 호출 함수
+    lib/visitor.js   # 방문자 ID 관리
   vite.config.js     # @tailwindcss/vite 플러그인 설정
 ```
 
@@ -41,3 +45,12 @@ TabGet is a mobile-first product comparison voting app. Users see two products s
    - Center overlay: live participant count + vote percentage bar
    - Max 5 sets in rolling structure
    - Dual-video audio: boost volume on the side the user last touched/focused
+
+## Admin Page (`#admin`)
+
+`localhost:5173/TabGet/#admin` 으로 접근. `main.jsx`에서 hash 라우팅으로 분기.
+
+- **스크롤**: `body { overflow: hidden }` 이 기본값이므로 `main.jsx`에서 `#admin` 진입 시 `document.body.style.overflow = 'auto'` 로 동적 전환, 이탈 시 복원.
+- **에이전트 실행 기록**: 가로 스크롤 칩 바 (`RunChips` 컴포넌트). 각 칩은 `#번호` + 실행 시각 표시. 클릭하면 아래 Poll 목록이 해당 실행 기준으로 필터링됨. `전체` 칩으로 필터 해제.
+- **Poll 목록**: 2열 그리드. 상태 필터(ALL / PENDING / ACTIVE / ARCHIVED) + 페이지네이션. 선택된 실행이 있으면 헤더에 날짜·시각 배지 표시.
+- **액션 버튼**: `ACTIVE 전환` (PENDING → ACTIVE 일괄), `에이전트 실행` (큐레이션 에이전트 트리거).

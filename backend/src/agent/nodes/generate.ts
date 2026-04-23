@@ -1,6 +1,7 @@
+import { HumanMessage } from "@langchain/core/messages";
 import type { AgentState, QueryCandidate } from "../state.js";
+import { createLLM, rateLimitedInvoke } from "../../lib/llm.js";
 
-// 하이엔드 상품 풀 (매 실행마다 5쌍 랜덤 선택)
 const HIGH_END_POOL: QueryCandidate[] = [
   // 럭셔리 시계
   { category: "럭셔리 시계", themeTitle: "다이버 워치 대결: 롤렉스 서브마리너 vs 오메가 씨마스터", queryA: "Rolex Submariner watch", queryB: "Omega Seamaster Diver 300M watch" },
@@ -32,10 +33,13 @@ const HIGH_END_POOL: QueryCandidate[] = [
   // 명품 가방
   { category: "명품 가방", themeTitle: "클래식 핸드백 대결: 샤넬 클래식 플랩 vs 루이비통 스피디", queryA: "Chanel Classic Flap bag", queryB: "Louis Vuitton Speedy bag" },
   { category: "명품 가방", themeTitle: "토트백 대결: 에르메스 버킨 vs 구찌 오피디아", queryA: "Hermes Birkin bag", queryB: "Gucci Ophidia tote bag" },
+
+  // 프리미엄 핸드폰
+  { category: "프리미엄 핸드폰", themeTitle: "플래그십 스마트폰 대결: 아이폰 16 프로 vs 갤럭시 S25 울트라", queryA: "Apple iPhone 16 Pro Max", queryB: "Samsung Galaxy S25 Ultra" },
+  { category: "프리미엄 핸드폰", themeTitle: "폴더블 대결: 갤럭시 Z 플립6 vs 모토로라 레이저 플러스", queryA: "Samsung Galaxy Z Flip6", queryB: "Motorola Razr Plus 2024" },
 ];
 
 function pickFive(pool: QueryCandidate[]): QueryCandidate[] {
-  // 카테고리별 1개씩, 최대 5개
   const byCategory: Record<string, QueryCandidate[]> = {};
   for (const item of pool) {
     if (!byCategory[item.category]) byCategory[item.category] = [];
@@ -45,7 +49,6 @@ function pickFive(pool: QueryCandidate[]): QueryCandidate[] {
   const picked: QueryCandidate[] = [];
   const categories = Object.keys(byCategory);
 
-  // 카테고리 순서 섞기
   for (let i = categories.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [categories[i], categories[j]] = [categories[j], categories[i]];
@@ -61,9 +64,54 @@ function pickFive(pool: QueryCandidate[]): QueryCandidate[] {
   return picked;
 }
 
+const CATEGORIES = [
+  "럭셔리 시계", "프리미엄 자동차", "하이엔드 스니커즈", "프리미엄 가전",
+  "럭셔리 주얼리", "프리미엄 오디오", "명품 가방", "프리미엄 핸드폰",
+];
+
+const GENERATE_PROMPT = `당신은 프리미엄 상품 대결 큐레이터입니다.
+아래 트렌드 데이터를 참고하여 프리미엄 상품 대결 주제 5개를 JSON 배열로 생성하세요.
+
+규칙:
+- 카테고리는 다음 중에서 선택: ${CATEGORIES.join(", ")}
+- 각 대결은 서로 다른 카테고리
+- queryA, queryB는 영어 검색 쿼리 (브랜드명 + 상품명)
+- themeTitle은 한국어
+
+응답 형식 (JSON 배열만, 다른 텍스트 없이):
+[
+  {
+    "category": "카테고리명",
+    "themeTitle": "한국어 대결 제목",
+    "queryA": "Brand ProductA",
+    "queryB": "Brand ProductB"
+  }
+]`;
+
+function extractJsonArray(text: string): QueryCandidate[] {
+  const match = text.match(/\[[\s\S]*\]/);
+  if (!match) throw new Error("LLM 응답에서 JSON 배열을 찾을 수 없습니다");
+  return JSON.parse(match[0]) as QueryCandidate[];
+}
+
 export async function generateNode(s: AgentState): Promise<Partial<AgentState>> {
   if (process.env.MOCK_LLM === "true") {
     return { dynamicQueries: pickFive(HIGH_END_POOL) };
   }
-  return { dynamicQueries: pickFive(HIGH_END_POOL) };
+
+  try {
+    const llm = createLLM(0.8);
+    const prompt = s.rawTrends
+      ? `${GENERATE_PROMPT}\n\n트렌드 데이터:\n${s.rawTrends}`
+      : `${GENERATE_PROMPT}\n\n(트렌드 데이터 없음 — 최신 프리미엄 상품 트렌드를 기반으로 생성하세요)`;
+
+    const result = await rateLimitedInvoke(llm, [new HumanMessage(prompt)]);
+    const queries = extractJsonArray(String(result.content));
+
+    if (queries.length < 1) throw new Error("LLM이 빈 배열을 반환했습니다");
+    return { dynamicQueries: queries.slice(0, 5) };
+  } catch (e) {
+    console.error("[generate] LLM 호출 실패, 폴백 사용:", e);
+    return { dynamicQueries: pickFive(HIGH_END_POOL) };
+  }
 }

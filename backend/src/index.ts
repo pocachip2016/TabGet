@@ -10,6 +10,7 @@ import type { PollDraft } from "./agent/state.js";
 import { serperStatus } from "./lib/serper.js";
 import { agentLog } from "./lib/logger.js";
 import { AgentCallbackHandler } from "./lib/agentCallbackHandler.js";
+import { geminiLimiter } from "./lib/gemini-quota.js";
 
 const app = Fastify({ logger: true });
 await app.register(cors, { origin: true });
@@ -198,6 +199,8 @@ app.post<{ Params: VoteParams; Body: VoteBody }>(
 
 app.get("/serper-status", async () => serperStatus());
 
+app.get("/gemini-status", async () => geminiLimiter.status());
+
 // ─── Admin API ──────────────────────────────────────────────────────────────
 
 interface AdminPollsQuery {
@@ -315,5 +318,15 @@ app.get<{ Querystring: AdminTrendLogsQuery }>("/admin/trend-logs", async (req) =
   return { logs, total, page, limit, totalPages: Math.ceil(total / limit) };
 });
 // ─────────────────────────────────────────────────────────────────────────────
+
+const shutdown = async (signal: string) => {
+  agentLog("INFO", "server:shutdown", { signal });
+  geminiLimiter.logShutdown();
+  await app.close();
+  process.exit(0);
+};
+
+process.on("SIGINT", () => shutdown("SIGINT"));
+process.on("SIGTERM", () => shutdown("SIGTERM"));
 
 app.listen({ port: Number(process.env.PORT ?? 3000), host: "0.0.0.0" });
