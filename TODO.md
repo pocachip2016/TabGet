@@ -12,13 +12,13 @@
 - [x] **1.2** `backend/src/agent/nodes/curate.ts`: `findImages(query, max=5)` 신설 + URL 베이스 dedup + 호스트 분산 (3개 초과 제한)
 - [x] **1.3** `buildDraft` 양쪽 분기(LLM·폴백)를 `{ imageUrl, gallery }` 구조로 수정
 - [x] **1.4** 빌드 확인: `cd backend && npm run build`
-- [ ] **1.5** `POST /run-curation` 호출 → `GET /admin/polls` 응답에 `productA.gallery`가 2장+ 확인
+- [x] **1.5** `POST /run-curation` 호출 → `GET /admin/polls` 응답에 `productA.gallery`가 2장+ 확인
 
 ## Phase 2 — 슬라이드쇼 프론트엔드
-- [ ] **2.1** `tabget-app/src/index.css`에 Ken Burns 키프레임 + `prefers-reduced-motion` 가드 추가
-- [ ] **2.2** `tabget-app/src/components/ProductSlideshow.jsx` 신규 (프리로드, 에러 내성, 가시성 가드, Ken Burns)
-- [ ] **2.3** `App.jsx` `normalizePoll` 확장 (`galleryA/B`, `videoA/B`)
-- [ ] **2.4** `App.jsx:582`, `:635` `<img>` → `<ProductSlideshow>` 교체
+- [x] **2.1** `tabget-app/src/index.css`에 Ken Burns 키프레임 + `prefers-reduced-motion` 가드 추가
+- [x] **2.2** `tabget-app/src/components/ProductSlideshow.jsx` 신규 (프리로드, 에러 내성, 가시성 가드, Ken Burns)
+- [x] **2.3** `App.jsx` `normalizePoll` 확장 (`galleryA/B`, `videoA/B`)
+- [x] **2.4** `App.jsx:582`, `:635` `<img>` → `<ProductSlideshow>` 교체
 - [ ] **2.5** `npm run dev` 구동, 슬라이드 전환/반대편 선택 시 정지/단일이미지/플레이스홀더 확인
 - [ ] **2.6** `prefers-reduced-motion` 환경에서 Ken Burns 비활성 확인
 

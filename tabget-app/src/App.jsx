@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
+import ProductSlideshow from './components/ProductSlideshow';
 import { fetchPolls, submitVote, ApiError } from './api/client';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
@@ -14,6 +15,10 @@ function normalizePoll(p) {
     itemB: b.name ?? '',
     imgA: a.imageUrl ?? '',
     imgB: b.imageUrl ?? '',
+    galleryA: Array.isArray(a.gallery) ? a.gallery : [],
+    galleryB: Array.isArray(b.gallery) ? b.gallery : [],
+    videoA: a.videoUrl ?? '',
+    videoB: b.videoUrl ?? '',
     votesA: p.votesA ?? 0,
     votesB: p.votesB ?? 0,
   };
@@ -579,7 +584,11 @@ export default function App() {
             onClick={() => handleClick('A')}
             onDoubleClick={(e) => handleDoubleClick('A', e)}
           >
-            <img src={currentSet.imgA} alt={currentSet.itemA} className="absolute inset-0 w-full h-full object-cover" />
+            <ProductSlideshow
+              images={[currentSet.imgA, ...currentSet.galleryA].filter(Boolean)}
+              videoUrl={currentSet.videoA}
+              paused={selectedSide === 'B' || isWinnerRevealed}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
@@ -632,7 +641,11 @@ export default function App() {
             onClick={() => handleClick('B')}
             onDoubleClick={(e) => handleDoubleClick('B', e)}
           >
-            <img src={currentSet.imgB} alt={currentSet.itemB} className="absolute inset-0 w-full h-full object-cover" />
+            <ProductSlideshow
+              images={[currentSet.imgB, ...currentSet.galleryB].filter(Boolean)}
+              videoUrl={currentSet.videoB}
+              paused={selectedSide === 'A' || isWinnerRevealed}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
