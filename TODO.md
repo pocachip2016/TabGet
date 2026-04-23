@@ -23,13 +23,13 @@
 - [ ] **2.6** `prefers-reduced-motion` 환경에서 Ken Burns 비활성 확인
 
 ## Phase 3 — TV 모드
-- [ ] **3.1** `tabget-app/src/ViewModeContext.jsx` 신규 (Provider + 훅 + localStorage 동기화 + 폴백)
-- [ ] **3.2** `tabget-app/src/components/ViewModeToggle.jsx` 신규 (`[📱 Phone | 📺 TV]` 필 토글, size prop)
-- [ ] **3.3** `tabget-app/src/main.jsx`에서 `<ViewModeProvider>` 래핑 (App + AdminPage 모두)
-- [ ] **3.4** `App.jsx:569` 프레임 조건부 전환 — Phone `w-[667px] h-[375px] rounded-[40px] border-[8px]` / TV `w-[1280px] h-[720px] border-[20px] border-zinc-900` + 스탠드 + LED
-- [ ] **3.5** App.jsx 내 `sz(phone, tv)` 헬퍼 도입, 주요 지점 10개 교체 (상품명/참여자/퍼센트/VS배지/바두께/오버레이/토스트)
-- [ ] **3.6** TV 모드 키보드 훅 (ArrowLeft/Right/Enter/Space), 입력 박스 포커스 시 가로채기 금지
-- [ ] **3.7** 토글 버튼 3곳 배치 (Splash, Main 네비 `bottom-3 right-3`, Results 상단 우측)
+- [x] **3.1** `tabget-app/src/ViewModeContext.jsx` 신규 (Provider + 훅 + localStorage 동기화 + 폴백)
+- [x] **3.2** `tabget-app/src/components/ViewModeToggle.jsx` 신규 (`[📱 Phone | 📺 TV]` 필 토글, size prop)
+- [x] **3.3** `tabget-app/src/main.jsx`에서 `<ViewModeProvider>` 래핑 (App + AdminPage 모두)
+- [x] **3.4** `App.jsx:569` 프레임 조건부 전환 — Phone `w-[667px] h-[375px] rounded-[40px] border-[8px]` / TV `w-[1280px] h-[720px] border-[20px] border-zinc-900` + 스탠드 + LED
+- [x] **3.5** App.jsx 내 `sz(phone, tv)` 헬퍼 도입, 주요 지점 10개 교체 (상품명/참여자/퍼센트/VS배지/바두께/오버레이/토스트)
+- [x] **3.6** TV 모드 키보드 훅 (ArrowLeft/Right/Enter/Space), 입력 박스 포커스 시 가로채기 금지
+- [x] **3.7** 토글 버튼 3곳 배치 (Splash, Main 네비 `bottom-3 right-3`, Results 상단 우측)
 - [ ] **3.8** Chrome DevTools 1920×1080 에서 수동 테스트, 새로고침 후 localStorage 상태 유지 확인
 
 ## Phase 4 — 배틀 챗봇 스키마·라우트
