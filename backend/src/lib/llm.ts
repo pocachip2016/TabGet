@@ -1,7 +1,10 @@
 import type { BaseChatModel } from "@langchain/core/language_models/chat_models";
+import type { BaseMessage } from "@langchain/core/messages";
+import type { AIMessageChunk } from "@langchain/core/messages";
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatOllama } from "@langchain/ollama";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { geminiLimiter, geminiLog } from "./gemini-quota.js";
 
 type LLMProvider = "openai" | "ollama" | "gemini";
 
@@ -29,14 +32,50 @@ export function createLLM(temperature: number): BaseChatModel {
       if (!apiKey) {
         throw new Error("GEMINI_API_KEY is required when LLM_PROVIDER=gemini");
       }
-      return new ChatGoogleGenerativeAI({
-        model: "gemini-2.0-flash",
-        apiKey,
-        temperature,
-      });
+      const model = process.env.GEMINI_MODEL ?? "gemini-2.0-flash";
+      return new ChatGoogleGenerativeAI({ model, apiKey, temperature });
     }
 
     default: // "openai"
       return new ChatOpenAI({ model: "gpt-4o", temperature });
+  }
+}
+
+function estimateTokens(content: unknown): number {
+  const text = typeof content === "string" ? content : JSON.stringify(content);
+  return Math.ceil(text.length / 4);
+}
+
+export async function rateLimitedInvoke(
+  llm: BaseChatModel,
+  messages: BaseMessage[]
+): Promise<AIMessageChunk> {
+  await geminiLimiter.acquire();
+
+  const promptText = messages.map((m) => String(m.content)).join("\n");
+  geminiLog("INFO", "gemini:api:call", {
+    prompt: promptText.slice(0, 200),
+    model: process.env.GEMINI_MODEL ?? "gemini-2.0-flash",
+  });
+
+  const start = Date.now();
+  try {
+    const result = await llm.invoke(messages);
+    const tokens =
+      (result as AIMessageChunk).usage_metadata?.total_tokens ??
+      estimateTokens(result.content);
+    geminiLog("INFO", "gemini:api:response", {
+      tokens,
+      durationMs: Date.now() - start,
+      response: String(result.content).slice(0, 200),
+    });
+    geminiLimiter.record(tokens);
+    return result as AIMessageChunk;
+  } catch (e) {
+    geminiLog("ERROR", "gemini:api:error", {
+      error: e instanceof Error ? e.message : String(e),
+      durationMs: Date.now() - start,
+    });
+    throw e;
   }
 }

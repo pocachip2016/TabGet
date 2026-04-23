@@ -22,8 +22,10 @@ dist/
 *.swo
 *~
 
-# Agent 로그
+# Agent / Gemini 런타임 데이터
 backend/data/agent.log
+backend/data/gemini.log
+backend/data/gemini-usage.json
 
 # OS
 .DS_Store

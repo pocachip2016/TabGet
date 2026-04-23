@@ -1,4 +1,6 @@
+import { HumanMessage } from "@langchain/core/messages";
 import { serperSearch, serperImageSearch } from "../../lib/serper.js";
+import { createLLM, rateLimitedInvoke } from "../../lib/llm.js";
 import type { AgentState, PollDraft, QueryCandidate, ProductPayload } from "../state.js";
 
 export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
@@ -16,21 +18,70 @@ export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
   return { finalJson: drafts };
 }
 
+const NORMALIZE_PROMPT = `당신은 상품 정보 정규화 전문가입니다.
+아래 검색 결과에서 상품 정보를 추출하세요.
+
+검색 쿼리: {query}
+검색 결과:
+{searchResult}
+
+응답 형식 (JSON만, 다른 텍스트 없이):
+{
+  "brand": "브랜드명 (영문)",
+  "name": "상품명 (영문)",
+  "features": ["특징1 (한국어, 20자 이내)", "특징2", "특징3"]
+}`;
+
+async function normalizeWithLLM(
+  query: string,
+  searchResult: string,
+): Promise<{ brand: string; name: string; features: string[] } | null> {
+  try {
+    const llm = createLLM(0.3);
+    const prompt = NORMALIZE_PROMPT
+      .replace("{query}", query)
+      .replace("{searchResult}", searchResult.slice(0, 1500));
+    const result = await rateLimitedInvoke(llm, [new HumanMessage(prompt)]);
+    const text = String(result.content);
+    const match = text.match(/\{[\s\S]*\}/);
+    if (!match) return null;
+    return JSON.parse(match[0]) as { brand: string; name: string; features: string[] };
+  } catch (e) {
+    console.error("[curate] LLM 정규화 실패:", e);
+    return null;
+  }
+}
+
 async function buildDraft(q: QueryCandidate): Promise<PollDraft | null> {
-  // 상품 정보 검색 (병렬)
   const [resultA, resultB] = await Promise.all([
     serperSearch(`${q.queryA} 공식 스펙 특징`),
     serperSearch(`${q.queryB} 공식 스펙 특징`),
   ]);
 
-  // 이미지 검색 (병렬)
   const [urlA, urlB] = await Promise.all([
     findImage(q.queryA),
     findImage(q.queryB),
   ]);
 
-  const productA = parseProduct(q.queryA, resultA, urlA);
-  const productB = parseProduct(q.queryB, resultB, urlB);
+  let productA: ProductPayload;
+  let productB: ProductPayload;
+
+  if (process.env.MOCK_LLM !== "true" && process.env.LLM_PROVIDER === "gemini") {
+    const [normA, normB] = await Promise.all([
+      normalizeWithLLM(q.queryA, resultA),
+      normalizeWithLLM(q.queryB, resultB),
+    ]);
+    productA = normA
+      ? { ...normA, features: normA.features.slice(0, 3), imageUrl: urlA, videoUrl: "" }
+      : parseProduct(q.queryA, resultA, urlA);
+    productB = normB
+      ? { ...normB, features: normB.features.slice(0, 3), imageUrl: urlB, videoUrl: "" }
+      : parseProduct(q.queryB, resultB, urlB);
+  } else {
+    productA = parseProduct(q.queryA, resultA, urlA);
+    productB = parseProduct(q.queryB, resultB, urlB);
+  }
+
   const curatorNote = buildNote(productA, productB, q.category);
 
   return {
@@ -73,6 +124,7 @@ function buildNote(a: ProductPayload, b: ProductPayload, category: string): stri
     "럭셔리 주얼리": `${a.brand}의 우아함과 ${b.brand}의 아이코닉함, 평생 함께할 주얼리는?`,
     "프리미엄 오디오": `${a.brand}의 음향 기술과 ${b.brand}의 사운드 철학, 귀를 사로잡는 선택은?`,
     "명품 가방": `${a.brand}의 클래식과 ${b.brand}의 헤리티지, 나를 표현할 백은?`,
+    "프리미엄 핸드폰": `${a.brand}의 생태계와 ${b.brand}의 혁신, 내 손 안의 선택은?`,
   };
   return templates[category] ?? `${a.brand}와 ${b.brand}, 당신의 선택은?`;
 }

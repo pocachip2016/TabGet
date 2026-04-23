@@ -151,114 +151,52 @@ function toTimeStr(isoStr) {
   });
 }
 
-const CATEGORY_COLOR = {
-  '럭셔리 시계':      'bg-amber-100 text-amber-700',
-  '프리미엄 자동차':  'bg-blue-100 text-blue-700',
-  '하이엔드 스니커즈':'bg-purple-100 text-purple-700',
-  '프리미엄 가전':    'bg-cyan-100 text-cyan-700',
-  '럭셔리 주얼리':    'bg-pink-100 text-pink-700',
-  '프리미엄 오디오':  'bg-green-100 text-green-700',
-  '명품 가방':        'bg-rose-100 text-rose-700',
-};
-
-function RunCard({ log, runIndex, totalRuns, selected, onSelect }) {
-  const [expanded, setExpanded] = useState(false);
-  const queries = Array.isArray(log.queries) ? log.queries : [];
-  const runNo = totalRuns - runIndex;
-
+function RunChips({ logs, totalLogs, selectedRun, onSelect, loading, page, totalPages, onPage }) {
   return (
-    <div className={`border rounded-xl overflow-hidden transition ${selected ? 'border-pink-400 bg-pink-50' : 'border-gray-200 bg-white'}`}>
-      <div className="flex items-center">
+    <div>
+      <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: 'none' }}>
         <button
-          onClick={() => onSelect(selected ? null : log)}
-          className={`shrink-0 w-10 h-10 flex items-center justify-center text-[11px] font-black transition ${selected ? 'text-pink-500' : 'text-gray-400 hover:text-gray-600'}`}
+          onClick={() => onSelect(null)}
+          className={`shrink-0 px-3 py-1.5 rounded-lg text-xs font-bold transition border ${
+            !selectedRun ? 'bg-gray-900 text-white border-gray-900' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400'
+          }`}
         >
-          #{runNo}
+          전체
         </button>
-        <button
-          className="flex-1 flex items-center justify-between px-2 py-2.5 text-left hover:bg-gray-50 transition"
-          onClick={() => setExpanded(v => !v)}
-        >
-          <div className="flex items-center gap-2 min-w-0">
-            <span className="text-xs text-gray-700 font-medium shrink-0">{toTimeStr(log.createdAt)}</span>
-            <span className="text-[10px] text-gray-400 shrink-0">· {queries.length}개</span>
-          </div>
-          <span className="text-[10px] text-gray-400 ml-2">{expanded ? '▲' : '▼'}</span>
-        </button>
-      </div>
-
-      {queries.length > 0 && (
-        <div className="px-3 pb-2 flex flex-wrap gap-1">
-          {queries.map((q, i) => {
-            const cat = typeof q === 'object' ? (q.category ?? '') : '';
-            const cls = CATEGORY_COLOR[cat] ?? 'bg-gray-100 text-gray-500';
-            return (
-              <span key={i} className={`text-[9px] px-1.5 py-0.5 rounded-full font-medium ${cls}`}>
-                {cat || q}
+        {loading && <span className="text-xs text-gray-400 self-center">불러오는 중...</span>}
+        {!loading && logs.length === 0 && <span className="text-xs text-gray-400 self-center">실행 기록 없음</span>}
+        {!loading && logs.map((log, i) => {
+          const runNo = totalLogs - (page - 1) * 20 - i;
+          const isSelected = selectedRun?.id === log.id;
+          return (
+            <button
+              key={log.id}
+              onClick={() => onSelect(isSelected ? null : log)}
+              className={`shrink-0 flex flex-col items-center px-3 py-1.5 rounded-lg text-xs font-bold transition border ${
+                isSelected ? 'bg-pink-500 text-white border-pink-500' : 'bg-white text-gray-700 border-gray-200 hover:border-gray-400'
+              }`}
+            >
+              <span>#{runNo}</span>
+              <span className={`text-[9px] font-normal ${isSelected ? 'text-white/80' : 'text-gray-400'}`}>
+                {toTimeStr(log.createdAt)}
               </span>
-            );
-          })}
+            </button>
+          );
+        })}
+      </div>
+      {totalPages > 1 && (
+        <div className="flex items-center gap-3 mt-2">
+          <button onClick={() => onPage(page - 1)} disabled={page <= 1}
+            className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-30 hover:bg-gray-200 transition">
+            <ChevronLeft size={14} />
+          </button>
+          <span className="text-xs text-gray-400">{page} / {totalPages}</span>
+          <button onClick={() => onPage(page + 1)} disabled={page >= totalPages}
+            className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center disabled:opacity-30 hover:bg-gray-200 transition">
+            <ChevronRight size={14} />
+          </button>
         </div>
       )}
-
-      {expanded && queries.length > 0 && (
-        <div className="border-t border-gray-100 divide-y divide-gray-100">
-          {queries.map((q, i) => (
-            <div key={i} className="px-3 py-2 space-y-0.5">
-              <p className="text-[11px] text-gray-800 font-semibold leading-snug">
-                {typeof q === 'object' ? q.themeTitle : q}
-              </p>
-              {typeof q === 'object' && (
-                <div className="flex flex-col gap-0.5 mt-1">
-                  <p className="text-[9px] text-gray-500"><span className="text-blue-500 font-bold">A</span> {q.queryA}</p>
-                  <p className="text-[9px] text-gray-500"><span className="text-pink-500 font-bold">B</span> {q.queryB}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function LogsByRun({ logs, selectedRun, onSelect }) {
-  return (
-    <div className="space-y-2">
-      {logs.map((log, i) => (
-        <RunCard key={log.id} log={log} runIndex={i} totalRuns={logs.length}
-          selected={selectedRun?.id === log.id} onSelect={onSelect} />
-      ))}
-    </div>
-  );
-}
-
-function LogsByDate({ logs, selectedRun, onSelect }) {
-  const groups = [];
-  const seen = new Map();
-  for (const log of logs) {
-    const dk = toDateKey(log.createdAt);
-    if (!seen.has(dk)) { seen.set(dk, []); groups.push({ date: dk, items: seen.get(dk) }); }
-    seen.get(dk).push(log);
-  }
-
-  return (
-    <div className="space-y-4">
-      {groups.map(({ date, items }) => (
-        <div key={date}>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{date}</span>
-            <span className="text-[9px] text-gray-400">· {items.length}회 실행</span>
-            <div className="flex-1 border-t border-gray-200" />
-          </div>
-          <div className="space-y-2 pl-1">
-            {items.map((log, i) => (
-              <RunCard key={log.id} log={log} runIndex={i} totalRuns={items.length}
-                selected={selectedRun?.id === log.id} onSelect={onSelect} />
-            ))}
-          </div>
-        </div>
-      ))}
     </div>
   );
 }
@@ -273,7 +211,6 @@ export default function AdminPage() {
   const [logData, setLogData] = useState({ logs: [], total: 0, page: 1, totalPages: 1 });
   const [logPage, setLogPage] = useState(1);
   const [logLoading, setLogLoading] = useState(false);
-  const [logView, setLogView] = useState('date');
   const [selectedRun, setSelectedRun] = useState(null);
 
   const [running, setRunning] = useState(false);
@@ -398,38 +335,27 @@ export default function AdminPage() {
       <div className="max-w-4xl mx-auto px-6 py-6 space-y-8">
         {/* Trend Logs */}
         <section>
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-3">
             <h2 className="text-base font-bold text-gray-800">
               에이전트 실행 기록 <span className="text-gray-400 font-normal">({logData.total}회)</span>
             </h2>
-            <div className="flex items-center gap-3">
-              <div className="flex rounded-lg overflow-hidden border border-gray-200">
-                {[{ key: 'date', label: '날짜별' }, { key: 'run', label: '실행별' }].map(({ key, label }) => (
-                  <button
-                    key={key}
-                    onClick={() => setLogView(key)}
-                    className={`px-3 py-1.5 text-xs font-bold transition ${logView === key ? 'bg-gray-900 text-white' : 'bg-transparent text-gray-500 hover:text-gray-800'}`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-              <button
-                onClick={() => loadLogs(logPage)}
-                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
-              >
-                <RefreshCw size={14} className="text-gray-600" />
-              </button>
-            </div>
+            <button
+              onClick={() => loadLogs(logPage)}
+              className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
+            >
+              <RefreshCw size={14} className="text-gray-600" />
+            </button>
           </div>
-          {logLoading && <div className="text-center py-8 text-gray-400 text-sm">불러오는 중...</div>}
-          {!logLoading && logData.logs.length === 0 && <div className="text-center py-8 text-gray-400 text-sm">실행 기록이 없습니다</div>}
-          {!logLoading && logData.logs.length > 0 && (
-            logView === 'date'
-              ? <LogsByDate logs={logData.logs} selectedRun={selectedRun} onSelect={handleSelectRun} />
-              : <LogsByRun logs={logData.logs} selectedRun={selectedRun} onSelect={handleSelectRun} />
-          )}
-          <Pagination page={logData.page} totalPages={logData.totalPages} onPage={setLogPage} />
+          <RunChips
+            logs={logData.logs}
+            totalLogs={logData.total}
+            selectedRun={selectedRun}
+            onSelect={handleSelectRun}
+            loading={logLoading}
+            page={logData.page}
+            totalPages={logData.totalPages}
+            onPage={setLogPage}
+          />
         </section>
 
         {/* Poll List */}
@@ -440,12 +366,9 @@ export default function AdminPage() {
                 Poll 목록 <span className="text-gray-400 font-normal">({pollData.total}개)</span>
               </h2>
               {selectedRun && (
-                <button
-                  onClick={() => handleSelectRun(null)}
-                  className="flex items-center gap-1.5 text-xs px-3 py-1 rounded-full bg-pink-100 text-pink-600 hover:bg-pink-200 transition shrink-0"
-                >
-                  #{logData.logs.length - logData.logs.findIndex(l => l.id === selectedRun.id)} 실행 <X size={11} />
-                </button>
+                <span className="text-xs px-2.5 py-1 rounded-full bg-pink-100 text-pink-600 font-bold shrink-0">
+                  {toDateKey(selectedRun.createdAt)} {toTimeStr(selectedRun.createdAt)}
+                </span>
               )}
             </div>
             <div className="flex gap-1.5">

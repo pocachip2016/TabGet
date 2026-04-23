@@ -12,7 +12,14 @@ function Root() {
     return () => window.removeEventListener('hashchange', handler);
   }, []);
 
-  if (hash === '#admin') return <AdminPage />;
+  const isAdmin = hash === '#admin';
+
+  useEffect(() => {
+    document.body.style.overflow = isAdmin ? 'auto' : 'hidden';
+    return () => { document.body.style.overflow = 'hidden'; };
+  }, [isAdmin]);
+
+  if (isAdmin) return <AdminPage />;
   return <App />;
 }
 
