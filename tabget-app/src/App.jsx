@@ -207,6 +207,30 @@ export default function App() {
     return () => { cancelled = true; };
   }, []);
 
+  // TV 뷰포트 축소 (1280×720 미만 창)
+  useEffect(() => {
+    if (mode !== 'tv') { setTvScale(1); return; }
+    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820));
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, [mode]);
+
+  // TV 키보드 네비게이션
+  useEffect(() => {
+    if (mode !== 'tv') return;
+    const handleKey = (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSet(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextSet(); }
+      else if (e.key === 'Enter') { e.preventDefault(); handleClick(selectedSide ?? 'A'); }
+      else if (e.key === ' ') { e.preventDefault(); if (selectedSide) handleDoubleClick(selectedSide, { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 }); }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [mode, selectedSide]);
+
   const currentSet = polls[currentIndex];
   const hasCurrentVoted = currentSet ? votedPollIds.includes(currentSet.id) : false;
   const totalDisplay = displayVotesA + displayVotesB;
@@ -559,30 +583,6 @@ export default function App() {
     );
   }
 
-  // TV 뷰포트 축소 (1280×720 미만 창)
-  useEffect(() => {
-    if (mode !== 'tv') { setTvScale(1); return; }
-    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820));
-    calc();
-    window.addEventListener('resize', calc);
-    return () => window.removeEventListener('resize', calc);
-  }, [mode]);
-
-  // TV 키보드 네비게이션
-  useEffect(() => {
-    if (mode !== 'tv') return;
-    const handleKey = (e) => {
-      const tag = document.activeElement?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSet(); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); nextSet(); }
-      else if (e.key === 'Enter') { e.preventDefault(); handleClick(selectedSide ?? 'A'); }
-      else if (e.key === ' ') { e.preventDefault(); if (selectedSide) handleDoubleClick(selectedSide, { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 }); }
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [mode, selectedSide]);
-
   const handleDebugReset = () => {
     localStorage.removeItem('tabget:visitorId');
     visitorIdRef.current = getVisitorId();
@@ -602,15 +602,18 @@ export default function App() {
   };
 
   return (
-    <div className={`flex flex-col items-center justify-center min-h-screen ${sz('bg-white', 'bg-zinc-950')} font-sans`}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
       {/* 프레임 + 스탠드 컨테이너 */}
+      <div className="fixed left-1/2 -translate-x-1/2 z-50" style={{ top: 'max(12px, calc(50vh - 450px))' }}>
+        <ViewModeToggle size={sz('sm', 'lg')} />
+      </div>
       <div
         className="flex flex-col items-center"
         style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
       <div ref={frameRef} className={sz(
         'relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden',
-        'relative w-[1280px] h-[720px] border-[20px] border-zinc-900 rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] ring-2 ring-zinc-700 ring-offset-4 ring-offset-zinc-950 overflow-hidden'
+        'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
       )}>
         <div className="flex w-full h-full flex-row">
 
@@ -618,8 +621,8 @@ export default function App() {
           <div
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'B' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'A' ? 'opacity-100 ring-4 ring-red-500 ring-inset'
-                : selectedSide === 'B' ? 'opacity-70'
+                : selectedSide === 'A' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'B' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('A')}
             onDoubleClick={(e) => handleDoubleClick('A', e)}
@@ -634,7 +637,7 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'A' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemA}</h3>
+              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
               <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
                 <Users size={sz(12, 32)} />
                 <span>{displayVotesA.toLocaleString()}명 참여 중</span>
@@ -677,8 +680,8 @@ export default function App() {
           <div
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'A' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'B' ? 'opacity-100 ring-4 ring-red-500 ring-inset'
-                : selectedSide === 'A' ? 'opacity-70'
+                : selectedSide === 'B' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'A' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('B')}
             onDoubleClick={(e) => handleDoubleClick('B', e)}
@@ -693,7 +696,7 @@ export default function App() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'B' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemB}</h3>
+              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemB}</h3>
               <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
                 <Users size={sz(12, 32)} />
                 <span>{displayVotesB.toLocaleString()}명 참여 중</span>
@@ -745,10 +748,6 @@ export default function App() {
               <div key={i} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? 'bg-white w-3' : 'bg-white/40 w-1.5'}`} />
             ))}
           </div>
-          <div className="absolute bottom-3 right-3 z-20 pointer-events-auto">
-            <ViewModeToggle size="sm" />
-          </div>
-
           {/* 이미 응모 안내 */}
           {showAlreadyVoted && (
             <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl text-center pointer-events-none">
@@ -789,17 +788,17 @@ export default function App() {
               <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
             </div>
           )}
+          </div>
+          {mode === 'tv' && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />
+          )}
         </div>
         {mode === 'tv' && (
-          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />
+          <>
+            <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
+            <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
+          </>
         )}
-      </div>
-      {mode === 'tv' && (
-        <>
-          <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
-          <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
-        </>
-      )}
       </div>
     </div>
   );

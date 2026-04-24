@@ -1,6 +1,8 @@
+@../CLAUDE.md
+
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. Shared workspace rules are imported from `../CLAUDE.md` above.
 
 ## Commands
 
@@ -54,3 +56,7 @@ TabGet is a mobile-first product comparison voting app. Users see two products s
 - **에이전트 실행 기록**: 가로 스크롤 칩 바 (`RunChips` 컴포넌트). 각 칩은 `#번호` + 실행 시각 표시. 클릭하면 아래 Poll 목록이 해당 실행 기준으로 필터링됨. `전체` 칩으로 필터 해제.
 - **Poll 목록**: 2열 그리드. 상태 필터(ALL / PENDING / ACTIVE / ARCHIVED) + 페이지네이션. 선택된 실행이 있으면 헤더에 날짜·시각 배지 표시.
 - **액션 버튼**: `ACTIVE 전환` (PENDING → ACTIVE 일괄), `에이전트 실행` (큐레이션 에이전트 트리거).
+
+## 진행 중 작업
+
+`feature/upgrade` 브랜치에서 3개 기능(슬라이드쇼/TV 모드/배틀 챗봇) 구현 중. 현재 단계·다음 할 일은 `TODO.md` 참조. 상세 계획: `/home/ktalpha/.claude_acc2/plans/hazy-wandering-clover.md`

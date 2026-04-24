@@ -6,6 +6,8 @@ export default function ProductSlideshow({
   paused = false,
   intervalMs = 3500,
   kenBurns = true,
+  animDuration = 3500,
+  animDelay = 0,
 }) {
   const [validImages, setValidImages] = useState([]);
   const [current, setCurrent] = useState(0);
@@ -86,6 +88,11 @@ export default function ProductSlideshow({
           alt=""
           fetchPriority={i === 0 ? 'high' : 'auto'}
           loading={i === 0 ? 'eager' : 'lazy'}
+          style={{
+            animationDuration: `${animDuration}ms`,
+            animationDelay: `${animDelay}ms`,
+            animationPlayState: paused ? 'paused' : 'running',
+          }}
           className={[
             'absolute inset-0 w-full h-full object-cover transition-opacity duration-700',
             i === current ? 'opacity-100' : 'opacity-0',
