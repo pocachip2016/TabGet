@@ -1,6 +1,6 @@
 import { HumanMessage } from "@langchain/core/messages";
 import { serperSearch, serperImageSearch } from "../../lib/serper.js";
-import { createLLM, rateLimitedInvoke } from "../../lib/llm.js";
+import { createLLM, rateLimitedInvoke, QuotaExhaustedError } from "../../lib/llm.js";
 import type { AgentState, PollDraft, QueryCandidate, ProductPayload } from "../state.js";
 
 export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
@@ -11,6 +11,10 @@ export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
       const draft = await buildDraft(q);
       if (draft) drafts.push(draft);
     } catch (e) {
+      if (e instanceof QuotaExhaustedError) {
+        console.warn("[curate] Gemini 쿼터 소진 — 잔여 쿼리 중단");
+        break;
+      }
       console.error(`[curate] 실패: ${q.themeTitle}`, e);
     }
   }
@@ -47,6 +51,7 @@ async function normalizeWithLLM(
     if (!match) return null;
     return JSON.parse(match[0]) as { brand: string; name: string; features: string[] };
   } catch (e) {
+    if (e instanceof QuotaExhaustedError) throw e;
     console.error("[curate] LLM 정규화 실패:", e);
     return null;
   }
@@ -67,10 +72,9 @@ async function buildDraft(q: QueryCandidate): Promise<PollDraft | null> {
   let productB: ProductPayload;
 
   if (process.env.MOCK_LLM !== "true" && process.env.LLM_PROVIDER === "gemini") {
-    const [normA, normB] = await Promise.all([
-      normalizeWithLLM(q.queryA, resultA),
-      normalizeWithLLM(q.queryB, resultB),
-    ]);
+    // 순차 실행: RPM 동시성 누수 방지 + A가 QuotaExhaustedError면 B 미호출
+    const normA = await normalizeWithLLM(q.queryA, resultA);
+    const normB = await normalizeWithLLM(q.queryB, resultB);
     productA = normA
       ? { ...normA, features: normA.features.slice(0, 3), imageUrl: urlsA[0] ?? "", gallery: urlsA.slice(1), videoUrl: "" }
       : parseProduct(q.queryA, resultA, urlsA[0] ?? "", urlsA.slice(1));
