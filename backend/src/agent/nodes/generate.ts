@@ -1,6 +1,6 @@
 import { HumanMessage } from "@langchain/core/messages";
 import type { AgentState, QueryCandidate } from "../state.js";
-import { createLLM, rateLimitedInvoke } from "../../lib/llm.js";
+import { createLLM, rateLimitedInvoke, QuotaExhaustedError } from "../../lib/llm.js";
 
 const HIGH_END_POOL: QueryCandidate[] = [
   // 럭셔리 시계
@@ -111,7 +111,11 @@ export async function generateNode(s: AgentState): Promise<Partial<AgentState>> 
     if (queries.length < 1) throw new Error("LLM이 빈 배열을 반환했습니다");
     return { dynamicQueries: queries.slice(0, 5) };
   } catch (e) {
-    console.error("[generate] LLM 호출 실패, 폴백 사용:", e);
+    if (e instanceof QuotaExhaustedError) {
+      console.warn("[generate] Gemini 쿼터 소진 — HIGH_END_POOL 폴백");
+    } else {
+      console.error("[generate] LLM 호출 실패, 폴백 사용:", e);
+    }
     return { dynamicQueries: pickFive(HIGH_END_POOL) };
   }
 }

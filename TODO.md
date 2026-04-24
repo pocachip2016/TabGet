@@ -7,6 +7,13 @@
 
 ---
 
+## Phase 0 — Gemini 쿼터 버그픽스 검증 (PR #3 / Issue #2)
+- [ ] **0.1** (2026-04-25 아침) `curl -s localhost:3000/gemini-status` — remainingToday 기록
+- [ ] **0.2** `curl -X POST localhost:3000/run-curation` 1회 호출 → 성공 + 정확히 ~11 RPD 증가 확인
+- [ ] **0.3** Google AI Studio 대시보드에서 RPM ≤ 15, RPD ≤ 1000 (flash-lite) 유지 확인
+- [ ] **0.4** `data/gemini.log` 에 `gemini:exhausted:forced` 이벤트 **없음** 확인 (429 미발생)
+- [ ] **0.5** 이상 없으면 PR #3 머지 + `fix/gemini-quota` 브랜치 삭제
+
 ## Phase 1 — 슬라이드쇼 백엔드 (의존성 없음, 리스크 최저)
 - [x] **1.1** `backend/src/agent/state.ts`: `ProductPayload`에 `gallery?: string[]` 추가
 - [x] **1.2** `backend/src/agent/nodes/curate.ts`: `findImages(query, max=5)` 신설 + URL 베이스 dedup + 호스트 분산 (3개 초과 제한)

@@ -4,7 +4,9 @@ import type { AIMessageChunk } from "@langchain/core/messages";
 import { ChatOpenAI } from "@langchain/openai";
 import { ChatOllama } from "@langchain/ollama";
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
-import { geminiLimiter, geminiLog } from "./gemini-quota.js";
+import { geminiLimiter, geminiLog, QuotaExhaustedError } from "./gemini-quota.js";
+
+export { QuotaExhaustedError } from "./gemini-quota.js";
 
 type LLMProvider = "openai" | "ollama" | "gemini";
 
@@ -46,16 +48,31 @@ function estimateTokens(content: unknown): number {
   return Math.ceil(text.length / 4);
 }
 
+/** Gemini API가 쿼터/레이트리밋 초과를 알릴 때의 에러 시그니처를 감지 */
+export function isQuotaExhaustedError(e: unknown): boolean {
+  if (e instanceof QuotaExhaustedError) return true;
+  const msg = e instanceof Error ? e.message : String(e);
+  // Google GenAI: "[GoogleGenerativeAI Error]: ... 429 Too Many Requests ... RESOURCE_EXHAUSTED"
+  return /\b429\b|RESOURCE_EXHAUSTED|quota/i.test(msg);
+}
+
 export async function rateLimitedInvoke(
   llm: BaseChatModel,
   messages: BaseMessage[]
 ): Promise<AIMessageChunk> {
-  await geminiLimiter.acquire();
+  // Gemini가 아닌 provider는 Gemini limiter를 건너뛴다 (카운트 오염 방지)
+  if (getProvider() !== "gemini") {
+    return (await llm.invoke(messages)) as AIMessageChunk;
+  }
+
+  const slotIndex = await geminiLimiter.acquire();
+  const slotTs = Date.now();
 
   const promptText = messages.map((m) => String(m.content)).join("\n");
   geminiLog("INFO", "gemini:api:call", {
     prompt: promptText.slice(0, 200),
     model: process.env.GEMINI_MODEL ?? "gemini-2.0-flash",
+    slotIndex,
   });
 
   const start = Date.now();
@@ -69,13 +86,19 @@ export async function rateLimitedInvoke(
       durationMs: Date.now() - start,
       response: String(result.content).slice(0, 200),
     });
-    geminiLimiter.record(tokens);
+    geminiLimiter.record(slotIndex, tokens, slotTs);
     return result as AIMessageChunk;
   } catch (e) {
     geminiLog("ERROR", "gemini:api:error", {
       error: e instanceof Error ? e.message : String(e),
       durationMs: Date.now() - start,
     });
+    if (isQuotaExhaustedError(e)) {
+      geminiLimiter.exhaustNow();
+      throw new QuotaExhaustedError(
+        `Gemini API 429 — 무료 쿼터 소진 (원인: ${e instanceof Error ? e.message : String(e)})`
+      );
+    }
     throw e;
   }
 }
