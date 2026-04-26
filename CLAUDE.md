@@ -66,4 +66,4 @@ TabGet is a mobile-first product comparison voting app. Users see two products s
 
 ## 진행 중 작업
 
-`feature/upgrade` 브랜치에서 3개 기능(슬라이드쇼/TV 모드/배틀 챗봇) 구현 중. 현재 단계·다음 할 일은 `TODO.md` 참조. 상세 계획: `/home/ktalpha/.claude_acc2/plans/hazy-wandering-clover.md`
+`feature/upgrade` 브랜치에서 3개 기능(슬라이드쇼/TV 모드/배틀 챗봇) 구현 중. 현재 단계·다음 할 일은 `TODO.md` 참조. 상세 계획: `plans/dev-upgrade/` (없으면 `TODO.md` 기준으로 재시작)
