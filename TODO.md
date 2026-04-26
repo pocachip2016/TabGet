@@ -1,7 +1,7 @@
 # TabGet — 3기능 구현 TODO
 
 **브랜치**: `feature/upgrade`  
-**상세 계획**: `/home/ktalpha/.claude_acc2/plans/hazy-wandering-clover.md`
+**상세 계획**: 없음 (Phase 별 TODO 항목으로 대체)
 
 > **세션 재개 프롬프트**: "TODO.md 확인하고 다음 단계부터 이어서 진행해"
 
