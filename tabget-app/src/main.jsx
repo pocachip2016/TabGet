@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import AdminPage from './AdminPage.jsx'
+import { ViewModeProvider } from './ViewModeContext.jsx'
 
 function Root() {
   const [hash, setHash] = useState(window.location.hash);
@@ -25,6 +26,8 @@ function Root() {
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Root />
+    <ViewModeProvider>
+      <Root />
+    </ViewModeProvider>
   </StrictMode>,
 )

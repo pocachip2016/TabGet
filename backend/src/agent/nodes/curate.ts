@@ -1,6 +1,6 @@
 import { HumanMessage } from "@langchain/core/messages";
 import { serperSearch, serperImageSearch } from "../../lib/serper.js";
-import { createLLM, rateLimitedInvoke } from "../../lib/llm.js";
+import { createLLM, rateLimitedInvoke, QuotaExhaustedError } from "../../lib/llm.js";
 import type { AgentState, PollDraft, QueryCandidate, ProductPayload } from "../state.js";
 
 export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
@@ -11,6 +11,10 @@ export async function curateNode(s: AgentState): Promise<Partial<AgentState>> {
       const draft = await buildDraft(q);
       if (draft) drafts.push(draft);
     } catch (e) {
+      if (e instanceof QuotaExhaustedError) {
+        console.warn("[curate] Gemini 쿼터 소진 — 잔여 쿼리 중단");
+        break;
+      }
       console.error(`[curate] 실패: ${q.themeTitle}`, e);
     }
   }
@@ -47,6 +51,7 @@ async function normalizeWithLLM(
     if (!match) return null;
     return JSON.parse(match[0]) as { brand: string; name: string; features: string[] };
   } catch (e) {
+    if (e instanceof QuotaExhaustedError) throw e;
     console.error("[curate] LLM 정규화 실패:", e);
     return null;
   }
@@ -58,28 +63,27 @@ async function buildDraft(q: QueryCandidate): Promise<PollDraft | null> {
     serperSearch(`${q.queryB} 공식 스펙 특징`),
   ]);
 
-  const [urlA, urlB] = await Promise.all([
-    findImage(q.queryA),
-    findImage(q.queryB),
+  const [urlsA, urlsB] = await Promise.all([
+    findImages(q.queryA),
+    findImages(q.queryB),
   ]);
 
   let productA: ProductPayload;
   let productB: ProductPayload;
 
   if (process.env.MOCK_LLM !== "true" && process.env.LLM_PROVIDER === "gemini") {
-    const [normA, normB] = await Promise.all([
-      normalizeWithLLM(q.queryA, resultA),
-      normalizeWithLLM(q.queryB, resultB),
-    ]);
+    // 순차 실행: RPM 동시성 누수 방지 + A가 QuotaExhaustedError면 B 미호출
+    const normA = await normalizeWithLLM(q.queryA, resultA);
+    const normB = await normalizeWithLLM(q.queryB, resultB);
     productA = normA
-      ? { ...normA, features: normA.features.slice(0, 3), imageUrl: urlA, videoUrl: "" }
-      : parseProduct(q.queryA, resultA, urlA);
+      ? { ...normA, features: normA.features.slice(0, 3), imageUrl: urlsA[0] ?? "", gallery: urlsA.slice(1), videoUrl: "" }
+      : parseProduct(q.queryA, resultA, urlsA[0] ?? "", urlsA.slice(1));
     productB = normB
-      ? { ...normB, features: normB.features.slice(0, 3), imageUrl: urlB, videoUrl: "" }
-      : parseProduct(q.queryB, resultB, urlB);
+      ? { ...normB, features: normB.features.slice(0, 3), imageUrl: urlsB[0] ?? "", gallery: urlsB.slice(1), videoUrl: "" }
+      : parseProduct(q.queryB, resultB, urlsB[0] ?? "", urlsB.slice(1));
   } else {
-    productA = parseProduct(q.queryA, resultA, urlA);
-    productB = parseProduct(q.queryB, resultB, urlB);
+    productA = parseProduct(q.queryA, resultA, urlsA[0] ?? "", urlsA.slice(1));
+    productB = parseProduct(q.queryB, resultB, urlsB[0] ?? "", urlsB.slice(1));
   }
 
   const curatorNote = buildNote(productA, productB, q.category);
@@ -94,7 +98,7 @@ async function buildDraft(q: QueryCandidate): Promise<PollDraft | null> {
 }
 
 /** 검색 결과에서 브랜드/상품명/특징 파싱 */
-function parseProduct(query: string, searchResult: string, imageUrl: string): ProductPayload {
+function parseProduct(query: string, searchResult: string, imageUrl: string, gallery: string[] = []): ProductPayload {
   // 쿼리에서 브랜드(첫 단어)와 상품명 분리
   const words = query.split(" ");
   const brand = words[0] ?? query;
@@ -111,7 +115,7 @@ function parseProduct(query: string, searchResult: string, imageUrl: string): Pr
     ? lines
     : [...lines, ...[`${name} 프리미엄 품질`, "고급 소재 및 장인 정신", "한정 수량 프리미엄 에디션"].slice(lines.length)];
 
-  return { brand, name, features: features.slice(0, 3), imageUrl, videoUrl: "" };
+  return { brand, name, features: features.slice(0, 3), imageUrl, gallery, videoUrl: "" };
 }
 
 /** 카테고리에 맞는 큐레이터 노트 생성 */
@@ -129,13 +133,38 @@ function buildNote(a: ProductPayload, b: ProductPayload, category: string): stri
   return templates[category] ?? `${a.brand}와 ${b.brand}, 당신의 선택은?`;
 }
 
-/** 이미지 URL 탐색 */
-async function findImage(query: string): Promise<string> {
+/** 이미지 URL 목록 탐색 — URL 베이스 dedup + 호스트 분산 (동일 호스트 최대 3개) */
+async function findImages(query: string, max = 5): Promise<string[]> {
   const candidates = await serperImageSearch(query);
+  const seenBase = new Set<string>();
+  const hostCount = new Map<string, number>();
+  const result: string[] = [];
+
   for (const url of candidates) {
-    if (await validateImage(url)) return url;
+    if (result.length >= max) break;
+
+    let base: string;
+    let host: string;
+    try {
+      const u = new URL(url);
+      base = u.origin + u.pathname;
+      host = u.hostname;
+    } catch {
+      base = url;
+      host = url;
+    }
+
+    if (seenBase.has(base)) continue;
+    if ((hostCount.get(host) ?? 0) >= 3) continue;
+
+    if (await validateImage(url)) {
+      seenBase.add(base);
+      hostCount.set(host, (hostCount.get(host) ?? 0) + 1);
+      result.push(url);
+    }
   }
-  return "";
+
+  return result;
 }
 
 async function validateImage(url: string): Promise<boolean> {

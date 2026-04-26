@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy } from 'lucide-react';
+import ViewModeToggle from './components/ViewModeToggle';
 
 // 다음 00:30까지 남은 ms
 function msUntilAnnouncement() {
@@ -52,7 +53,8 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Powered by - 맨 아래 고정 */}
-        <div className="absolute bottom-5 left-0 right-0 z-20 flex justify-center">
+        <div className="absolute bottom-5 left-0 right-0 z-20 flex flex-col items-center gap-2">
+          <ViewModeToggle size="sm" />
           <div className="flex items-center gap-2">
             <span className="text-white/40 text-[10px] tracking-wider">powered by</span>
             <img

@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
+import ProductSlideshow from './components/ProductSlideshow';
+import ViewModeToggle from './components/ViewModeToggle';
+import { useViewMode } from './ViewModeContext';
 import { fetchPolls, submitVote, ApiError } from './api/client';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
@@ -14,6 +17,10 @@ function normalizePoll(p) {
     itemB: b.name ?? '',
     imgA: a.imageUrl ?? '',
     imgB: b.imageUrl ?? '',
+    galleryA: Array.isArray(a.gallery) ? a.gallery : [],
+    galleryB: Array.isArray(b.gallery) ? b.gallery : [],
+    videoA: a.videoUrl ?? '',
+    videoB: b.videoUrl ?? '',
     votesA: p.votesA ?? 0,
     votesB: p.votesB ?? 0,
   };
@@ -168,6 +175,10 @@ export default function App() {
   const [toast, setToast] = useState(null);
   const toastTimerRef = useRef(null);
   const visitorIdRef = useRef(null);
+
+  const { mode } = useViewMode();
+  const sz = (phone, tv) => mode === 'tv' ? tv : phone;
+  const [tvScale, setTvScale] = useState(1);
   if (visitorIdRef.current === null) {
     visitorIdRef.current = getVisitorId();
   }
@@ -195,6 +206,30 @@ export default function App() {
       .finally(() => { if (!cancelled) setIsLoading(false); });
     return () => { cancelled = true; };
   }, []);
+
+  // TV 뷰포트 축소 (1280×720 미만 창)
+  useEffect(() => {
+    if (mode !== 'tv') { setTvScale(1); return; }
+    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820));
+    calc();
+    window.addEventListener('resize', calc);
+    return () => window.removeEventListener('resize', calc);
+  }, [mode]);
+
+  // TV 키보드 네비게이션
+  useEffect(() => {
+    if (mode !== 'tv') return;
+    const handleKey = (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSet(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextSet(); }
+      else if (e.key === 'Enter') { e.preventDefault(); handleClick(selectedSide ?? 'A'); }
+      else if (e.key === ' ') { e.preventDefault(); if (selectedSide) handleDoubleClick(selectedSide, { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 }); }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [mode, selectedSide]);
 
   const currentSet = polls[currentIndex];
   const hasCurrentVoted = currentSet ? votedPollIds.includes(currentSet.id) : false;
@@ -418,6 +453,9 @@ export default function App() {
               <span style={{ color: '#E30B5C' }}>Get</span>
               <span className="text-white/40 text-base font-normal ml-2">당첨결과</span>
             </h2>
+            <div className="absolute top-4 right-4 z-10">
+              <ViewModeToggle size="sm" />
+            </div>
           </div>
 
           {/* 스크롤 영역 */}
@@ -565,39 +603,55 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      {/* 핸드폰 프레임 */}
-      <div ref={frameRef} className="relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden">
+      {/* 프레임 + 스탠드 컨테이너 */}
+      <div className="fixed left-1/2 -translate-x-1/2 z-50" style={{ top: 'max(12px, calc(50vh - 450px))' }}>
+        <ViewModeToggle size={sz('sm', 'lg')} />
+      </div>
+      <div
+        className="flex flex-col items-center"
+        style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
+      >
+      <div ref={frameRef} className={sz(
+        'relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden',
+        'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
+      )}>
         <div className="flex w-full h-full flex-row">
 
           {/* Section A */}
           <div
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'B' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'A' ? 'opacity-100 ring-4 ring-red-500 ring-inset'
-                : selectedSide === 'B' ? 'opacity-70'
+                : selectedSide === 'A' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'B' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('A')}
             onDoubleClick={(e) => handleDoubleClick('A', e)}
           >
-            <img src={currentSet.imgA} alt={currentSet.itemA} className="absolute inset-0 w-full h-full object-cover" />
+            <ProductSlideshow
+              images={[currentSet.imgA, ...currentSet.galleryA].filter(Boolean)}
+              videoUrl={currentSet.videoA}
+              paused={selectedSide === 'B' || isWinnerRevealed}
+              animDuration={3500}
+              animDelay={0}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`text-base font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'A' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemA}</h3>
-              <div className="flex items-center gap-1.5 mt-1 text-xs text-white/80">
-                <Users size={12} />
+              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
+              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
+                <Users size={sz(12, 32)} />
                 <span>{displayVotesA.toLocaleString()}명 참여 중</span>
               </div>
-              <div className="mt-1.5 h-1.5 rounded-full bg-white/20 overflow-hidden">
+              <div className={`mt-1.5 ${sz('h-1.5', 'h-3')} rounded-full bg-white/20 overflow-hidden`}>
                 <div className="h-full bg-blue-400 rounded-full transition-all duration-300" style={{ width: `${pctA}%` }} />
               </div>
-              <p className="text-[10px] text-white/60 mt-0.5">{pctA}%</p>
+              <p className={`${sz('text-[10px]', 'text-xl')} text-white/60 mt-0.5`}>{pctA}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'A' && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black text-lg flex items-center gap-2 shadow-xl animate-bounce">
-                  <Trophy size={20} /> 응모완료!
+                <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
+                  <Trophy size={sz(20, 48)} /> 응모완료!
                 </div>
               </div>
             )}
@@ -618,7 +672,7 @@ export default function App() {
           </div>
 
           {/* VS 배지 */}
-          <div className="absolute z-10 w-10 h-10 rounded-full bg-white text-black font-black text-sm flex items-center justify-center shadow-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className={`absolute z-10 ${sz('w-10 h-10 text-sm', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}>
             VS
           </div>
 
@@ -626,31 +680,37 @@ export default function App() {
           <div
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'A' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'B' ? 'opacity-100 ring-4 ring-red-500 ring-inset'
-                : selectedSide === 'A' ? 'opacity-70'
+                : selectedSide === 'B' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'A' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('B')}
             onDoubleClick={(e) => handleDoubleClick('B', e)}
           >
-            <img src={currentSet.imgB} alt={currentSet.itemB} className="absolute inset-0 w-full h-full object-cover" />
+            <ProductSlideshow
+              images={[currentSet.imgB, ...currentSet.galleryB].filter(Boolean)}
+              videoUrl={currentSet.videoB}
+              paused={selectedSide === 'A' || isWinnerRevealed}
+              animDuration={4700}
+              animDelay={-2100}
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`text-base font-bold drop-shadow-md transition-colors duration-300 ${selectedSide === 'B' ? 'text-red-500' : 'text-white'}`}>{currentSet.itemB}</h3>
-              <div className="flex items-center gap-1.5 mt-1 text-xs text-white/80">
-                <Users size={12} />
+              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemB}</h3>
+              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
+                <Users size={sz(12, 32)} />
                 <span>{displayVotesB.toLocaleString()}명 참여 중</span>
               </div>
-              <div className="mt-1.5 h-1.5 rounded-full bg-white/20 overflow-hidden">
+              <div className={`mt-1.5 ${sz('h-1.5', 'h-3')} rounded-full bg-white/20 overflow-hidden`}>
                 <div className="h-full bg-pink-400 rounded-full transition-all duration-300" style={{ width: `${pctB}%` }} />
               </div>
-              <p className="text-[10px] text-white/60 mt-0.5">{pctB}%</p>
+              <p className={`${sz('text-[10px]', 'text-xl')} text-white/60 mt-0.5`}>{pctB}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'B' && (
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black text-lg flex items-center gap-2 shadow-xl animate-bounce">
-                  <Trophy size={20} /> 응모완료!
+                <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
+                  <Trophy size={sz(20, 48)} /> 응모완료!
                 </div>
               </div>
             )}
@@ -688,25 +748,24 @@ export default function App() {
               <div key={i} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? 'bg-white w-3' : 'bg-white/40 w-1.5'}`} />
             ))}
           </div>
-
           {/* 이미 응모 안내 */}
           {showAlreadyVoted && (
             <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl text-center pointer-events-none">
-              <p className="text-white text-xs font-bold">이미 응모하셨어요 🎁</p>
-              <p className="text-white/60 text-[10px] mt-0.5">다른 상품도 응모해보세요</p>
+              <p className={`text-white ${sz('text-xs', 'text-xl')} font-bold`}>이미 응모하셨어요 🎁</p>
+              <p className={`text-white/60 ${sz('text-[10px]', 'text-base')} mt-0.5`}>다른 상품도 응모해보세요</p>
             </div>
           )}
 
           {/* 참여 완료 토스트 */}
           {votedSide && !isWinnerRevealed && (
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold animate-pulse shadow-lg z-20 whitespace-nowrap text-sm">
+            <div className={`absolute bottom-12 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold animate-pulse shadow-lg z-20 whitespace-nowrap ${sz('text-sm', 'text-xl')}`}>
               참여 완료! 결과를 기다려주세요 🎁
             </div>
           )}
 
           {/* 에러/마감 토스트 */}
           {toast && (
-            <div className="absolute bottom-16 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-1.5 rounded-lg text-xs font-bold shadow-lg whitespace-nowrap">
+            <div className={`absolute bottom-16 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-1.5 rounded-lg ${sz('text-xs', 'text-lg')} font-bold shadow-lg whitespace-nowrap`}>
               {toast}
             </div>
           )}
@@ -729,7 +788,17 @@ export default function App() {
               <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
             </div>
           )}
+          </div>
+          {mode === 'tv' && (
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />
+          )}
         </div>
+        {mode === 'tv' && (
+          <>
+            <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
+            <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
+          </>
+        )}
       </div>
     </div>
   );

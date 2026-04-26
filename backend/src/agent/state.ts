@@ -3,6 +3,7 @@ export interface ProductPayload {
   name: string;
   features: string[];
   imageUrl: string;
+  gallery?: string[];
   videoUrl?: string;
 }
 
