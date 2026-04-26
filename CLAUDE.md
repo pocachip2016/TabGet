@@ -57,6 +57,13 @@ TabGet is a mobile-first product comparison voting app. Users see two products s
 - **Poll 목록**: 2열 그리드. 상태 필터(ALL / PENDING / ACTIVE / ARCHIVED) + 페이지네이션. 선택된 실행이 있으면 헤더에 날짜·시각 배지 표시.
 - **액션 버튼**: `ACTIVE 전환` (PENDING → ACTIVE 일괄), `에이전트 실행` (큐레이션 에이전트 트리거).
 
+## Where to look
+- 상세 TODO: `@TODO.md`
+- 기획: `@docs/PRD.md`
+- 아키텍처: `@docs/ARCHITECTURE.md`
+- 의사결정: `@docs/ADR.md`
+- 진행 중 plan: `@plans/` (task slug 디렉토리 참조)
+
 ## 진행 중 작업
 
 `feature/upgrade` 브랜치에서 3개 기능(슬라이드쇼/TV 모드/배틀 챗봇) 구현 중. 현재 단계·다음 할 일은 `TODO.md` 참조. 상세 계획: `/home/ktalpha/.claude_acc2/plans/hazy-wandering-clover.md`
