@@ -1,0 +1,32 @@
+{
+  "project": "TabGet",
+  "phase": "dev-upgrade",
+  "steps": [
+    {
+      "step": 1,
+      "name": "slideshow-backend",
+      "status": "completed",
+      "summary": "backend gallery 필드 + findImages(max=5) 구현, 중복 URL 제거",
+      "completed_at": "2026-04-01T00:00:00+09:00"
+    },
+    {
+      "step": 2,
+      "name": "slideshow-frontend",
+      "status": "completed",
+      "summary": "ProductSlideshow.jsx — Ken Burns + 프리로드 + 에러 내성 + reduced-motion",
+      "completed_at": "2026-04-01T00:00:00+09:00"
+    },
+    {
+      "step": 3,
+      "name": "tv-mode",
+      "status": "completed",
+      "summary": "ViewModeContext + TV 프레임(1280×720) + sz 헬퍼 + 키보드 훅 + 토글 버튼",
+      "completed_at": "2026-04-01T00:00:00+09:00"
+    },
+    {
+      "step": 4,
+      "name": "battle-chatbot",
+      "status": "pending"
+    }
+  ]
+}
