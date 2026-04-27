@@ -8,11 +8,11 @@
 ---
 
 ## Phase 0 — Gemini 쿼터 버그픽스 검증 (PR #3 / Issue #2)
-- [ ] **0.1** (2026-04-25 아침) `curl -s localhost:3000/gemini-status` — remainingToday 기록
-- [ ] **0.2** `curl -X POST localhost:3000/run-curation` 1회 호출 → 성공 + 정확히 ~11 RPD 증가 확인
-- [ ] **0.3** Google AI Studio 대시보드에서 RPM ≤ 15, RPD ≤ 1000 (flash-lite) 유지 확인
-- [ ] **0.4** `data/gemini.log` 에 `gemini:exhausted:forced` 이벤트 **없음** 확인 (429 미발생)
-- [ ] **0.5** 이상 없으면 PR #3 머지 + `fix/gemini-quota` 브랜치 삭제
+- [x] **0.1** (2026-04-25 아침) `curl -s localhost:3000/gemini-status` — remainingToday 기록
+- [x] **0.2** `curl -X POST localhost:3000/run-curation` 1회 호출 → 성공 + 정확히 ~11 RPD 증가 확인
+- [x] **0.3** Google AI Studio 대시보드에서 RPM ≤ 15, RPD ≤ 1000 (flash-lite) 유지 확인
+- [x] **0.4** `data/gemini.log` 에 `gemini:exhausted:forced` 이벤트 **없음** 확인 (429 미발생)
+- [x] **0.5** 이상 없으면 PR #3 머지 + `fix/gemini-quota` 브랜치 삭제
 
 ## Phase 1 — 슬라이드쇼 백엔드 (의존성 없음, 리스크 최저)
 - [x] **1.1** `backend/src/agent/state.ts`: `ProductPayload`에 `gallery?: string[]` 추가
@@ -26,8 +26,8 @@
 - [x] **2.2** `tabget-app/src/components/ProductSlideshow.jsx` 신규 (프리로드, 에러 내성, 가시성 가드, Ken Burns)
 - [x] **2.3** `App.jsx` `normalizePoll` 확장 (`galleryA/B`, `videoA/B`)
 - [x] **2.4** `App.jsx:582`, `:635` `<img>` → `<ProductSlideshow>` 교체
-- [ ] **2.5** `npm run dev` 구동, 슬라이드 전환/반대편 선택 시 정지/단일이미지/플레이스홀더 확인
-- [ ] **2.6** `prefers-reduced-motion` 환경에서 Ken Burns 비활성 확인
+- [x] **2.5** `npm run dev` 구동, 슬라이드 전환/반대편 선택 시 정지/단일이미지/플레이스홀더 확인
+- [x] **2.6** `prefers-reduced-motion` 환경에서 Ken Burns 비활성 확인 → OS 설정 무관하게 강제 실행으로 변경
 
 ## Phase 3 — TV 모드
 - [x] **3.1** `tabget-app/src/ViewModeContext.jsx` 신규 (Provider + 훅 + localStorage 동기화 + 폴백)
