@@ -7,13 +7,13 @@ export default function ViewModeToggle({ size = 'md' }) {
   const outer = size === 'sm'
     ? 'p-0.5 rounded-xl gap-0.5'
     : size === 'lg'
-    ? 'p-1 rounded-2xl gap-1'
+    ? 'p-1.5 rounded-2xl gap-1.5'
     : 'p-0.5 rounded-xl gap-0.5';
 
   const pill = size === 'sm'
     ? 'px-2.5 py-0.5 rounded-lg text-[11px] font-semibold'
     : size === 'lg'
-    ? 'px-6 py-2.5 rounded-xl text-lg font-bold'
+    ? 'px-12 py-5 rounded-xl text-2xl font-bold'
     : 'px-3 py-1 rounded-lg text-xs font-semibold';
 
   return (

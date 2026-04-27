@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
@@ -103,48 +103,35 @@ const NICKNAMES = [
   "포근한이불", "도토리다람쥐", "반짝이는눈", "설레는마음", "봄날의햇살",
 ];
 
-function ChatFeed({ active }) {
+function ChatFeed() {
   const [messages, setMessages] = useState([]);
   const intervalRef = useRef(null);
+  const { mode } = useViewMode();
+  const isTV = mode === 'tv';
 
   useEffect(() => {
-    if (!active) {
-      clearInterval(intervalRef.current);
-      setMessages([]);
-      return;
-    }
-
     const addMessage = () => {
       const text = CHAT_MESSAGES[Math.floor(Math.random() * CHAT_MESSAGES.length)];
       const nick = NICKNAMES[Math.floor(Math.random() * NICKNAMES.length)];
-      setMessages((prev) => {
-        const next = [...prev, { id: Date.now(), nick, text }];
-        return next.slice(-6); // 최대 6개 유지
-      });
+      setMessages((prev) => [...prev, { id: Date.now(), nick, text }].slice(-6));
     };
-
     addMessage();
     intervalRef.current = setInterval(addMessage, 1200 + Math.random() * 800);
-
     return () => clearInterval(intervalRef.current);
-  }, [active]);
-
-  if (!active) return null;
+  }, []);
 
   return (
-    <div className="absolute right-0 top-0 bottom-0 w-1/3 flex flex-col justify-end pb-20 px-2 z-10 pointer-events-none overflow-hidden">
-      <div className="flex flex-col gap-1 border border-white/30 rounded-lg p-3">
-        {messages.slice(-3).map((msg, i) => (
-          <div
-            key={msg.id}
-            className="chat-message bg-black/50 backdrop-blur-sm rounded-lg px-2 py-1"
-            style={{ opacity: 0.4 + i * 0.3 }}
-          >
-            <p className="text-green-300 text-[10px] font-bold leading-tight truncate">{msg.nick}</p>
-            <p className="text-white text-[10px] leading-tight">{msg.text}</p>
-          </div>
-        ))}
-      </div>
+    <div className={`${isTV ? 'w-40' : 'w-20'} flex flex-col gap-1 pointer-events-none`}>
+      {messages.slice(-4).map((msg, i, arr) => (
+        <div
+          key={msg.id}
+          className="chat-message bg-black/50 backdrop-blur-sm rounded-lg px-2 py-1"
+          style={{ opacity: [0.3, 0.55, 0.75, 0.95][i] ?? 0.95 }}
+        >
+          <p className={`text-green-300 ${isTV ? 'text-xl' : 'text-[10px]'} font-bold leading-tight truncate`}>{msg.nick}</p>
+          <p className={`text-white ${isTV ? 'text-lg' : 'text-[10px]'} leading-tight`}>{msg.text}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -233,6 +220,13 @@ export default function App() {
 
   const currentSet = polls[currentIndex];
   const hasCurrentVoted = currentSet ? votedPollIds.includes(currentSet.id) : false;
+
+  // 실제 투표수가 0일 때 사용할 poll당 고정 랜덤 피크값 (500~1000)
+  const fakePeak = useMemo(() => {
+    if (!currentSet) return { a: 700, b: 750 };
+    const h = Math.abs(currentSet.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
+    return { a: 500 + (h % 501), b: 500 + ((h >> 4) % 501) };
+  }, [currentSet?.id]);
   const totalDisplay = displayVotesA + displayVotesB;
   const pctA = totalDisplay > 0 ? Math.round((displayVotesA / totalDisplay) * 100) : 50;
   const pctB = totalDisplay > 0 ? 100 - pctA : 50;
@@ -240,7 +234,7 @@ export default function App() {
   // 선택 시: 0 → 목표값 카운트업 애니메이션
   const animateCount = (target, setter, onComplete) => {
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
-    const duration = 1000;
+    const duration = 1000 + Math.random() * 1000; // 1~2초
     const start = performance.now();
     const step = (now) => {
       const elapsed = now - start;
@@ -283,8 +277,8 @@ export default function App() {
     // 기존 인터벌 정리
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
 
-    const targetA = currentSet.votesA;
-    const targetB = currentSet.votesB;
+    const targetA = currentSet.votesA || fakePeak.a;
+    const targetB = currentSet.votesB || fakePeak.b;
 
     if (side === 'A') {
       setDisplayVotesB(targetB); // 반대쪽은 고정
@@ -312,8 +306,9 @@ export default function App() {
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
     const p = polls[currentIndex];
     if (!p) return;
-    setDisplayVotesA(p.votesA);
-    setDisplayVotesB(p.votesB);
+    const h = Math.abs(p.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
+    setDisplayVotesA(p.votesA || (500 + (h % 501)));
+    setDisplayVotesB(p.votesB || (500 + ((h >> 4) % 501)));
     const prevSide = votedSides[p.id] ?? null;
     setVotedSide(prevSide);
     setSelectedSide(prevSide);
@@ -603,9 +598,8 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      {/* 프레임 + 스탠드 컨테이너 */}
-      <div className="fixed left-1/2 -translate-x-1/2 z-50" style={{ top: 'max(12px, calc(50vh - 450px))' }}>
-        <ViewModeToggle size={sz('sm', 'lg')} />
+      <div className="fixed top-4 left-4 z-50">
+        <ViewModeToggle size="lg" />
       </div>
       <div
         className="flex flex-col items-center"
@@ -619,9 +613,10 @@ export default function App() {
 
           {/* Section A */}
           <div
+            style={{ transform: 'translateZ(0)' }}
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'B' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'A' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'A' ? 'opacity-100 brightness-105'
                 : selectedSide === 'B' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('A')}
@@ -661,26 +656,29 @@ export default function App() {
             </div>
 
             {!votedSide && (selectedSide === 'A' || !selectedSide) && (
-              <div className="animate-blink absolute top-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-medium z-20 whitespace-nowrap pointer-events-none">
+              <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[10px]', 'text-xl')} font-medium z-20 whitespace-nowrap pointer-events-none`}>
                 <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
                 <span className="mx-1.5"> </span>
                 <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
               </div>
             )}
 
-            <ChatFeed active={selectedSide === 'A'} />
           </div>
 
-          {/* VS 배지 */}
-          <div className={`absolute z-10 ${sz('w-10 h-10 text-sm', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2`}>
-            VS
+          {/* VS + ChatFeed 중앙 컬럼 */}
+          <div className={`absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 ${sz('top-[22%]', 'top-[20%]')}`}>
+            <div className={`${sz('w-10 h-10 text-sm', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl`}>
+              VS
+            </div>
+            <ChatFeed />
           </div>
 
           {/* Section B */}
           <div
+            style={{ transform: 'translateZ(0)' }}
             className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
               ${isWinnerRevealed && votedSide === 'A' ? 'opacity-40 grayscale blur-sm'
-                : selectedSide === 'B' ? 'opacity-100 ring-[3px] ring-white/50 ring-inset brightness-105'
+                : selectedSide === 'B' ? 'opacity-100 brightness-105'
                 : selectedSide === 'A' ? 'opacity-55'
                 : 'opacity-100'}`}
             onClick={() => handleClick('B')}
@@ -720,28 +718,29 @@ export default function App() {
             </div>
 
             {!votedSide && selectedSide === 'B' && (
-              <div className="animate-blink absolute top-3 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/20 text-[10px] font-medium z-20 whitespace-nowrap pointer-events-none">
+              <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[10px]', 'text-xl')} font-medium z-20 whitespace-nowrap pointer-events-none`}>
                 <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
                 <span className="mx-1.5"> </span>
                 <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
               </div>
             )}
 
-            <ChatFeed active={selectedSide === 'B'} />
+          </div>
+
           </div>
 
           {/* 네비게이션 — 좌우 버튼 세로 중앙, 도트 하단 */}
           <button
             onClick={(e) => { e.stopPropagation(); prevSet(); }}
-            className={`absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
+            className={`absolute ${sz('left-3', 'left-6')} top-1/2 -translate-y-1/2 z-20 ${sz('w-9 h-9', 'w-20 h-20')} rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
           >
-            <ChevronLeft size={20} />
+            <ChevronLeft size={sz(20, 48)} />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextSet(); }}
-            className={`absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
+            className={`absolute ${sz('right-3', 'right-6')} top-1/2 -translate-y-1/2 z-20 ${sz('w-9 h-9', 'w-20 h-20')} rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
           >
-            <ChevronRight size={20} />
+            <ChevronRight size={sz(20, 48)} />
           </button>
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 items-center z-20 pointer-events-none">
             {polls.map((_, i) => (
@@ -800,6 +799,5 @@ export default function App() {
           </>
         )}
       </div>
-    </div>
   );
 }
