@@ -4,7 +4,8 @@ import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
-import { fetchPolls, submitVote, ApiError } from './api/client';
+import { fetchPolls, submitVote, triggerBattleTick, ApiError } from './api/client';
+import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
 
@@ -23,6 +24,7 @@ function normalizePoll(p) {
     videoB: b.videoUrl ?? '',
     votesA: p.votesA ?? 0,
     votesB: p.votesB ?? 0,
+    messages: Array.isArray(p.messages) ? p.messages : [],
   };
 }
 
@@ -74,67 +76,6 @@ const VS_DATA = [
   },
 ];
 
-const CHAT_MESSAGES = [
-  "이거 진짜 최고다 👍",
-  "압도적 1위!",
-  "이미 샀어요 ㅋㅋ",
-  "역시 믿고 선택",
-  "완전 내 스타일 ❤️",
-  "더블클릭 고!!!!",
-  "이벤트 당첨되고 싶다 🙏",
-  "친구한테도 추천했어요",
-  "이게 답이지",
-  "진짜 갖고싶다...",
-  "가격 대비 최고",
-  "벌써 3번째 참여 중",
-  "이거 사면 인생 바뀜",
-  "디자인 미쳤다 😍",
-  "무조건 이쪽",
-  "1등 확실함",
-  "저도 참여했어요!",
-  "이거 실제로 써봤는데 진짜 좋음",
-  "이벤트 당첨 되면 선물할 거예요 🎁",
-  "퀄리티 실화냐",
-];
-
-const NICKNAMES = [
-  "익명의 곰돌이", "행운의 별빛", "구름위의 고양이", "새벽세시반", "핑크노을",
-  "초코라떼", "달빛소나타", "열정파워", "오늘도화이팅", "사탕수수",
-  "포근한이불", "도토리다람쥐", "반짝이는눈", "설레는마음", "봄날의햇살",
-];
-
-function ChatFeed() {
-  const [messages, setMessages] = useState([]);
-  const intervalRef = useRef(null);
-  const { mode } = useViewMode();
-  const isTV = mode === 'tv';
-
-  useEffect(() => {
-    const addMessage = () => {
-      const text = CHAT_MESSAGES[Math.floor(Math.random() * CHAT_MESSAGES.length)];
-      const nick = NICKNAMES[Math.floor(Math.random() * NICKNAMES.length)];
-      setMessages((prev) => [...prev, { id: Date.now(), nick, text }].slice(-6));
-    };
-    addMessage();
-    intervalRef.current = setInterval(addMessage, 1200 + Math.random() * 800);
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  return (
-    <div className={`${isTV ? 'w-40' : 'w-20'} flex flex-col gap-1 pointer-events-none`}>
-      {messages.slice(-4).map((msg, i, arr) => (
-        <div
-          key={msg.id}
-          className="chat-message bg-black/50 backdrop-blur-sm rounded-lg px-2 py-1"
-          style={{ opacity: [0.3, 0.55, 0.75, 0.95][i] ?? 0.95 }}
-        >
-          <p className={`text-green-300 ${isTV ? 'text-xl' : 'text-[10px]'} font-bold leading-tight truncate`}>{msg.nick}</p>
-          <p className={`text-white ${isTV ? 'text-lg' : 'text-[10px]'} leading-tight`}>{msg.text}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export default function App() {
   const [screen, setScreen] = useState('splash'); // 'splash' | 'main' | 'results'
@@ -376,6 +317,7 @@ export default function App() {
       setVotedSides((s) => ({ ...s, [pollId]: side }));
       voteCastRef.current = true;
       setTimeout(() => setIsWinnerRevealed(true), 2000);
+      triggerBattleTick(pollId).catch(() => {});
     } catch (err) {
       // Rollback optimistic counter
       if (side === 'A') setDisplayVotesA((v) => Math.max(0, v - 1));
@@ -631,6 +573,10 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} left-2 w-[45%] z-10`}>
+              <BattleFeed side="A" initialMessages={currentSet?.messages ?? []} />
+            </div>
+
             <div className="absolute bottom-4 left-4 right-4">
               <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
               <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
@@ -665,12 +611,11 @@ export default function App() {
 
           </div>
 
-          {/* VS + ChatFeed 중앙 컬럼 */}
-          <div className={`absolute left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 ${sz('top-[22%]', 'top-[20%]')}`}>
+          {/* VS 중앙 */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10">
             <div className={`${sz('w-10 h-10 text-sm', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl`}>
               VS
             </div>
-            <ChatFeed />
           </div>
 
           {/* Section B */}
@@ -692,6 +637,10 @@ export default function App() {
               animDelay={-2100}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} right-2 w-[45%] z-10`}>
+              <BattleFeed side="B" initialMessages={currentSet?.messages ?? []} />
+            </div>
 
             <div className="absolute bottom-4 left-4 right-4">
               <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemB}</h3>

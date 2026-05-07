@@ -55,6 +55,21 @@ export async function runCuration() {
   return res.json();
 }
 
+export async function fetchMessages(pollId, since) {
+  const url = since
+    ? `${API_BASE}/polls/${encodeURIComponent(pollId)}/messages?since=${encodeURIComponent(since)}`
+    : `${API_BASE}/polls/${encodeURIComponent(pollId)}/messages`;
+  const res = await fetch(url);
+  if (!res.ok) throw new ApiError(`Failed: ${res.status}`, { status: res.status });
+  return res.json();
+}
+
+export async function triggerBattleTick(pollId) {
+  const res = await fetch(`${API_BASE}/polls/${encodeURIComponent(pollId)}/battle/tick`, { method: 'POST' });
+  if (!res.ok) throw new ApiError(`Failed: ${res.status}`, { status: res.status });
+  return res.json();
+}
+
 export async function submitVote(pollId, side, visitorId) {
   const res = await fetch(`${API_BASE}/polls/${encodeURIComponent(pollId)}/vote`, {
     method: 'POST',

@@ -40,28 +40,28 @@
 - [x] **3.8** Chrome DevTools 1920×1080 에서 수동 테스트, 새로고침 후 localStorage 상태 유지 확인
 
 ## Phase 4 — 배틀 챗봇 스키마·라우트
-- [ ] **4.1** `backend/prisma/schema.prisma`에 `Message` 모델 + `Poll.messages` 관계 추가
-- [ ] **4.2** `npx prisma migrate dev --name add_message` 실행, 생성 SQL 검토
-- [ ] **4.3** `backend/src/battle/generate.ts` 스캐폴드 (페르소나 상수, 이름 풀, 화자/페르소나 선택 로직 — LLM 미포함)
-- [ ] **4.4** `backend/src/index.ts`에 `GET /polls/:id/messages` 라우트 추가
-- [ ] **4.5** `backend/src/index.ts`에 `POST /polls/:id/battle/tick` 라우트 추가 (mock 메시지 반환)
-- [ ] **4.6** curl로 두 라우트 응답 확인
+- [x] **4.1** `backend/prisma/schema.prisma`에 `Message` 모델 + `Poll.messages` 관계 추가
+- [x] **4.2** `npx prisma migrate dev --name add_message` 실행, 생성 SQL 검토
+- [x] **4.3** `backend/src/battle/generate.ts` 스캐폴드 (페르소나 상수, 이름 풀, 화자/페르소나 선택 로직 — LLM 미포함)
+- [x] **4.4** `backend/src/index.ts`에 `GET /polls/:id/messages` 라우트 추가
+- [x] **4.5** `backend/src/index.ts`에 `POST /polls/:id/battle/seed` 라우트 추가 (60개 mock 배치 반환)
+- [x] **4.6** curl로 두 라우트 응답 확인
 
 ## Phase 5 — 배틀 생성기 LLM 연결 + cron
-- [ ] **5.1** `generate.ts`에 `rateLimitedInvoke(createLLM(0.9), ...)` + JSON 파싱 + 1회 재시도 (temperature 1.0)
-- [ ] **5.2** 가드: 시간당 40개 하드캡, 2초 쿨타임, ARCHIVED 체크, 00시 스킵
-- [ ] **5.3** `backend/src/index.ts`에 배틀 cron 등록 (30초, `BATTLE_ENABLED=true` 게이트)
-- [ ] **5.4** `.env.example` 갱신, `ecosystem.config.cjs`에 `BATTLE_ENABLED` 노트
-- [ ] **5.5** `BATTLE_ENABLED=true`로 로컬 실행, 60초 후 `GET /polls/:id/messages` 새 메시지 확인
-- [ ] **5.6** 페르소나 다양성·authorName 베리에이션·JSON 파싱 실패 재시도 확인
+- [x] **5.1** `generate.ts`에 `rateLimitedInvoke(createLLM(0.9), ...)` + JSON 파싱 + 1회 재시도 (temperature 1.0)
+- [x] **5.2** 가드: 시간당 40개 하드캡, 2초 쿨타임, ARCHIVED 체크, 00시 스킵
+- [x] **5.3** `backend/src/index.ts`에 배틀 cron 등록 (30초, `BATTLE_ENABLED=true` 게이트)
+- [x] **5.4** `.env.example` 갱신, `ecosystem.config.cjs`에 `BATTLE_ENABLED` 노트
+- [x] **5.5** `BATTLE_ENABLED=true`로 로컬 실행, 60초 후 `GET /polls/:id/messages` 새 메시지 확인
+- [x] **5.6** 페르소나 다양성·authorName 베리에이션·JSON 파싱 실패 재시도 확인
 
 ## Phase 6 — 배틀 프론트 통합
-- [ ] **6.1** `tabget-app/src/api/client.js`에 `fetchMessages`, `triggerBattleTick` 추가
-- [ ] **6.2** `tabget-app/src/components/BattleFeed.jsx` 신규 (5초 폴링, 가시성 가드, pollId 변경 정리, 슬라이드 인/아웃, TV 스케일)
-- [ ] **6.3** `App.jsx` 70~143행 `CHAT_MESSAGES`/`NICKNAMES`/`ChatFeed` 삭제
-- [ ] **6.4** 617, 670행 `<ChatFeed>` 제거 → VS 배지 근처에 `<BattleFeed pollId={currentSet.id} />` 단일 배치
-- [ ] **6.5** `submitVote` 성공 후 `triggerBattleTick(pollId).catch(()=>{})` 추가
-- [ ] **6.6** 브라우저에서 투표 직후 즉각 새 메시지 추가 확인
+- [x] **6.1** `tabget-app/src/api/client.js`에 `fetchMessages`, `triggerBattleTick` 추가
+- [x] **6.2** `tabget-app/src/components/BattleFeed.jsx` 신규 (5초 폴링, 가시성 가드, pollId 변경 정리, 슬라이드 인/아웃, TV 스케일)
+- [x] **6.3** `App.jsx` 70~143행 `CHAT_MESSAGES`/`NICKNAMES`/`ChatFeed` 삭제
+- [x] **6.4** 617, 670행 `<ChatFeed>` 제거 → VS 배지 근처에 `<BattleFeed pollId={currentSet.id} />` 단일 배치
+- [x] **6.5** `submitVote` 성공 후 `triggerBattleTick(pollId).catch(()=>{})` 추가
+- [x] **6.6** 브라우저에서 투표 직후 즉각 새 메시지 추가 확인
 
 ## Phase 7 — 통합 QA + 문서화
 - [ ] **7.1** Phone 모드: 슬라이드쇼 + 투표 흐름 + 배틀 피드 실시간 + 토스트
@@ -71,6 +71,7 @@
 - [ ] **7.5** Gemini 키 없는 환경 → 배틀 cron 조용히 비활성, 앱 정상 동작
 - [ ] **7.6** `CLAUDE.md` 갱신 (환경변수, localStorage 키, gallery 계약)
 - [ ] **7.7** 최종 PM2 재시작 + 스모크 테스트
+- [ ] **7.8** KST 09:00 RPD 리셋 후 `seed-all?count=40` 실행 → BattleFeed 랜덤 스크롤 브라우저 확인
 
 ---
 
@@ -84,5 +85,5 @@
 | 채팅 구성 | 봇 전용 배틀 피드 (유저 입력 불가) |
 | 페르소나 가중치 | COMPETE 0.4 / CHECK 0.3 / COVET 0.3 |
 | authorName | 팀별명형 + 브랜드별명형 50/50 혼용 |
-| 배틀 트리거 | 서버 cron 30초 (`BATTLE_ENABLED=true` 게이트) |
+| 배틀 트리거 | 새벽 03:00 KST 배치 cron + `POST /admin/battle/seed-all` (`BATTLE_ENABLED=true` 게이트) |
 | AdminPage | TV 모드 영향 없음. 현행 레이아웃 유지 |

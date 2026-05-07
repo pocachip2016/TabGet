@@ -8,18 +8,20 @@ datasource db {
 }
 
 model Poll {
-  id          String   @id @default(uuid())
+  id          String    @id @default(uuid())
   category    String
   themeTitle  String
   productA    Json
   productB    Json
   curatorNote String?
-  status      String   @default("PENDING")
+  status      String    @default("PENDING")
   scheduledAt DateTime
-  createdAt   DateTime @default(now())
-  baseVotesA  Int      @default(0)
-  baseVotesB  Int      @default(0)
+  createdAt   DateTime  @default(now())
+  baseVotesA  Int       @default(0)
+  baseVotesB  Int       @default(0)
+  lastBatchAt DateTime?
   votes       Vote[]
+  messages    Message[]
 }
 
 model Vote {
@@ -34,6 +36,23 @@ model Vote {
   @@index([pollId])
   @@index([visitorId])
   @@index([createdAt])
+}
+
+model Message {
+  id          String   @id @default(uuid())
+  pollId      String
+  side        String
+  authorName  String
+  content     String
+  personaMode String
+  isBot       Boolean  @default(true)
+  status      String   @default("PUBLISHED")
+  publishAt   DateTime @default(now())
+  createdAt   DateTime @default(now())
+  poll        Poll     @relation(fields: [pollId], references: [id], onDelete: Cascade)
+
+  @@index([pollId, status, publishAt])
+  @@index([pollId, createdAt])
 }
 
 model TrendLog {
