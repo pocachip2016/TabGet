@@ -791,13 +791,13 @@ export default function App() {
           {mode === 'tv' && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />
           )}
+          {mode === 'tv' && (
+            <>
+              <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
+              <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
+            </>
+          )}
         </div>
-        {mode === 'tv' && (
-          <>
-            <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
-            <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
-          </>
-        )}
       </div>
   );
 }

@@ -37,7 +37,7 @@
 - [x] **3.5** App.jsx 내 `sz(phone, tv)` 헬퍼 도입, 주요 지점 10개 교체 (상품명/참여자/퍼센트/VS배지/바두께/오버레이/토스트)
 - [x] **3.6** TV 모드 키보드 훅 (ArrowLeft/Right/Enter/Space), 입력 박스 포커스 시 가로채기 금지
 - [x] **3.7** 토글 버튼 3곳 배치 (Splash, Main 네비 `bottom-3 right-3`, Results 상단 우측)
-- [ ] **3.8** Chrome DevTools 1920×1080 에서 수동 테스트, 새로고침 후 localStorage 상태 유지 확인
+- [x] **3.8** Chrome DevTools 1920×1080 에서 수동 테스트, 새로고침 후 localStorage 상태 유지 확인
 
 ## Phase 4 — 배틀 챗봇 스키마·라우트
 - [ ] **4.1** `backend/prisma/schema.prisma`에 `Message` 모델 + `Poll.messages` 관계 추가
