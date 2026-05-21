@@ -108,9 +108,9 @@ cron.schedule(schedule, async () => {
 
 agentLog("INFO", "scheduler:registered", { schedule, timezone: "Asia/Seoul" });
 
-// ─── 배틀 배치 cron (매일 03:00 KST, BATTLE_ENABLED=true 게이트) ────────────
+// ─── 배틀 배치 cron (매일 17:00 KST = PT 자정 리셋 1h 후, BATTLE_ENABLED=true 게이트) ────────────
 if (process.env.BATTLE_ENABLED === "true") {
-  cron.schedule("0 3 * * *", async () => {
+  cron.schedule("0 17 * * *", async () => {
     try {
       const activePolls = await prisma.poll.findMany({
         where: { status: "ACTIVE" },
@@ -125,7 +125,7 @@ if (process.env.BATTLE_ENABLED === "true") {
       agentLog("ERROR", "battle:batch:cron:error", { error: e instanceof Error ? e.message : String(e) });
     }
   }, { timezone: "Asia/Seoul" });
-  agentLog("INFO", "battle:batch:cron:registered", { schedule: "03:00 KST daily" });
+  agentLog("INFO", "battle:batch:cron:registered", { schedule: "17:00 KST daily (1h after PT midnight RPD reset)" });
 }
 // ────────────────────────────────────────────────────────────────────────────
 

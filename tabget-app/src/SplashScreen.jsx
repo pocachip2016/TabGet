@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Trophy } from 'lucide-react';
-import ViewModeToggle from './components/ViewModeToggle';
+import GameRulesModal from './components/GameRulesModal';
 
 // 다음 00:30까지 남은 ms
 function msUntilAnnouncement() {
@@ -28,33 +28,36 @@ const BRAND = '#E30B5C';
 export default function SplashScreen({ onEnter, onResults, isExhausted = false }) {
   const [count, setCount] = useState(8);
   const [remaining, setRemaining] = useState(() => msUntilAnnouncement());
+  const [showRules, setShowRules] = useState(true);
 
-  // 일반 카운트다운 (exhausted 아닐 때)
+  // 일반 카운트다운 (exhausted 아닐 때, 모달 표시 중엔 정지)
   useEffect(() => {
     if (isExhausted) return;
+    if (showRules) return;
     if (count === 0) { onEnter(); return; }
     const t = setTimeout(() => setCount((c) => c - 1), 1000);
     return () => clearTimeout(t);
-  }, [count, isExhausted]);
+  }, [count, isExhausted, showRules]);
 
-  // 발표 카운트다운 (exhausted 일 때)
+  // 발표 카운트다운 (exhausted 일 때, 모달 표시 중엔 정지)
   useEffect(() => {
     if (!isExhausted) return;
+    if (showRules) return;
     const t = setInterval(() => setRemaining(msUntilAnnouncement()), 1000);
     return () => clearInterval(t);
-  }, [isExhausted]);
+  }, [isExhausted, showRules]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
       {/* 핸드폰 프레임 */}
       <div className="relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden">
+        <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
         {/* 배경 이미지 — 카메라 앵글 효과 */}
         <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover bg-camera-angle" />
         <div className="absolute inset-0 bg-black/40" />
 
         {/* Powered by - 맨 아래 고정 */}
         <div className="absolute bottom-5 left-0 right-0 z-20 flex flex-col items-center gap-2">
-          <ViewModeToggle size="sm" />
           <div className="flex items-center gap-2">
             <span className="text-white/40 text-[10px] tracking-wider">powered by</span>
             <img

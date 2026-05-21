@@ -296,10 +296,12 @@ export async function generateBatch(pollId: string, count = 40): Promise<number>
   const productB = `${pB.brand ?? ''} ${pB.name ?? ''}`.trim();
 
   const half = Math.floor(count / 2);
-  const [aItems, bItems] = await Promise.all([
+  const results = await Promise.allSettled([
     generateBatchForSide(productA, productB, 'A', half),
     generateBatchForSide(productB, productA, 'B', half),
   ]);
+  const aItems = results[0].status === 'fulfilled' ? results[0].value : [];
+  const bItems = results[1].status === 'fulfilled' ? results[1].value : [];
 
   const allItems = [...aItems, ...bItems];
   if (allItems.length === 0) return 0;

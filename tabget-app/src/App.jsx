@@ -4,7 +4,7 @@ import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
-import { fetchPolls, submitVote, triggerBattleTick, ApiError } from './api/client';
+import { fetchPolls, submitVote, triggerBattleTick, fetchMessages, ApiError } from './api/client';
 import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
@@ -93,6 +93,7 @@ export default function App() {
   const animFrameRef = useRef(null);
   const frameRef = useRef(null);
   const voteCastRef = useRef(false); // 이번 세션에 투표 발생 여부
+  const allDoneProcessedRef = useRef(false); // "모두 응모" 전환 완료 여부
 
   const [polls, setPolls] = useState([]);
   const [votedPollIds, setVotedPollIds] = useState([]);
@@ -247,6 +248,12 @@ export default function App() {
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
     const p = polls[currentIndex];
     if (!p) return;
+
+    // Fetch messages for this poll
+    fetchMessages(p.id).then(msgs => {
+      setPolls(prev => prev.map(poll => poll.id === p.id ? { ...poll, messages: msgs.messages || [] } : poll));
+    }).catch(() => {});
+
     const h = Math.abs(p.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
     setDisplayVotesA(p.votesA || (500 + (h % 501)));
     setDisplayVotesB(p.votesB || (500 + ((h >> 4) % 501)));
@@ -260,18 +267,19 @@ export default function App() {
   useEffect(() => {
     if (!voteCastRef.current) return;
     if (polls.length === 0) return;
-    if (polls.every((p) => votedPollIds.includes(p.id))) {
-      const t1 = setTimeout(() => {
-        setShowAllDone(true);
-        const t2 = setTimeout(() => {
-          setShowAllDone(false);
-          setScreen('results');
-        }, 4000);
-        return () => clearTimeout(t2);
-      }, 2500);
-      return () => clearTimeout(t1);
-    }
-  }, [votedPollIds, polls]);
+    if (allDoneProcessedRef.current) return;
+    if (!polls.every((p) => votedPollIds.includes(p.id))) return;
+
+    allDoneProcessedRef.current = true;
+    const t1 = setTimeout(() => {
+      setShowAllDone(true);
+      const t2 = setTimeout(() => {
+        setShowAllDone(false);
+        setScreen('results');
+      }, 4000);
+      return () => clearTimeout(t2);
+    }, 2500);
+  }, [polls.length, votedPollIds.length]);
 
   // 언마운트 시 정리
   useEffect(() => {
@@ -573,7 +581,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} left-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-28', 'bottom-56')} left-2 w-[45%] z-10`}>
               <BattleFeed side="A" initialMessages={currentSet?.messages ?? []} />
             </div>
 
@@ -638,7 +646,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} right-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-28', 'bottom-56')} right-2 w-[45%] z-10`}>
               <BattleFeed side="B" initialMessages={currentSet?.messages ?? []} />
             </div>
 
