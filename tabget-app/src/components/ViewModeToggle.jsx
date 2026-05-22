@@ -16,19 +16,21 @@ export default function ViewModeToggle({ size = 'md' }) {
     ? 'px-12 py-5 rounded-xl text-2xl font-bold'
     : 'px-3 py-1 rounded-lg text-xs font-semibold';
 
+  const layout = size === 'lg' ? 'flex flex-col items-stretch' : 'flex items-center';
+
   return (
-    <div className={`flex items-center ${outer} bg-zinc-800/80 backdrop-blur-md border border-white/10 select-none`}>
+    <div className={`${layout} ${outer} bg-zinc-800/80 backdrop-blur-md border border-white/10 select-none`}>
       <button
         onClick={() => setMode('phone')}
         className={`${pill} transition-all duration-200 ${!isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}
       >
-        📱 Phone
+        📱 Phone화면보기
       </button>
       <button
         onClick={() => setMode('tv')}
         className={`${pill} transition-all duration-200 ${isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}
       >
-        📺 TV
+        📺 TV화면보기
       </button>
     </div>
   );

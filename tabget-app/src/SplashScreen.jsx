@@ -63,7 +63,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   return (
     <div className="flex items-center justify-center min-h-screen bg-white">
       {/* ViewModeToggle — 스케일 바깥에 고정 */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 left-4 z-50">
         <ViewModeToggle size="lg" />
       </div>
 
@@ -84,7 +84,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
 
           {/* Powered by — 하단 고정 */}
           <div className="absolute bottom-5 left-0 right-0 z-20 flex items-center justify-center gap-2">
-            <span className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-wider`}>powered by</span>
+            <span className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-wider`}>powered by</span>
             <img
               src={KT_LOGO}
               alt="kt알파쇼핑"
@@ -95,7 +95,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                 e.target.nextSibling.style.display = 'inline';
               }}
             />
-            <span className={`${sz('text-[10px]', 'text-sm')} font-bold hidden opacity-70`} style={{ color: BRAND }}>kt알파쇼핑</span>
+            <span className={`${sz('text-[9px]', 'text-sm')} font-bold hidden opacity-70`} style={{ color: BRAND }}>kt알파쇼핑</span>
           </div>
 
           {/* 콘텐츠: phone = 3행, TV = 3열 */}
@@ -106,11 +106,11 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
               <div className="flex flex-col items-center gap-1">
                 <div className="relative flex items-end gap-0">
                   <span
-                    className={`${sz('text-6xl', 'text-[7rem]')} font-light tracking-tight text-white`}
+                    className={`${sz('text-5xl', 'text-[7rem]')} font-light tracking-tight text-white`}
                     style={{ letterSpacing: '-0.02em' }}
                   >Tap</span>
                   <span
-                    className={`${sz('text-6xl', 'text-[7rem]')} font-black tracking-tight`}
+                    className={`${sz('text-5xl', 'text-[7rem]')} font-black tracking-tight`}
                     style={{ color: BRAND, letterSpacing: '-0.02em' }}
                   >Get</span>
                   <div
@@ -122,7 +122,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                   className="w-full h-[1.5px] rounded-full"
                   style={{ background: `linear-gradient(to right, transparent, ${BRAND}, transparent)` }}
                 />
-                <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-[0.35em] uppercase mt-1`}>
+                <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-[0.35em] uppercase mt-1`}>
                   Vote · Compare · Win
                 </p>
               </div>
@@ -132,11 +132,11 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             <div className="flex flex-col items-center justify-center gap-3">
               {isExhausted ? (
                 <div className="flex flex-col items-center gap-2 px-6 text-center">
-                  <p className={`text-white/60 ${sz('text-xs', 'text-base')} tracking-widest`}>발표시간까지</p>
-                  <p className={`text-white ${sz('text-2xl', 'text-5xl')} font-black tabular-nums tracking-tight`}>
+                  <p className={`text-white/60 ${sz('text-[11px]', 'text-base')} tracking-widest`}>발표시간까지</p>
+                  <p className={`text-white ${sz('text-xl', 'text-5xl')} font-black tabular-nums tracking-tight`}>
                     {formatHMS(remaining)}
                   </p>
-                  <p className={`text-white/40 ${sz('text-xs', 'text-base')}`}>남았습니다</p>
+                  <p className={`text-white/40 ${sz('text-[11px]', 'text-base')}`}>남았습니다</p>
                 </div>
               ) : (
                 <>
@@ -149,9 +149,9 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                       background: `radial-gradient(circle, ${BRAND}22 0%, transparent 70%)`,
                     }}
                   >
-                    <span className={`${sz('text-5xl', 'text-9xl')} font-black text-white`}>{count}</span>
+                    <span className={`${sz('text-4xl', 'text-9xl')} font-black text-white`}>{count}</span>
                   </div>
-                  <p className={`text-white/40 ${sz('text-xs', 'text-base')} tracking-widest`}>Click to Start!</p>
+                  <p className={`text-white/40 ${sz('text-[11px]', 'text-base')} tracking-widest`}>Click to Start!</p>
                 </>
               )}
             </div>
@@ -178,9 +178,9 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                     <Trophy size={sz(18, 28)} style={{ color: isExhausted ? 'white' : 'rgba(255,255,255,0.35)' }} />
                   </div>
                   <div className="flex flex-col items-start leading-tight">
-                    <span className={`${sz('text-[10px]', 'text-sm')} font-semibold tracking-widest uppercase`}
+                    <span className={`${sz('text-[9px]', 'text-sm')} font-semibold tracking-widest uppercase`}
                       style={{ color: isExhausted ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)' }}>Result</span>
-                    <span className={`${sz('text-base', 'text-2xl')} font-black tracking-tight`}
+                    <span className={`${sz('text-sm', 'text-2xl')} font-black tracking-tight`}
                       style={{ color: isExhausted ? 'white' : 'rgba(255,255,255,0.4)' }}>당첨결과보기</span>
                   </div>
                   <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full flex items-center justify-center ml-1`}

@@ -40,8 +40,8 @@ export default function GameRulesModal({ open, onStart }) {
         {/* 헤더 */}
         <div className="flex flex-col items-center mb-6">
           <div className="w-full h-px bg-white/15 mb-4" />
-          <p className={`${isTV ? 'text-sm' : 'text-[10px]'} font-semibold tracking-[0.3em] uppercase text-white/40 mb-1`}>How to play</p>
-          <h2 className={`${isTV ? 'text-3xl' : 'text-lg'} font-black text-white tracking-tight`}>Game Rules</h2>
+          <p className={`${isTV ? 'text-sm' : 'text-[9px]'} font-semibold tracking-[0.3em] uppercase text-white/40 mb-1`}>How to play</p>
+          <h2 className={`${isTV ? 'text-3xl' : 'text-base'} font-black text-white tracking-tight`}>Game Rules</h2>
           <div
             className="mt-2 h-[1.5px] w-10 rounded-full"
             style={{ background: `linear-gradient(to right, transparent, ${BRAND}, transparent)` }}
@@ -59,7 +59,7 @@ export default function GameRulesModal({ open, onStart }) {
               >
                 {i + 1}
               </span>
-              <span className={`text-white/75 ${isTV ? 'text-xl' : 'text-[13px]'} leading-snug`}>{node ?? text}</span>
+              <span className={`text-white/75 ${isTV ? 'text-xl' : 'text-[11px]'} leading-snug`}>{node ?? text}</span>
             </li>
           ))}
         </ul>
@@ -76,7 +76,7 @@ export default function GameRulesModal({ open, onStart }) {
               style={{ background: `linear-gradient(135deg, ${BRAND}, #ff4d88)` }}
             />
             <div
-              className={`relative ${isTV ? 'px-16 py-4 text-xl' : 'px-9 py-2.5 text-sm'} rounded-2xl text-white font-bold tracking-wide`}
+              className={`relative ${isTV ? 'px-16 py-4 text-xl' : 'px-9 py-2.5 text-xs'} rounded-2xl text-white font-bold tracking-wide`}
               style={{ background: `linear-gradient(135deg, ${BRAND} 0%, #c4084e 100%)` }}
             >
               시작하기

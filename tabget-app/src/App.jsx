@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
+import { Heart, Users, Trophy } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
@@ -151,9 +151,7 @@ export default function App() {
     const handleKey = (e) => {
       const tag = document.activeElement?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
-      if (e.key === 'ArrowLeft') { e.preventDefault(); prevSet(); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); nextSet(); }
-      else if (e.key === 'Enter') { e.preventDefault(); handleClick(selectedSide ?? 'A'); }
+      if (e.key === 'Enter') { e.preventDefault(); handleClick(selectedSide ?? 'A'); }
       else if (e.key === ' ') { e.preventDefault(); if (selectedSide) handleDoubleClick(selectedSide, { clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 }); }
     };
     window.addEventListener('keydown', handleKey);
@@ -271,7 +269,7 @@ export default function App() {
       setShowAllDone(true);
       const t2 = setTimeout(() => {
         setShowAllDone(false);
-        setScreen('results');
+        setScreen('splash');
       }, 4000);
       return () => clearTimeout(t2);
     }, 2500);
@@ -320,7 +318,25 @@ export default function App() {
       setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
       setVotedSides((s) => ({ ...s, [pollId]: side }));
       voteCastRef.current = true;
-      setTimeout(() => setIsWinnerRevealed(true), 800);
+      setIsWinnerRevealed(true);
+
+      // Auto-advance: 응모완료 표시 후 다음 미응모 poll로 이동
+      const newVotedIds = votedPollIds.includes(pollId) ? votedPollIds : [...votedPollIds, pollId];
+      const allDone = polls.every((p) => newVotedIds.includes(p.id));
+      if (!allDone) {
+        setTimeout(() => {
+          const total = polls.length;
+          for (let i = 1; i <= total; i++) {
+            const idx = (currentIndex + i) % total;
+            if (!newVotedIds.includes(polls[idx].id)) {
+              resetSet();
+              setCurrentIndex(idx);
+              return;
+            }
+          }
+        }, 1500);
+      }
+      // 전부 응모 완료 시: useEffect (line 262)이 showAllDone + results 전환 처리
     } catch (err) {
       // Rollback optimistic counter
       if (side === 'A') setDisplayVotesA((v) => Math.max(0, v - 1));
@@ -328,7 +344,7 @@ export default function App() {
 
       if (err instanceof ApiError && err.code === 'already_voted') {
         setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
-        setTimeout(() => setIsWinnerRevealed(true), 800);
+        setIsWinnerRevealed(true);
       } else if (err instanceof ApiError && err.code === 'voting_closed') {
         setVotedSide(null);
         setSelectedSide(null);
@@ -347,18 +363,6 @@ export default function App() {
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
     if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     if (alreadyVotedTimerRef.current) clearTimeout(alreadyVotedTimerRef.current);
-  };
-
-  const nextSet = () => {
-    if (polls.length === 0) return;
-    resetSet();
-    setCurrentIndex((prev) => (prev + 1) % polls.length);
-  };
-
-  const prevSet = () => {
-    if (polls.length === 0) return;
-    resetSet();
-    setCurrentIndex((prev) => (prev - 1 + polls.length) % polls.length);
   };
 
   if (screen === 'splash') {
@@ -385,7 +389,7 @@ export default function App() {
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="fixed top-4 right-4 z-50">
+        <div className="fixed top-4 left-4 z-50">
           <ViewModeToggle size="lg" />
         </div>
         <div
@@ -398,10 +402,10 @@ export default function App() {
         )}>
           {/* 헤더 */}
           <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10">
-            <h2 className={`${sz('text-2xl', 'text-4xl')} font-black`}>
+            <h2 className={`${sz('text-xl', 'text-4xl')} font-black`}>
               <span className="text-white">Tap</span>
               <span style={{ color: '#E30B5C' }}>Get</span>
-              <span className={`text-white/40 ${sz('text-base', 'text-xl')} font-normal ml-2`}>당첨결과</span>
+              <span className={`text-white/40 ${sz('text-sm', 'text-xl')} font-normal ml-2`}>당첨결과</span>
             </h2>
           </div>
 
@@ -409,14 +413,14 @@ export default function App() {
           <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
             {/* 득표율 섹션 */}
             <div className={sz('px-5 pt-4 pb-3', 'px-10 pt-6 pb-4')}>
-              <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-widest uppercase mb-3`}>투표 결과</p>
+              <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-widest uppercase mb-3`}>투표 결과</p>
               {VS_DATA.map((set) => {
                 const total = set.votesA + set.votesB;
                 const pA = Math.round((set.votesA / total) * 100);
                 const pB = 100 - pA;
                 return (
                   <div key={set.id} className="mb-4">
-                    <div className={`flex justify-between ${sz('text-[11px]', 'text-base')} text-white/50 mb-1`}>
+                    <div className={`flex justify-between ${sz('text-[10px]', 'text-base')} text-white/50 mb-1`}>
                       <span className={`truncate ${sz('w-28', 'w-52')}`}>{set.itemA}</span>
                       <span className={`truncate ${sz('w-28', 'w-52')} text-right`}>{set.itemB}</span>
                     </div>
@@ -424,7 +428,7 @@ export default function App() {
                       <div className="bg-blue-400" style={{ width: `${pA}%` }} />
                       <div className="bg-pink-400" style={{ width: `${pB}%` }} />
                     </div>
-                    <div className={`flex justify-between ${sz('text-[10px]', 'text-sm')} mt-1`}>
+                    <div className={`flex justify-between ${sz('text-[9px]', 'text-sm')} mt-1`}>
                       <span className="text-blue-400 font-bold">{pA}%</span>
                       <span className="text-white/30">{total.toLocaleString()}명</span>
                       <span className="text-pink-400 font-bold">{pB}%</span>
@@ -439,7 +443,7 @@ export default function App() {
 
             {/* 당첨자 후기 섹션 */}
             <div className={sz('px-5', 'px-10')}>
-              <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-widest uppercase mb-3`}>당첨자 후기</p>
+              <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-widest uppercase mb-3`}>당첨자 후기</p>
               <div className={`grid ${sz('grid-cols-2', 'grid-cols-4')} gap-3`}>
                 {WINNERS.map((w) => (
                   <div key={w.id} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
@@ -480,8 +484,8 @@ export default function App() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-start leading-tight">
-                  <span className={`${sz('text-[10px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Home</span>
-                  <span className={`${sz('text-base', 'text-xl')} font-black text-white tracking-tight`}>메인으로</span>
+                  <span className={`${sz('text-[9px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Home</span>
+                  <span className={`${sz('text-sm', 'text-xl')} font-black text-white tracking-tight`}>메인으로</span>
                 </div>
                 <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full bg-white/15 flex items-center justify-center ml-1`}>
                   <svg width={sz(12, 16)} height={sz(12, 16)} viewBox="0 0 12 12" fill="none">
@@ -551,7 +555,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 left-4 z-50">
         <ViewModeToggle size="lg" />
       </div>
       <div
@@ -565,12 +569,19 @@ export default function App() {
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>
-            <div className={`${sz('text-4xl', 'text-7xl')} mb-3 animate-bounce`}>🎉</div>
-            <p className={`text-white ${sz('text-sm', 'text-2xl')} font-black text-center leading-snug px-6`}>
+            <div className={`${sz('text-3xl', 'text-7xl')} mb-3 animate-bounce`}>🎉</div>
+            <p className={`text-white ${sz('text-xs', 'text-2xl')} font-black text-center leading-snug px-6`}>
               오늘은 다 참여하셨습니다.<br />두둥~~
             </p>
-            <p className={`text-white/70 ${sz('text-[11px]', 'text-base')} mt-2 font-medium`}>24:30분에 발표합니다.</p>
-            <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} mt-4 animate-pulse`}>결과 페이지로 이동 중...</p>
+            <p className={`text-white/70 ${sz('text-[10px]', 'text-base')} mt-2 font-medium`}>24:30분에 발표합니다.</p>
+            <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} mt-4 animate-pulse`}>결과 페이지로 이동 중...</p>
+          </div>
+        )}
+        {!votedSide && !isWinnerRevealed && (
+          <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[9px]', 'text-xl')} font-medium z-30 whitespace-nowrap pointer-events-none`}>
+            <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
+            <span className="mx-1.5"> </span>
+            <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
           </div>
         )}
         <div className="flex w-full h-full flex-row">
@@ -595,40 +606,28 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} left-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${sz('left-2 w-[45%]', 'left-2 right-2')} z-10`}>
               <BattleFeed side="A" initialMessages={currentSet?.messages ?? []} />
             </div>
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
-              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
-                <Users size={sz(12, 32)} />
+              <h3 className={`${sz('text-sm', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
+              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-[11px]', 'text-2xl')} text-white/80`}>
+                <Users size={sz(11, 32)} />
                 <span>{displayVotesA.toLocaleString()}명 참여 중</span>
               </div>
               <div className={`mt-1.5 ${sz('h-1.5', 'h-3')} rounded-full bg-white/20 overflow-hidden`}>
                 <div className="h-full bg-blue-400 rounded-full transition-all duration-300" style={{ width: `${pctA}%` }} />
               </div>
-              <p className={`${sz('text-[10px]', 'text-xl')} text-white/60 mt-0.5`}>{pctA}%</p>
+              <p className={`${sz('text-[9px]', 'text-xl')} text-white/60 mt-0.5`}>{pctA}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'A' && (
               <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
-                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[13px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
+                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[11px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
                   <Trophy size={sz(14, 32)} className="text-pink-400" strokeWidth={2.25} />
                   <span>응모완료</span>
                 </div>
-              </div>
-            )}
-
-            <div className="absolute top-4 left-4 bg-black/40 p-1.5 rounded-full backdrop-blur-sm border border-white/10">
-              <Volume2 size={14} />
-            </div>
-
-            {!votedSide && (selectedSide === 'A' || !selectedSide) && (
-              <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[10px]', 'text-xl')} font-medium z-20 whitespace-nowrap pointer-events-none`}>
-                <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
-                <span className="mx-1.5"> </span>
-                <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
               </div>
             )}
 
@@ -636,7 +635,7 @@ export default function App() {
 
           {/* VS 중앙 */}
           <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-10">
-            <div className={`${sz('w-10 h-10 text-sm', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl`}>
+            <div className={`${sz('w-9 h-9 text-xs', 'w-24 h-24 text-3xl')} rounded-full bg-white text-black font-black flex items-center justify-center shadow-xl`}>
               VS
             </div>
           </div>
@@ -661,60 +660,36 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} right-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${sz('right-2 w-[45%]', 'left-2 right-2')} z-10`}>
               <BattleFeed side="B" initialMessages={currentSet?.messages ?? []} />
             </div>
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-base', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemB}</h3>
-              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-xs', 'text-2xl')} text-white/80`}>
-                <Users size={sz(12, 32)} />
+              <h3 className={`${sz('text-sm', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemB}</h3>
+              <div className={`flex items-center gap-1.5 mt-1 ${sz('text-[11px]', 'text-2xl')} text-white/80`}>
+                <Users size={sz(11, 32)} />
                 <span>{displayVotesB.toLocaleString()}명 참여 중</span>
               </div>
               <div className={`mt-1.5 ${sz('h-1.5', 'h-3')} rounded-full bg-white/20 overflow-hidden`}>
                 <div className="h-full bg-pink-400 rounded-full transition-all duration-300" style={{ width: `${pctB}%` }} />
               </div>
-              <p className={`${sz('text-[10px]', 'text-xl')} text-white/60 mt-0.5`}>{pctB}%</p>
+              <p className={`${sz('text-[9px]', 'text-xl')} text-white/60 mt-0.5`}>{pctB}%</p>
             </div>
 
             {isWinnerRevealed && votedSide === 'B' && (
               <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
-                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[13px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
+                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[11px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
                   <Trophy size={sz(14, 32)} className="text-pink-400" strokeWidth={2.25} />
                   <span>응모완료</span>
                 </div>
               </div>
             )}
 
-            <div className="absolute top-4 right-4 bg-black/40 p-1.5 rounded-full backdrop-blur-sm border border-white/10">
-              <Volume2 size={14} />
-            </div>
-
-            {!votedSide && selectedSide === 'B' && (
-              <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[10px]', 'text-xl')} font-medium z-20 whitespace-nowrap pointer-events-none`}>
-                <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
-                <span className="mx-1.5"> </span>
-                <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
-              </div>
-            )}
-
           </div>
 
           </div>
 
-          {/* 네비게이션 — 좌우 버튼 세로 중앙, 도트 하단 */}
-          <button
-            onClick={(e) => { e.stopPropagation(); prevSet(); }}
-            className={`absolute ${sz('left-3', 'left-6')} top-1/2 -translate-y-1/2 z-20 ${sz('w-9 h-9', 'w-20 h-20')} rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
-          >
-            <ChevronLeft size={sz(20, 48)} />
-          </button>
-          <button
-            onClick={(e) => { e.stopPropagation(); nextSet(); }}
-            className={`absolute ${sz('right-3', 'right-6')} top-1/2 -translate-y-1/2 z-20 ${sz('w-9 h-9', 'w-20 h-20')} rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center pointer-events-auto hover:bg-white/40 transition ${votedSide ? 'animate-blink' : ''}`}
-          >
-            <ChevronRight size={sz(20, 48)} />
-          </button>
+          {/* 네비게이션 도트 — 진행 상태 표시만 */}
           <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 items-center z-20 pointer-events-none">
             {polls.map((_, i) => (
               <div key={i} className={`h-1.5 rounded-full transition-all ${i === currentIndex ? 'bg-white w-3' : 'bg-white/40 w-1.5'}`} />
@@ -723,21 +698,14 @@ export default function App() {
           {/* 이미 응모 안내 */}
           {showAlreadyVoted && (
             <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap bg-black/80 backdrop-blur-md border border-white/20 px-4 py-2 rounded-xl text-center pointer-events-none">
-              <p className={`text-white ${sz('text-xs', 'text-xl')} font-bold`}>이미 응모하셨어요 🎁</p>
-              <p className={`text-white/60 ${sz('text-[10px]', 'text-base')} mt-0.5`}>다른 상품도 응모해보세요</p>
-            </div>
-          )}
-
-          {/* 참여 완료 토스트 */}
-          {votedSide && !isWinnerRevealed && (
-            <div className={`absolute bottom-12 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1.5 rounded-lg font-bold animate-pulse shadow-lg z-20 whitespace-nowrap ${sz('text-sm', 'text-xl')}`}>
-              참여 완료! 결과를 기다려주세요 🎁
+              <p className={`text-white ${sz('text-[11px]', 'text-xl')} font-bold`}>이미 응모하셨어요 🎁</p>
+              <p className={`text-white/60 ${sz('text-[9px]', 'text-base')} mt-0.5`}>다른 상품도 응모해보세요</p>
             </div>
           )}
 
           {/* 에러/마감 토스트 */}
           {toast && (
-            <div className={`absolute bottom-16 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-1.5 rounded-lg ${sz('text-xs', 'text-lg')} font-bold shadow-lg whitespace-nowrap`}>
+            <div className={`absolute bottom-16 left-1/2 -translate-x-1/2 z-40 bg-red-600/90 text-white px-4 py-1.5 rounded-lg ${sz('text-[11px]', 'text-lg')} font-bold shadow-lg whitespace-nowrap`}>
               {toast}
             </div>
           )}
