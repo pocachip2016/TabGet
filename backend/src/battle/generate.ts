@@ -321,3 +321,78 @@ export async function generateBatch(pollId: string, count = 40): Promise<number>
   agentLog('INFO', 'battle:batch:ok', { pollId, count: result.count });
   return result.count;
 }
+
+export async function topUpBattle(
+  pollId: string,
+  threshold = 10,
+  perSide = 10,
+): Promise<{ aAdded: number; bAdded: number }> {
+  const counts = await prisma.message.groupBy({
+    by: ['side'],
+    where: { pollId, status: { in: ['PUBLISHED', 'SCHEDULED'] } },
+    _count: true,
+  });
+  const countMap: Record<string, number> = {};
+  for (const row of counts) countMap[row.side] = row._count;
+
+  const aNeeded = (countMap['A'] ?? 0) < threshold;
+  const bNeeded = (countMap['B'] ?? 0) < threshold;
+
+  if (!aNeeded && !bNeeded) {
+    agentLog('INFO', 'battle:topup:skip', { pollId, aCount: countMap['A'] ?? 0, bCount: countMap['B'] ?? 0 });
+    return { aAdded: 0, bAdded: 0 };
+  }
+
+  const poll = await prisma.poll.findUnique({
+    where: { id: pollId },
+    select: { status: true, productA: true, productB: true },
+  });
+  if (!poll || poll.status === 'ARCHIVED') return { aAdded: 0, bAdded: 0 };
+
+  const pA = poll.productA as PollProduct;
+  const pB = poll.productB as PollProduct;
+  const productA = `${pA.brand ?? ''} ${pA.name ?? ''}`.trim();
+  const productB = `${pB.brand ?? ''} ${pB.name ?? ''}`.trim();
+
+  let aAdded = 0;
+  let bAdded = 0;
+
+  if (aNeeded) {
+    if (geminiLimiter.status().remainingToday < 2) {
+      agentLog('WARN', 'battle:topup:quota-skip', { pollId, side: 'A', remainingToday: geminiLimiter.status().remainingToday });
+      return { aAdded, bAdded };
+    }
+    const items = await generateBatchForSide(productA, productB, 'A', perSide);
+    if (items.length > 0) {
+      const res = await prisma.message.createMany({
+        data: items.map(m => ({
+          pollId, side: m.side, authorName: m.authorName,
+          content: m.content, personaMode: m.personaMode,
+          status: 'PUBLISHED', publishAt: new Date(),
+        })),
+      });
+      aAdded = res.count;
+    }
+  }
+
+  if (bNeeded) {
+    if (geminiLimiter.status().remainingToday < 2) {
+      agentLog('WARN', 'battle:topup:quota-skip', { pollId, side: 'B', remainingToday: geminiLimiter.status().remainingToday });
+      return { aAdded, bAdded };
+    }
+    const items = await generateBatchForSide(productB, productA, 'B', perSide);
+    if (items.length > 0) {
+      const res = await prisma.message.createMany({
+        data: items.map(m => ({
+          pollId, side: m.side, authorName: m.authorName,
+          content: m.content, personaMode: m.personaMode,
+          status: 'PUBLISHED', publishAt: new Date(),
+        })),
+      });
+      bAdded = res.count;
+    }
+  }
+
+  agentLog('INFO', 'battle:topup:ok', { pollId, aAdded, bAdded });
+  return { aAdded, bAdded };
+}

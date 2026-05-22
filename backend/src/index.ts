@@ -11,7 +11,7 @@ import { serperStatus } from "./lib/serper.js";
 import { agentLog } from "./lib/logger.js";
 import { AgentCallbackHandler } from "./lib/agentCallbackHandler.js";
 import { geminiLimiter } from "./lib/gemini-quota.js";
-import { buildMockBatch, saveBatch, publishDue, generateAndPublish, generateBatch } from "./battle/generate.js";
+import { buildMockBatch, saveBatch, publishDue, generateAndPublish, generateBatch, topUpBattle } from "./battle/generate.js";
 
 const app = Fastify({ logger: true });
 await app.register(cors, { origin: true });
@@ -112,15 +112,25 @@ agentLog("INFO", "scheduler:registered", { schedule, timezone: "Asia/Seoul" });
 if (process.env.BATTLE_ENABLED === "true") {
   cron.schedule("0 17 * * *", async () => {
     try {
+      const { remainingToday: pre } = geminiLimiter.status();
+      agentLog("INFO", "battle:batch:cron:start", { remainingToday: pre });
+
       const activePolls = await prisma.poll.findMany({
         where: { status: "ACTIVE" },
         select: { id: true },
         take: 10,
       });
       for (const p of activePolls) {
-        const count = await generateBatch(p.id, 40);
-        agentLog("INFO", "battle:batch:cron", { pollId: p.id, count });
+        if (geminiLimiter.status().remainingToday < 2) {
+          agentLog("WARN", "battle:batch:cron:quota-break", { pollId: p.id });
+          break;
+        }
+        const { aAdded, bAdded } = await topUpBattle(p.id, 10, 10);
+        agentLog("INFO", "battle:batch:cron", { pollId: p.id, aAdded, bAdded });
       }
+
+      const { remainingToday: post } = geminiLimiter.status();
+      agentLog("INFO", "battle:batch:cron:done", { remainingToday: post });
     } catch (e) {
       agentLog("ERROR", "battle:batch:cron:error", { error: e instanceof Error ? e.message : String(e) });
     }
@@ -158,13 +168,37 @@ app.get<{ Querystring: PollQuery }>("/polls", async (req) => {
     votedPollIds = myVotes.map((v) => v.pollId);
   }
 
+  // 양쪽 메시지(PUBLISHED|SCHEDULED) 보유 poll만 서빙
+  const poolIds = poolPolls.map((p) => p.id);
+  const sideStats = await prisma.message.groupBy({
+    by: ["pollId", "side"],
+    where: { pollId: { in: poolIds }, status: { in: ["PUBLISHED", "SCHEDULED"] } },
+    _count: true,
+  });
+  const aSet = new Set<string>();
+  const bSet = new Set<string>();
+  for (const s of sideStats) {
+    if (s._count > 0) {
+      if (s.side === "A") aSet.add(s.pollId);
+      else if (s.side === "B") bSet.add(s.pollId);
+    }
+  }
+  const bothSidesPolls = poolPolls.filter((p) => aSet.has(p.id) && bSet.has(p.id));
+
   // 미투표 먼저, 부족하면 투표한 것으로 채워 항상 최대 5개 반환
-  const unvoted = poolPolls.filter((p) => !votedPollIds.includes(p.id));
-  const voted   = poolPolls.filter((p) =>  votedPollIds.includes(p.id));
+  const unvoted = bothSidesPolls.filter((p) => !votedPollIds.includes(p.id));
+  const voted   = bothSidesPolls.filter((p) =>  votedPollIds.includes(p.id));
   const selected = [...unvoted, ...voted].slice(0, 5);
 
   // 배치 메시지 전체 조회 (side별 최대 50개)
   const selectedIds = selected.map(p => p.id);
+
+  // 선택된 poll들의 due-scheduled 메시지를 한번에 PUBLISHED로 승격
+  await prisma.message.updateMany({
+    where: { pollId: { in: selectedIds }, status: "SCHEDULED", publishAt: { lte: new Date() } },
+    data: { status: "PUBLISHED" },
+  });
+
   const recentMessages = await prisma.message.findMany({
     where: { pollId: { in: selectedIds }, status: "PUBLISHED" },
     orderBy: { publishAt: "asc" },

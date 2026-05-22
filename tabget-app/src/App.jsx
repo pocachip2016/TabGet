@@ -5,7 +5,7 @@ import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
-import { fetchPolls, submitVote, triggerBattleTick, ApiError } from './api/client';
+import { fetchPolls, submitVote, ApiError } from './api/client';
 import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
@@ -321,8 +321,7 @@ export default function App() {
       setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
       setVotedSides((s) => ({ ...s, [pollId]: side }));
       voteCastRef.current = true;
-      setTimeout(() => setIsWinnerRevealed(true), 2000);
-      triggerBattleTick(pollId).catch(() => {});
+      setTimeout(() => setIsWinnerRevealed(true), 800);
     } catch (err) {
       // Rollback optimistic counter
       if (side === 'A') setDisplayVotesA((v) => Math.max(0, v - 1));
@@ -330,7 +329,7 @@ export default function App() {
 
       if (err instanceof ApiError && err.code === 'already_voted') {
         setVotedPollIds((ids) => (ids.includes(pollId) ? ids : [...ids, pollId]));
-        setTimeout(() => setIsWinnerRevealed(true), 2000);
+        setTimeout(() => setIsWinnerRevealed(true), 800);
       } else if (err instanceof ApiError && err.code === 'voting_closed') {
         setVotedSide(null);
         setSelectedSide(null);
@@ -590,7 +589,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-28', 'bottom-56')} left-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} left-2 w-[45%] z-10`}>
               <BattleFeed side="A" initialMessages={currentSet?.messages ?? []} />
             </div>
 
@@ -608,8 +607,9 @@ export default function App() {
 
             {isWinnerRevealed && votedSide === 'A' && (
               <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
-                <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
-                  <Trophy size={sz(20, 48)} /> 응모완료!
+                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[13px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
+                  <Trophy size={sz(14, 32)} className="text-pink-400" strokeWidth={2.25} />
+                  <span>응모완료</span>
                 </div>
               </div>
             )}
@@ -655,7 +655,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-28', 'bottom-56')} right-2 w-[45%] z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} right-2 w-[45%] z-10`}>
               <BattleFeed side="B" initialMessages={currentSet?.messages ?? []} />
             </div>
 
@@ -673,8 +673,9 @@ export default function App() {
 
             {isWinnerRevealed && votedSide === 'B' && (
               <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
-                <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
-                  <Trophy size={sz(20, 48)} /> 응모완료!
+                <div className={`backdrop-blur-xl bg-black/40 border border-white/20 text-white ${sz('px-6 py-2.5', 'px-14 py-5')} rounded-full ${sz('text-[13px]', 'text-2xl')} font-medium tracking-[0.08em] flex items-center ${sz('gap-2', 'gap-4')} shadow-2xl animate-fade-in-down`}>
+                  <Trophy size={sz(14, 32)} className="text-pink-400" strokeWidth={2.25} />
+                  <span>응모완료</span>
                 </div>
               </div>
             )}

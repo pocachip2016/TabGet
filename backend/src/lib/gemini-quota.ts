@@ -11,7 +11,7 @@ const DEFAULT_LOG_FILE = join(__dirname, "../../data/gemini.log");
 const QUOTA_TABLE: Record<string, { rpm: number; rpd: number; tpm: number }> = {
   "gemini-2.5-pro":        { rpm: 5,  rpd: 25,    tpm: 250_000 },
   "gemini-2.5-flash":      { rpm: 5,  rpd: 20,    tpm: 250_000 },
-  "gemini-2.5-flash-lite": { rpm: 15, rpd: 1_000, tpm: 250_000 },
+  "gemini-2.5-flash-lite": { rpm: 15, rpd: 20, tpm: 250_000 },
   "gemini-2.0-flash":      { rpm: 15, rpd: 200,   tpm: 1_000_000 },
 };
 

@@ -70,8 +70,16 @@
 - [ ] **7.4** `BATTLE_ENABLED=false` 재시작 → 새 메시지 생성 중단 확인
 - [ ] **7.5** Gemini 키 없는 환경 → 배틀 cron 조용히 비활성, 앱 정상 동작
 - [ ] **7.6** `CLAUDE.md` 갱신 (환경변수, localStorage 키, gallery 계약)
-- [ ] **7.7** 최종 PM2 재시작 + 스모크 테스트
+- [x] **7.7** 최종 PM2 재시작 + 스모크 테스트
 - [ ] **7.8** KST 09:00 RPD 리셋 후 `seed-all?count=40` 실행 → BattleFeed 랜덤 스크롤 브라우저 확인
+
+## Phase 8 — Gemini 쿼터 재정정 + 양쪽 보유 5쌍 서빙
+- [x] **8.1** `gemini-quota.ts` flash-lite RPD 1000→20 정정 (실측 quotaValue 반영)
+- [x] **8.2** `topUpBattle(pollId, threshold, perSide)` 신설 — 부족 side만 보충
+- [x] **8.3** 배틀 cron을 `topUpBattle` 기반으로 교체 + remainingToday 가드
+- [x] **8.4** `triggerBattleTick` frontend 자동 호출 제거 (cron 단일 경로)
+- [x] **8.5** `/polls` — 풀 전체에서 양쪽 보유 poll만 필터링 후 5개 서빙
+- [x] **8.6** 빌드 + PM2 재시작 + 5쌍 모두 양쪽 보유 확인
 
 ---
 
