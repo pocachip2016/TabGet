@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
-import { fetchPolls, submitVote, triggerBattleTick, fetchMessages, ApiError } from './api/client';
+import { fetchPolls, submitVote, triggerBattleTick, ApiError } from './api/client';
 import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
 import './index.css';
@@ -249,11 +250,6 @@ export default function App() {
     const p = polls[currentIndex];
     if (!p) return;
 
-    // Fetch messages for this poll
-    fetchMessages(p.id).then(msgs => {
-      setPolls(prev => prev.map(poll => poll.id === p.id ? { ...poll, messages: msgs.messages || [] } : poll));
-    }).catch(() => {});
-
     const h = Math.abs(p.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
     setDisplayVotesA(p.votesA || (500 + (h % 501)));
     setDisplayVotesB(p.votesB || (500 + ((h >> 4) % 501)));
@@ -261,7 +257,8 @@ export default function App() {
     setVotedSide(prevSide);
     setSelectedSide(prevSide);
     setIsWinnerRevealed(!!prevSide);
-  }, [currentIndex, polls]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, polls.length]);
 
   // 모든 세트 응모 완료 감지 (이번 세션에 투표가 1번 이상 발생한 경우만)
   useEffect(() => {
@@ -548,6 +545,18 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
+      {/* 전체 응모 완료 오버레이 — portal로 document.body에 직접 마운트 */}
+      {showAllDone && createPortal(
+        <div style={{ position: 'fixed', inset: 0, zIndex: 99999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.80)', backdropFilter: 'blur(4px)', pointerEvents: 'none' }}>
+          <div className="text-5xl mb-4 animate-bounce">🎉</div>
+          <p className="text-white text-lg font-black text-center leading-snug px-6">
+            오늘은 다 참여하셨습니다.<br />두둥~~
+          </p>
+          <p className="text-white/70 text-sm mt-3 font-medium">24:30분에 발표합니다.</p>
+          <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
+        </div>,
+        document.body
+      )}
       <div className="fixed top-4 left-4 z-50">
         <ViewModeToggle size="lg" />
       </div>
@@ -598,7 +607,7 @@ export default function App() {
             </div>
 
             {isWinnerRevealed && votedSide === 'A' && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
                 <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
                   <Trophy size={sz(20, 48)} /> 응모완료!
                 </div>
@@ -663,7 +672,7 @@ export default function App() {
             </div>
 
             {isWinnerRevealed && votedSide === 'B' && (
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <div className={`absolute inset-x-0 ${sz('top-6', 'top-16')} flex justify-center pointer-events-none z-20`}>
                 <div className={`bg-gradient-to-r from-pink-500 to-red-500 text-white px-5 py-2.5 rounded-2xl font-black ${sz('text-lg', 'text-5xl')} flex items-center gap-2 shadow-xl animate-bounce`}>
                   <Trophy size={sz(20, 48)} /> 응모완료!
                 </div>
@@ -733,17 +742,6 @@ export default function App() {
             </div>
           )}
 
-          {/* 전체 응모 완료 오버레이 */}
-          {showAllDone && (
-            <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur-sm pointer-events-none">
-              <div className="text-5xl mb-4 animate-bounce">🎉</div>
-              <p className="text-white text-lg font-black text-center leading-snug px-6">
-                오늘은 다 참여하셨습니다.<br />두둥~~
-              </p>
-              <p className="text-white/70 text-sm mt-3 font-medium">24:30분에 발표합니다.</p>
-              <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
-            </div>
-          )}
           </div>
           {mode === 'tv' && (
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />

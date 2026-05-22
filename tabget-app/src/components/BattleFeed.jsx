@@ -35,7 +35,7 @@ export default function BattleFeed({ side, initialMessages = [] }) {
         queueRef.current = shuffle(pool);
       }
       const next = queueRef.current.shift();
-      setDisplayed(prev => [...prev.slice(-3), next]);
+      setDisplayed(prev => [...prev.slice(-1), next]);
       const delay = INTERVAL_MIN + Math.random() * (INTERVAL_MAX - INTERVAL_MIN);
       timerRef.current = setTimeout(tick, delay);
     };
@@ -53,17 +53,17 @@ export default function BattleFeed({ side, initialMessages = [] }) {
   return (
     <div className={`flex flex-col gap-1 pointer-events-none w-full ${isB ? 'items-end' : 'items-start'}`}>
       {displayed.map((msg, i, arr) => {
-        const opacity = Math.max(0.3, (i + 1) / arr.length);
+        const opacity = Math.max(0.75, (i + 1) / arr.length);
         return (
           <div
             key={`${msg.id}-${i}`}
-            className={`bg-black/55 backdrop-blur-sm rounded-lg px-2 py-1 ${isB ? 'text-right' : ''}`}
+            className={`bg-black/45 backdrop-blur-sm rounded-lg px-2 py-1 shadow-lg ${isB ? 'text-right' : ''}`}
             style={{ opacity }}
           >
-            <p className={`${nameColor} ${isTV ? 'text-sm' : 'text-[9px]'} font-bold leading-tight truncate`}>
+            <p className={`${nameColor} ${isTV ? 'text-sm' : 'text-[11px]'} font-bold leading-tight truncate drop-shadow`}>
               {msg.authorName}
             </p>
-            <p className={`text-white ${isTV ? 'text-xs' : 'text-[9px]'} leading-tight`}>
+            <p className={`text-white ${isTV ? 'text-xs' : 'text-[11px]'} leading-tight drop-shadow`}>
               {msg.content}
             </p>
           </div>
