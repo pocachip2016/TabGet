@@ -385,6 +385,9 @@ export default function App() {
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
+        <div className="fixed top-4 right-4 z-50">
+          <ViewModeToggle size="lg" />
+        </div>
         <div
           className="flex flex-col items-center"
           style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
@@ -400,9 +403,6 @@ export default function App() {
               <span style={{ color: '#E30B5C' }}>Get</span>
               <span className={`text-white/40 ${sz('text-base', 'text-xl')} font-normal ml-2`}>당첨결과</span>
             </h2>
-            <div className="absolute top-4 right-4 z-10">
-              <ViewModeToggle size={sz('sm', 'lg')} />
-            </div>
           </div>
 
           {/* 스크롤 영역 */}
@@ -551,7 +551,7 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      <div className="fixed top-4 left-4 z-50">
+      <div className="fixed top-4 right-4 z-50">
         <ViewModeToggle size="lg" />
       </div>
       <div

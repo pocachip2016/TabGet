@@ -9,7 +9,7 @@ const rules = [
   { text: '원하는 상품 더블탭 → 투표' },
   { text: '← → 로 다음 세트 이동' },
   { text: '5세트 완료 시 당첨 페이지로' },
-  { node: <>Winner상품 Double<P>Tab</P> 추첨경품 <P>Get</P></> },
+  { node: <>Winner상품 <P>Tab</P> 추첨경품 <P>Get</P></> },
 ];
 
 export default function GameRulesModal({ open, onStart }) {
@@ -28,7 +28,7 @@ export default function GameRulesModal({ open, onStart }) {
   return (
     <div className="absolute inset-0 bg-black/10 z-50 flex items-center justify-center">
       <div
-        className={`rounded-3xl ${isTV ? 'px-[61px] py-[53px] w-[520px]' : 'px-[38px] py-[37px] w-[280px]'}`}
+        className={`rounded-3xl ${isTV ? 'px-[61px] py-[53px] w-[520px]' : 'px-[38px] py-[37px] w-[250px]'}`}
         style={{
           background: 'rgba(18, 18, 24, 0.50)',
           backdropFilter: 'blur(2px)',
@@ -50,7 +50,7 @@ export default function GameRulesModal({ open, onStart }) {
         </div>
 
         {/* 규칙 목록 */}
-        <ul className={`flex flex-col ${isTV ? 'gap-5 mb-9' : 'gap-3.5 mb-7'}`}>
+        <ul className={`flex flex-col ${isTV ? 'gap-5 mb-9' : 'gap-3.5 mb-7'} ${isTV ? '' : 'pl-3'}`}>
           {rules.map(({ text, node }, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
