@@ -73,7 +73,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
       >
         {/* 프레임 */}
         <div className={sz(
-          'relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden',
+          'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden',
           'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden'
         )}>
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />

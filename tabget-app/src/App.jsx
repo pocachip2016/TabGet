@@ -390,7 +390,7 @@ export default function App() {
           style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
         >
         <div className={sz(
-          'relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
+          'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
           'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
         )}>
           {/* 헤더 */}
@@ -500,7 +500,7 @@ export default function App() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/70 text-sm bg-zinc-950">
+        <div className="w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/70 text-sm bg-zinc-950">
           불러오는 중...
         </div>
       </div>
@@ -510,7 +510,7 @@ export default function App() {
   if (loadError) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex flex-col items-center justify-center gap-3 bg-zinc-950 text-white px-10 text-center">
+        <div className="w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl flex flex-col items-center justify-center gap-3 bg-zinc-950 text-white px-10 text-center">
           <p className="text-sm text-red-400">데이터를 불러오지 못했습니다</p>
           <p className="text-xs text-white/50">{loadError}</p>
           <button onClick={() => window.location.reload()} className="mt-2 px-4 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-xs">
@@ -524,7 +524,7 @@ export default function App() {
   if (!currentSet) {
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/60 text-sm bg-zinc-950">
+        <div className="w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl flex items-center justify-center text-white/60 text-sm bg-zinc-950">
           표시할 투표가 없습니다
         </div>
       </div>
@@ -559,7 +559,7 @@ export default function App() {
         style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
       <div ref={frameRef} className={sz(
-        'relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden',
+        'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden',
         'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
       )}>
         {showAllDone && (
