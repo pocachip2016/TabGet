@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const ViewModeContext = createContext({ mode: 'phone', toggle: () => {} });
+const ViewModeContext = createContext({ mode: 'phone', toggle: () => {}, setMode: () => {} });
 
 function getSavedMode() {
   try {
@@ -12,6 +12,11 @@ function getSavedMode() {
 
 export function ViewModeProvider({ children }) {
   const [mode, setMode] = useState(getSavedMode);
+
+  const setModeAndSave = (next) => {
+    setMode(next);
+    try { localStorage.setItem('tabget:viewMode', next); } catch {}
+  };
 
   const toggle = () => setMode(m => {
     const next = m === 'phone' ? 'tv' : 'phone';
@@ -29,7 +34,7 @@ export function ViewModeProvider({ children }) {
   }, []);
 
   return (
-    <ViewModeContext.Provider value={{ mode, toggle }}>
+    <ViewModeContext.Provider value={{ mode, toggle, setMode: setModeAndSave }}>
       {children}
     </ViewModeContext.Provider>
   );

@@ -1,7 +1,7 @@
 import { useViewMode } from '../ViewModeContext';
 
 export default function ViewModeToggle({ size = 'md' }) {
-  const { mode, toggle } = useViewMode();
+  const { mode, setMode } = useViewMode();
   const isTV = mode === 'tv';
 
   const outer = size === 'sm'
@@ -17,16 +17,19 @@ export default function ViewModeToggle({ size = 'md' }) {
     : 'px-3 py-1 rounded-lg text-xs font-semibold';
 
   return (
-    <button
-      onClick={toggle}
-      className={`flex items-center ${outer} bg-zinc-800/80 backdrop-blur-md border border-white/10 select-none`}
-    >
-      <span className={`${pill} transition-all duration-200 ${!isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}>
+    <div className={`flex items-center ${outer} bg-zinc-800/80 backdrop-blur-md border border-white/10 select-none`}>
+      <button
+        onClick={() => setMode('phone')}
+        className={`${pill} transition-all duration-200 ${!isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}
+      >
         📱 Phone
-      </span>
-      <span className={`${pill} transition-all duration-200 ${isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}>
+      </button>
+      <button
+        onClick={() => setMode('tv')}
+        className={`${pill} transition-all duration-200 ${isTV ? 'bg-white text-zinc-900' : 'text-white/35'}`}
+      >
         📺 TV
-      </span>
-    </button>
+      </button>
+    </div>
   );
 }

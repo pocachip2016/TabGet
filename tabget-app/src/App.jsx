@@ -164,7 +164,7 @@ export default function App() {
   const currentSet = polls[currentIndex];
   const hasCurrentVoted = currentSet ? votedPollIds.includes(currentSet.id) : false;
 
-  // 실제 투표수가 0일 때 사용할 poll당 고정 랜덤 피크값 (500~1000)
+  // 표시용 기본 인구 (500~1000) — 실제 투표수에 더해져 표시됨 (poll당 결정론적)
   const fakePeak = useMemo(() => {
     if (!currentSet) return { a: 700, b: 750 };
     const h = Math.abs(currentSet.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
@@ -220,8 +220,8 @@ export default function App() {
     // 기존 인터벌 정리
     if (liveIntervalRef.current) clearInterval(liveIntervalRef.current);
 
-    const targetA = currentSet.votesA || fakePeak.a;
-    const targetB = currentSet.votesB || fakePeak.b;
+    const targetA = (currentSet.votesA || 0) + fakePeak.a;
+    const targetB = (currentSet.votesB || 0) + fakePeak.b;
 
     if (side === 'A') {
       setDisplayVotesB(targetB); // 반대쪽은 고정
@@ -251,8 +251,8 @@ export default function App() {
     if (!p) return;
 
     const h = Math.abs(p.id.split('').reduce((s, c) => (s * 31 + c.charCodeAt(0)) | 0, 0));
-    setDisplayVotesA(p.votesA || (500 + (h % 501)));
-    setDisplayVotesB(p.votesB || (500 + ((h >> 4) % 501)));
+    setDisplayVotesA((p.votesA || 0) + 500 + (h % 501));
+    setDisplayVotesB((p.votesB || 0) + 500 + ((h >> 4) % 501));
     const prevSide = votedSides[p.id] ?? null;
     setVotedSide(prevSide);
     setSelectedSide(prevSide);
