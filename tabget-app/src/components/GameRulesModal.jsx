@@ -9,7 +9,7 @@ const rules = [
   { text: '원하는 상품 더블탭 → 투표' },
   { text: '← → 로 다음 세트 이동' },
   { text: '5세트 완료 시 당첨 페이지로' },
-  { node: <>Double<P>Tab</P> → 추첨경품 <P>Get!</P></> },
+  { node: <>Winner상품 Double<P>Tab</P> 추첨경품 <P>Get</P></> },
 ];
 
 export default function GameRulesModal({ open, onStart }) {
