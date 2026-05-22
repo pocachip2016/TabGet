@@ -6,11 +6,10 @@ const BRAND = '#E30B5C';
 const P = ({ children }) => <span style={{ color: BRAND, fontWeight: 700 }}>{children}</span>;
 
 const rules = [
-  { text: '더블탭으로 마음에 드는 상품에 투표' },
-  { text: '좌우 화살표로 다음 세트 이동' },
-  { text: '5세트 모두 응모하면 당첨 페이지로 이동' },
-  { text: '카운트다운 종료 시 자동 응모 마감' },
-  { node: <>Winner상품 Double<P>Tab</P> 추첨경품 <P>Get</P></> },
+  { text: '원하는 상품 더블탭 → 투표' },
+  { text: '← → 로 다음 세트 이동' },
+  { text: '5세트 완료 시 당첨 페이지로' },
+  { node: <>Double<P>Tab</P> → 추첨경품 <P>Get!</P></> },
 ];
 
 export default function GameRulesModal({ open, onStart }) {
