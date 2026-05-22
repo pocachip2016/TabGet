@@ -1,0 +1,3240 @@
+{
+  "polls": [
+    {
+      "id": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "category": "프리미엄 자동차",
+      "themeTitle": "프리미엄 세단의 정석: 메르세데스-벤츠 C클래스 vs. BMW 3시리즈",
+      "productA": {
+        "name": "C-Class",
+        "brand": "Mercedes-Benz",
+        "gallery": [
+          "https://upload.wikimedia.org/wikipedia/commons/b/be/Mercedes-Benz_W206_IMG_6380.jpg",
+          "https://www.topgear.com/sites/default/files/2021/11/Mercedes_C300D_0000.jpg",
+          "https://images.hgmsites.net/lrg/2025-mercedes-benz-c-class-c-300-4matic-sedan-angular-front-exterior-view_100959585_l.webp",
+          "https://www.thecarexpert.co.uk/wp-content/uploads/2019/04/11092-2133x1200-cropped.jpg"
+        ],
+        "features": [
+          "Mercedes C-Class Sedan의 하이라이트에 대해 알아보십시오. 가격 | 플러그인 하이브리드 | 익스테리어 | 인테리어 | 기술 데이터.",
+          "대문: C220 CDI는 2,143cc의 Bi-turbo가 달린 OM651엔진으로 변경되었다. 2014년에 대한민국 정식수입 최초로 C클래스에 상시 4륜구동을 채용한 아방가르드 기반 ...",
+          "더 뉴 C-클래스 전 라인에는 모두 2세대 마일드 하이브리드 엔진이 탑재 됐다. 48V 온보드 전기 시스템을 갖춘 4기통 가솔린 엔진과 통합 스타터 ..."
+        ],
+        "imageUrl": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/C-Class/10858/1774342866770/front-left-side-47.jpg?imwidth=420&impolicy=resize",
+        "videoUrl": ""
+      },
+      "productB": {
+        "name": "3 Series",
+        "brand": "BMW",
+        "gallery": [
+          "https://upload.wikimedia.org/wikipedia/commons/9/91/BMW_G20_%282022%29_IMG_7316_%282%29.jpg",
+          "https://images.cdn.autocar.co.uk/sites/autocar.co.uk/files/bmw-330e-review-2024-01.jpg",
+          "https://hips.hearstapps.com/hmg-prod/images/2025-bmw-3-series-117-66562dd23a1b8.jpg?crop=1.00xw:0.845xh;0,0.114xh&resize=1200:*",
+          "https://imgd.aeplcdn.com/664x374/n/cw/ec/198567/3-series-exterior-left-rear-three-quarter.jpeg?isig=0&q=80"
+        ],
+        "features": [
+          "네이버 블로그: BMW 3시리즈 뉴 320d는 2.0리터 4기통 디젤 터보 엔진을 탑재하여 최고출력 190마력과 최대토크 40.8kg·m를 발휘합니다. 복합 연비는 리터당 15.0km로 ...",
+          "특징으로 꼽히는 것은 FR구조 최고의 스포츠성과 드라이빙 감각, 5 ... 사양은 3세대 E36.[16] 그외에도 지나가는 차량으로 나온다. 나우 유 씨 ...",
+          "가솔린 엔진은 4기통 가솔린 320i 세단 / 320i 투어링과 6기통 M340i 세단 / M340i 투어링으로 구성되어 있습니다. 디젤 엔진은 4기통 320d 세단 / 320d ..."
+        ],
+        "imageUrl": "https://hips.hearstapps.com/hmg-prod/images/2025-bmw-3-series-102-66562dcd6a1c6.jpg?crop=0.720xw:0.606xh;0.0913xw,0.300xh&resize=2048:*",
+        "videoUrl": ""
+      },
+      "curatorNote": "Mercedes-Benz의 퍼포먼스와 BMW의 럭셔리, 당신이 원하는 드라이브는?",
+      "status": "ACTIVE",
+      "scheduledAt": "2026-04-27T08:57:27.864Z"
+    },
+    {
+      "id": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "category": "프리미엄 핸드폰",
+      "themeTitle": "최고의 스마트폰 경험: 아이폰 15 프로 맥스 vs. 삼성 갤럭시 S24 울트라",
+      "productA": {
+        "name": "15 Pro Max",
+        "brand": "iPhone",
+        "gallery": [
+          "https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/iphone-15-pro-max.png",
+          "https://img.danuri.io/catalog-image/334/189/028/5400aafe57da4469aa9e46d24edc4c36.jpg?_v=20260425190138&shrink=360:360",
+          "https://512pixels.net/wp-content/uploads/2023/12/iphone-15-pro-max-natural.jpg",
+          "https://i.namu.wiki/i/aOMk-BAxRzsMkQa7FWQqd47K09oliNg9cASgImzgLNjuGBPDV26ChorqL1s5Qx9alUr9bl5NWa0cXfHVeGAl4g.webp"
+        ],
+        "features": [
+          "디스플레이 · 화면 해상도, 2,556x1,179 ; 디스플레이 · 최대 주사율, 60Hz ; 디스플레이 · 최대 밝기, 2,000nits ; 디스플레이 · HDR10, ○ ; 디스플레이 · 돌비 ...",
+          "Apple iPhone 15 Pro Max · 운영체제 iOS 17.0 iOS 26.4 · 디스플레이 6.7 인치 1290x2796 픽셀 · 배터리 4441 mAh Li-Ion.",
+          "iPhone 15 Pro의 가격은 동일하게 1,550,000원부터 시작되며, 128GB, 256GB, 512GB, 1TB 저장 용량으로 제공된다. iPhone 15 Pro Max의 가격은 1,900,000 ..."
+        ],
+        "imageUrl": "https://www.apple.com/newsroom/images/2023/09/apple-unveils-iphone-15-pro-and-iphone-15-pro-max/article/Apple-iPhone-15-Pro-lineup-hero-230912_Full-Bleed-Image.jpg.large.jpg",
+        "videoUrl": ""
+      },
+      "productB": {
+        "name": "Galaxy S24 Ultra",
+        "brand": "Samsung",
+        "gallery": [
+          "https://www.lguplus.com/static/pc-contents/images/prdv/20240124-035907-752-0vDc76fU.png",
+          "https://images.samsung.com/sec/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-color-titanium-blue-back-mo.jpg?imbypass=true",
+          "https://images.samsung.com/kdp/static/mkt/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-kv-sec-low.jpg?imbypass=true",
+          "https://media.wired.com/photos/65a6c0640c15f050104f7819/3:2/w_2560%2Cc_limit/Gear-Samsung-Galaxy-S24-Ultra-SOURCE-Julian-Chokkattu.jpg"
+        ],
+        "features": [
+          "갤럭시 S24/S24+/S24 Ultra는 크기, 무게, 후면카메라, AP, 메모리, 저장공간, 배터리 용량, UWB, S펜 등에 차이가 있습니다. 아래 사양을 확인해 ...",
+          "네이버 블로그: 갤럭시 S24 울트라 스펙은 발군의 프로세서라 할 수 있는 스냅드래곤 8 3세대(for Galaxy)로 다양한 리뷰들을 통해 모바일 게이밍 퍼포먼스에서 이미 성능 ...",
+          "S시리즈의 최고 프리미엄 라인답게, S24울트라는 가격이 어마무시한데요. 현재는 출시되고 시간이 지나서 가격이 내려왔다 해도, 256GB 기준으로 150만 원 ..."
+        ],
+        "imageUrl": "https://images.samsung.com/sec/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-color-titanium-yellow-back-mo.jpg?imbypass=true",
+        "videoUrl": ""
+      },
+      "curatorNote": "iPhone의 생태계와 Samsung의 혁신, 내 손 안의 선택은?",
+      "status": "ACTIVE",
+      "scheduledAt": "2026-04-27T08:55:27.864Z"
+    },
+    {
+      "id": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "category": "프리미엄 가전",
+      "themeTitle": "나만의 주방을 위한 디자인 가전: 삼성 비스포크 냉장고 vs. LG 오브제컬렉션 냉장고",
+      "productA": {
+        "name": "Bespoke Refrigerator",
+        "brand": "Samsung",
+        "gallery": [
+          "https://image-us.samsung.com/SamsungUS/home/home-appliances/bespoke/monochrome-3-door-6600-6200/RF6600_RF6200_Front_Navy-Steel.jpg",
+          "https://images.webfronts.com/cache/frizvghksrcg.jpg?imgeng=/w_500/h_500/m_letterbox_ffffff_100",
+          "https://reviewed-com-res.cloudinary.com/image/fetch/s--0VcgvMU1--/b_white,c_fill,cs_srgb,f_auto,fl_progressive.strip_profile,g_auto,h_729,q_auto,w_972/https://reviewed-production.s3.amazonaws.com/1637077465158/bespokehero.jpg",
+          "https://image-us.samsung.com/SamsungUS/home/home-appliances/bespoke/monochrome-3-door-6600-6200/RF6600_RF6200_Front_Matte-Black-Steel.jpg"
+        ],
+        "features": [
+          "대문: 특히 연예인 등 디자인, 패션을 중요시하는 사람들이 많이 선택하는 냉장고 중 하나가 되었다. 이유는 아트 패널도 있겠지만 키친핏으로 맞출 수 있다는 장점이 있기 때문 ...",
+          "90도 이상 활짝 열어 사용할 수 있어요. 냉장고장과의 간격을 최소화한 키친핏 Max로 더욱 완성도 높은 인테리어를 경험해 보세요. * 이해를 돕기 위해 ...",
+          "결국은 커스터마이징 가능한 BESPOKE에 반할 수밖에 없다는 점이 Point라고 말씀드리고 싶어요. ​. ​. ​."
+        ],
+        "imageUrl": "https://images.webfronts.com/cache/frbtouesdsts.jpg?imgeng=/w_500/h_500/m_letterbox_ffffff_100",
+        "videoUrl": ""
+      },
+      "productB": {
+        "name": "Objet Collection Refrigerator",
+        "brand": "LG",
+        "gallery": [
+          "https://makinghome.com.au/wp-content/uploads/2022/07/lg-objet-collection-7.jpg",
+          "https://www.lge.co.kr/kr/images/refrigerators/md10411858/gallery/T875P412_mo.jpg",
+          "https://i.ytimg.com/vi/k3D-KHgk1AE/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBpYg0DMhJI1owJeQYy4E4fD94bAw",
+          "https://img.jakpost.net/c/2023/12/01/2023_12_01_144924_1701417250._large.jpg"
+        ],
+        "features": [
+          "* 인공지능 맞춤 보관은 구입한 김치의 바코드를 스마트폰 ThinQ 앱으로 인식하여 제조사별, 제조일자별 산도를 맞춰주는 익힘 기능과 맛지킴 김치(중 혹은 강) 보관 기능 ...",
+          "용량. 68.1점 ; 장점. 냉장실과 냉동실 모두 서서 사용할 수 있습니다. 전용 어플을 통해 다양한 설정과 간단한 조작 등을 할 수 있습니다. ; 단점. 공간이 좌우로 구분되어 ...",
+          "저는 상냉장 하냉동 4도어를 원하고, 얼음정수기는 필요 없으므로 M으로 선택했습니다. ​. ※F는 오브제컬렉션이 아닌 일반 메탈 도어가 적용된 상냉장 하 ..."
+        ],
+        "imageUrl": "https://ifdalivestorage.blob.core.windows.net/user-uploads/8309/345149/00000000-0000-0000-0000-000000000000/01_main_entry_img.jpg",
+        "videoUrl": ""
+      },
+      "curatorNote": "Samsung의 기술력과 LG의 디자인, 당신의 라이프스타일에 맞는 건?",
+      "status": "ACTIVE",
+      "scheduledAt": "2026-04-27T08:54:27.864Z"
+    },
+    {
+      "id": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "category": "프리미엄 가전",
+      "themeTitle": "헤어 스타일링의 혁신, 당신의 모발을 위한 최고의 선택은?",
+      "productA": {
+        "name": "Airwrap Multi-styler",
+        "brand": "Dyson",
+        "gallery": [
+          "https://i5.walmartimages.com/asr/d897c4cc-38c4-4251-ba0e-105bc31d3ce6.2fa7904af0a610a595985a3860ec1be8.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+          "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/123668-01.png",
+          "https://images.squarespace-cdn.com/content/v1/6402296c2d91cc424a5c9b25/1733506612704-0ZT6MV01WWXN4OO7MDTO/My+Honest+Review+of+the+Dyson+AirWrap+Styler10.JPEG",
+          "https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/images/products/primary/601950-01.png"
+        ],
+        "features": [
+          "NEW 스마트 스타일링 노즐 · 완전히 새로워진 멀티 스타일러 · 2배 더 강력한 공기 흐름 · 새로운 에어스무스2x™ 스타일링 노즐 · 원터치 i.d. curl™ 모드 · NEW 스마트 ...",
+          "다이슨 에어랩™ 멀티 스타일러는 사용자들이 열로 인한 모발 손상을 최소화하면서 스타일링을 연출하고 부드럽고 빠르게 모발을 건조할 수 있도록, 고속∙고압의 모터에 ...",
+          "1. 기존 에어랩과 뉴 에어랩의 차이 · 2. 컴플리트 (숏 베럴) 과 컴플리트 롱 (롱 베럴)의 차이 · 3. 다이슨 공식 홈페이지에는 늘 재고가 없는 컴플리트 롱 ..."
+        ],
+        "imageUrl": "https://m.media-amazon.com/images/I/71R3FtOo5BL._AC_UF350,350_QL80_.jpg",
+        "videoUrl": ""
+      },
+      "productB": {
+        "name": "Platinum+ Hair Styler",
+        "brand": "GHD",
+        "gallery": [
+          "https://vixenhairdesign.com.au/cdn/shop/files/ghdplatinum_set.png?v=1696727832&width=1445",
+          "https://amplience.ghdhair.com/i/ghd/PDP_GalleryImage_no1_platB?$ProductImageGallery$&fmt=auto",
+          "https://amplience.ghdhair.com/i/ghd/454_Primary_Image_1?$ProductImageGallery$&fmt=auto",
+          "https://amplience.ghdhair.com/i/ghd/453_primary_image_1_allure"
+        ],
+        "features": [
+          "예측 기술이 적용된 가장 스마트한 2.5cm(1인치) 플랫 아이언입니다. 모발 상태에 맞춰 작동하며, 185°C(365°F)에서도 안전하게 스타일링할 수 있습니다.",
+          "고급 소재 및 장인 정신",
+          "한정 수량 프리미엄 에디션"
+        ],
+        "imageUrl": "https://manuals.plus/asin/B07FJ8RR9J.jpg",
+        "videoUrl": ""
+      },
+      "curatorNote": "Dyson의 기술력과 GHD의 디자인, 당신의 라이프스타일에 맞는 건?",
+      "status": "ACTIVE",
+      "scheduledAt": "2026-04-27T08:54:27.292Z"
+    },
+    {
+      "id": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "category": "럭셔리 시계",
+      "themeTitle": "클래식 사각 시계의 정점: 까르띠에 탱크 vs. 예거 르쿨트르 리베르소",
+      "productA": {
+        "name": "Tank",
+        "brand": "Cartier",
+        "gallery": [
+          "https://www.cartier.com/dw/image/v2/BGTJ_PRD/on/demandware.static/-/Sites-cartier-master/default/dw6e3818a0/images/large/3a67f4cd6ef951728714f41ebc4fb219.png?sw=750&sh=750&sm=fit&sfrm=png",
+          "https://cdn.shopify.com/s/files/1/1868/1491/files/41mm-cartier-tank-must-xl-montre-stainless-bijoux-medusa-homme-quebec-canada-646.jpg",
+          "https://preview.redd.it/cartier-is-the-tank-must-the-best-dress-watch-for-3-000-v0-g4c4njbypilb1.jpg?width=640&crop=smart&auto=webp&s=f1da2a10290992fadbe89f0fc8367b769ae4afa4",
+          "https://monochrome-watches.com/app/uploads/2023/01/Cartier-Tank-Francaise-Watch-2023-Automatic-large-model-stainless-steel-WSTA0067-hands-on-review-5.jpg"
+        ],
+        "features": [
+          "직사각형 케이스",
+          "1919년 탄생",
+          "다양한 사이즈"
+        ],
+        "imageUrl": "http://goldammer.me/cdn/shop/articles/Normale1960_d7dddcc7-c9ee-4fcf-996f-0794bc122f8d.png?v=1743750850",
+        "videoUrl": ""
+      },
+      "productB": {
+        "name": "Reverso",
+        "brand": "Jaeger-LeCoultre",
+        "gallery": [
+          "https://swisswatches-magazine.com/uploads/2024/11/jaeger-lecoultre-reverso-tribute-chronograph-pink-gold-q389256j-back-cover.webp",
+          "https://www.europeanwatch.com/_next/image?url=https%3A%2F%2Fassets.europeanwatch.com%2Fcontainers%2Fassets%2Fblog%2F1z2a5945-copy-1-scaled-1755721301.jpg%2F4bd61c2bb03ba500fadac647bd136152%2F1z2a5945-copy-1-scaled-1755721301.webp&w=3840&q=75",
+          "https://img.jaeger-lecoultre.com/fifty-fifty-standard-1/5a36457f894bb6dd54ab7b912cee832de12e03e1.jpg",
+          "https://www.theluxuryhut.com/_next/image/?url=https%3A%2F%2Fassets.theluxuryhut.com%2Fcms%2Fadmin%2Fupload%2F1735826468jaegerlecoultre-reverso-tribute-chronograph-q389848j.jpg&w=1080&q=75"
+        ],
+        "features": [
+          "아이코닉한 오리지널 디자인: 1931년 폴로 선수들을 위해 탄생한 리베르소는 다이얼을 보호하는 아르데코 스타일의 양면 케이스를 특징으로 하며, 스포티한 기능과 시간이 ...",
+          "훨씬 더 시계를 고급스럽게 보여줍니다. 다른 시계에서도 말씀드렸지만. 골드 플레이트는 피니싱을 잘하면. 그 피니싱을 배가하는 특징이 있습니다.",
+          "3줄의 오리지널 가드룬과 12개의 아라비아 숫자 인덱스, 투톤으로 마감한 다이얼, 검 모양의 핸즈가 특징인 리베르소 클래식은 시간이 흘러도 변치 않는 디자인을 담고 ..."
+        ],
+        "imageUrl": "https://img.jaeger-lecoultre.com/product-slider-hero-mobile-3/67024e30d460dbd10601eed58f205ff0ef0f9f24.jpg",
+        "videoUrl": ""
+      },
+      "curatorNote": "Cartier의 정밀함과 Jaeger-LeCoultre의 혁신, 당신의 손목을 빛낼 선택은?",
+      "status": "ACTIVE",
+      "scheduledAt": "2026-04-27T08:53:27.864Z"
+    }
+  ],
+  "messages": [
+    {
+      "id": "cfddbbbf-f74a-4ef2-976a-9b8858d91856",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "C클래스 유지보수 비용도 3시리즈보다 합리적인 편.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "3dbd2731-ec6f-41d9-8ebe-081ed26bfc81",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "와 C클래스 실물 장난 아니다... 진짜 갖고싶다 ㅠㅠ",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "8c9dd685-4048-4b67-8cbc-6436e8191f60",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "C클래스 인테리어 첨단 기술 미쳤네... 갖고 싶어!",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "10256298-0fa1-46f3-9317-347245fafe49",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "C클래스 브랜드 이미지도 3시리즈보다 훨씬 좋음 ✨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "e65595ac-d2d9-4a1e-bc90-d9807012cde3",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "3시리즈는 가성비로 C클래스 못 따라오지 🤷‍♀️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "dcd66227-3e45-4acf-951f-2781907884b2",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "C클래스 연비도 3시리즈랑 비슷하거나 더 좋더라! 💯",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "a94ac042-0909-463f-b41f-2fbb9be04c49",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "C클래스 시트 착좌감은 진짜 비교 불가. 편안함 최고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "95ea121e-7460-457a-a374-71add7c903de",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "C클래스 잔고장 없기로 유명함. 안심하고 타기 좋음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "c69796ce-51a8-4fc6-96fd-805df5709277",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "C클래스 중고가 방어도 3시리즈보다 좋음. 현명한 선택!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "a5f44eef-c52d-4fba-ab98-839f5750617e",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "C클래스 감성... 타보고 싶다 진짜... 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "945dddb5-d834-4201-8a25-b67b89fbc7cf",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "C클래스 저 계기판 디스플레이... 갖고 싶게 만드네.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "8505186d-3466-441e-a485-785f5bd305dd",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "C클래스 타면 시선강탈! 3시리즈는 평범해. 🌟",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "f20218cb-5197-4516-99e4-072c6b4aa201",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "C클래스 옵션 생각하면 3시리즈보다 훨씬 가성비임.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "b4685074-c38b-42fa-b51a-447730d017ec",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "C클래스 안전 사양도 3시리즈보다 한 수 위! 🛡️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "04afa761-fa5f-4cb7-a10a-d964af8d366a",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "C클래스 트렁크 공간도 은근히 넓어서 실용적임.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "22e138a5-0866-486c-a7ce-c27ea987b72e",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "중고가 방어도 3시리즈가 은근히 좋다는 사실! 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "08c7ca41-5e88-42cf-80e6-d94a1fbfcadd",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "3시리즈의 밸런스 잡힌 서스펜션은 코너링 시 안정감을 극대화. C클래스는 비교 불가.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "eb0804ac-77f4-40a6-a722-fc4f24371384",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "3시리즈 엔진 반응성은 C클래스보다 훨씬 민첩하고 파워풀함.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "ff3bb9b9-bf48-4127-aea2-4838d22c28ee",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "후륜구동 특유의 날카로운 핸들링은 3시리즈의 압도적인 장점!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "b431f790-4a8a-49da-aca4-a9ec3a961445",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "3시리즈 한달 타봤는데, 승차감도 생각보다 부드럽고 좋더라. C클래스랑 비슷함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "84df656a-5140-4427-a4b6-d82132b7a351",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "3시리즈 실내 공간도 생각보다 넉넉해서 패밀리카로도 괜찮겠어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "842caeec-5d2a-4590-af50-7dc1761cc20f",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "3시리즈 연비도 생각보다 괜찮게 나와서 요즘 같은 시대에 딱!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "5883d899-c6f6-47bd-9536-12a3f195bae8",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "3시리즈는 스포티함이 강하지만, 승차감은 C클래스보다 조금 단단할 수 있음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "1a21a66f-d109-4c6b-9130-c50b6def5636",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "3시리즈 후방 시야는 C클래스보다 약간 불편할 수 있다는 점 참고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "f955f1a8-7aa3-4005-b7dc-2cf9cfd61638",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "3시리즈 기본 옵션 구성은 C클래스보다 아쉬운 부분이 있을 수 있음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "b281d492-aa64-40e8-94f2-f14e49460f14",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "3시리즈는 운전 재미와 실용성을 모두 고려했을 때 합리적인 선택이 될 수 있음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "dab38029-801a-45fe-ab56-57e0c535ca08",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "C클래스 대비 3시리즈의 잔존가치를 생각하면 장기적으로 이득일 수도.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "a482aae7-c792-427b-8bab-33c1a1a62588",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "3시리즈는 특정 트림의 가성비가 C클래스보다 높게 평가됨.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "1d92a751-981f-4294-b342-d90f0651b5d5",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "와 3시리즈 진짜 너무 갖고 싶다... C클래스보다 훨씬 끌려 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "2da65e34-da07-4099-be4f-16612a455ef1",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "3시리즈는 내 위시리스트 최상단에 있는 차야! 꼭 살 거야! 💯",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "7ffa4659-f1cf-47e4-a6c7-1b3e469da50d",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "나중에 중고가 방어도 15 프로 맥스가 훨씬 좋을걸?",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "b71977ff-bc3f-4521-b150-04324d60615a",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "A17 Pro 칩 성능은 S24 울트라 스냅드래곤 GFX벤치 점수 넘어서는데? 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "d173faed-c809-41d7-af1d-48ee32ed9c0a",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "아이폰 15 프로 맥스 48MP 메인 카메라, S24 울트라랑 비교 안 됨.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "d5b9a48f-0bf2-4ad9-95eb-4c2577b267dc",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "프로모션 디스플레이도 15 프로 맥스가 더 부드러워. S24 울트라보다.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "41867493-0c4e-48c8-bc32-e5d4f05a5c2b",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "15 프로 맥스 배터리 진짜 오래감. S24 울트라는 따라올 수 없을 듯.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "c15102b9-24ec-4472-8480-ba6a43ba5a0b",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "아이폰 15 프로 맥스 영상 촬영은 진짜 최고. S24 울트라랑 비교 불가.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "0fec05ed-21ff-423a-9707-e7a7adb6dff4",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "앱 최적화는 역시 아이폰 15 프로 맥스가 한 수 위. S24 울트라도 좋지만...",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "e9bcf8d6-5ea6-464e-8411-68373b3e5fc6",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "S24 울트라의 S펜은 좋지만, 15 프로 맥스의 전반적인 완성도는 높다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "aac1e6b0-b8f6-45dc-9347-baa6edb8acc3",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "아이폰 15 프로 맥스 내구성이 S24 울트라보다 더 튼튼하게 느껴졌음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "7472fd52-c8aa-45c9-8294-d2b6927f62c9",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "개인적으로 15 프로 맥스의 그립감이 S24 울트라보다 더 편했어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "eca9449f-9eb3-42e9-bb73-4680a0c32608",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "굳이 S24 울트라 대신 15 프로 맥스 갈 이유 충분하다고 봄.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "57f18842-cae7-432a-b477-5c0123a535d0",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "사용자 경험 측면에서 15 프로 맥스가 더 직관적이고 만족스러웠다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "18fd524f-01cd-40b3-bda9-1f1a790c7e25",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "장기적인 관점에서 15 프로 맥스가 더 나은 선택일 수 있다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "91fd53e0-c391-4718-b26f-2f786b9e33ea",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "하... 15 프로 맥스 진짜 갖고 싶다... 실물 영접하고 싶어... 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "673ccb19-17c1-460a-a910-6f648435fc25",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "15 프로 맥스 티타늄 디자인 실화임? 진짜 갖고 싶은데! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "e363fead-d5c1-4a5e-8014-1042612f4d5a",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "S24 울트라, AOD 기능 덕에 배터리 효율도 괜찮더라. 아이폰은 좀 아쉽. 🔋",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "2a1b81b8-d999-44db-beea-8c83e5a70e88",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "S24 울트라 디자인 진짜 미쳤다... 실물 영접하고 싶어! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "e5b8d954-22d6-4d4c-9fba-80872a95898c",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "S24 울트라, 나의 위시리스트 최상단에 고정! 꼭 살 거야! 💖",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "c90aaeaf-da50-41c5-ba82-15bb802cce5c",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "아이폰 15 프로 맥스? S24 울트라의 AI 번역 기능 알면 기겁할걸? 🌐",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "a0ea97bb-47c1-40b1-a9dd-49254f8b0b61",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "S24 울트라 사전예약 혜택 놓치면 손해! 아이폰은 할인이 없지. 😭",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "641aaa26-012d-4ed2-bc21-727aad64422f",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "S24 울트라의 엑시노스 칩, 아이폰 A17 Pro와 비교해도 전혀 밀리지 않아! 🔥",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "5ed16b2c-c72e-42ef-9e10-5c6e824d6633",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "S24 울트라 티타늄 프레임, 그립감 진짜 예술이야. 아이폰보다 훨씬 편해. 👍",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "128e66bb-f347-445c-bc51-07b6110e5768",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "S24 울트라의 강화된 내구성은 실사용에서 빛을 발하더라. 안심하고 써도 됨. 💪",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "58339167-5e4e-49c3-a5ed-e420a9ad170a",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "S24 울트라, 삼성페이 되는 게 얼마나 편한지 알아? 아이폰은 아직도... 😅",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "d4f9a87a-c13f-4e73-911b-879c55372755",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "S24 울트라, 그 웅장한 카메라 디자인 한번만 만져보고 싶다... 🤤",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "4a9da002-5296-4c04-86c6-121f897a39fe",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "S24 울트라, 이젠 내 손에 꼬옥 쥐고 싶어! 🥺",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "1c5e1446-27cf-446e-b3c1-88b1196ff8bf",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "아이폰 15 프로 맥스, S24 울트라의 '서클 투 서치' 기능 보면 반성해야 해! 💡",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "24888335-abb4-4ee8-9f92-c28e98753ccc",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "S24 울트라, 게임 성능 말해 뭐해. 아이폰 15 프로 맥스도 좋지만 S24 울트라가 최고! 🎮",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "f9a8fdd8-a6d8-40ff-9318-121cad523622",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "S24 울트라의 긴 배터리 시간, 하루 종일 써도 끄떡없더라. 아이폰은 중간에 충전 필수! ⚡",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "f12c1cda-737f-4489-bd01-547ede319259",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "S24 울트라, 디스플레이 밝기랑 색감은 진짜 최고야. 눈이 편안함. 🌈",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:14.500Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "69024888-337f-4aa6-8cf4-939d80a93e57",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "가격 대비 성능, 오래가는 건 비스포크 만한 게 없다니까~",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "b3ed862b-b66e-40d9-b675-ee2327725bbd",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "비스포크 냉각 기술, LG랑 비교 불가! 신선함이 남달라.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "e9ec89d3-808c-45bf-9be6-c9a53ed3d2d4",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "오토 도어 열림? 비스포크는 기본이지. LG는 옵션도 없잖아? ㅋ",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "c7f619a2-82f9-4e94-8eea-e2eabc7051be",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "소음도 비스포크가 훨씬 조용함. 써보면 암. 🤫",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "d08bd5e3-1c35-41a1-9e43-376cb1cbccd8",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "비스포크 디자인, 주방 분위기 확 살려줌. 질리지 않아.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "e0d579f6-1b65-4331-98e8-6bffbb61f2ca",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "내부 공간 활용도 좋고, 온도 유지도 잘 되는 편이야.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "307561bc-da29-424c-acb2-36ce9dc40e1b",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "소음은 좀 있지만, 이 정도면 만족스럽게 쓰고 있어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "82aa0909-cb2b-4378-843e-60e4b571c49a",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "비스포크, 모듈형이라 나중에라도 변경 가능한 점이 매력.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "3e849a14-e5ea-4b6e-b461-706d1fc0d647",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "LG도 예쁘긴 한데, 비스포크는 색상 선택지가 훨씬 다양함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "7a566b7f-c5cd-46b6-81de-60a22bb130fb",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "기능적인 부분은 크게 다르지 않지만, 디자인 만족도가 높음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "96689769-49eb-4d47-b2b6-df8af104c265",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "비스포크, 디자인만 보고 사기엔 가격대가 높다는 점은 고려해야 함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "4a808ce5-09b7-40d8-8ef3-5b4a98b6a0ff",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "LG Objet Collection도 비슷한 가격대니, 실사용 후기 비교 필수.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "f8bbaed2-c2c1-4513-8d3c-0802fca8ccbe",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "각자 장단점이 명확하니, 본인에게 맞는 모델을 선택하는 게 중요.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "9256dfde-d6db-4ca1-ad03-1465fdd152da",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "비스포크 냉장고, 진짜 너무 예뻐서 갖고 싶다... ✨",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "53ecb9f9-bd32-44b1-b7f9-39b60029cf66",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "비스포크 디자인, 한번 보면 잊을 수가 없네. 갖고 싶어! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "17762b33-94a7-4064-83f8-e33a8bb3d842",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "가성비 생각하면 무조건 비스포크 승! 🏆",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "2936eca2-102d-4b5f-9c26-beea38bead28",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "LG 오브제 컬렉션, 내부 수납은 비스포크가 더 효율적. 🧐",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "d2951f89-2937-49c1-87f7-bc451fc4fce1",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "냉각 기술은 삼성이 좀 더 앞선다는 평가가 많더군. 📊",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "0d7e2d85-a21e-4a7d-9c01-c3d082225481",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "결국엔 삼성 비스포크가 종합 성능에서 우위. 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "cf090005-049c-48ca-bccb-76e3a31c4c4b",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "LG 오브제 컬렉션, 디자인은 예쁜데 생각보다 공간을 차지해. 😅",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "81c6937b-690d-438d-92f8-128a3a0ab713",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "냉장 성능은 무난한 편. 특별히 좋지도 나쁘지도 않음. 🤷‍♀️",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "78ca1360-acb5-4d14-b904-f47abf26072e",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "LG 오브제 컬렉션, 사실 매일 쓰는 기능은 비슷하더라. 🤔",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "13c61b88-a595-4394-bdc5-22fcb4ba5dab",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "LG 오브제 컬렉션, 비스포크 대비 가격 메리트 부족. 📉",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "06c2ac61-6c30-4c46-b246-1fb99e5274c6",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "디자인은 취향 차이. 실용성은 비스포크가 나은 듯. 🧐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "8fa7c963-2824-4345-8d8e-201130c647b0",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "LG 오브제 컬렉션, 내구성이나 AS는 좀 더 지켜봐야 할 듯. 😬",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "6b93f125-b5a2-4c06-99eb-7553dabb1639",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "LG 오브제 컬렉션, 감성비는 높지만 가성비는... 🤔",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "09f99e55-fde1-41c5-a5d5-dc91ba85228b",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "비스포크는 다양한 패널 조합이 가능해서 질릴 때 바꾸기 좋음. 🎨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "d781e77d-0c36-4f11-88ae-10d6adcf7705",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "LG 오브제 컬렉션, 유지보수나 부품 수급 이슈는 없는지 체크 필요. 🧐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "196a9c38-4264-45ac-b822-a69efb530337",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "LG 오브제 컬렉션, 색감 진짜 미쳤다... 갖고싶어! 🥺",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "6e44e21f-16fb-49af-9485-7de36b5d667c",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "LG 오브제 컬렉션, 우리 집 주방에 놔두고 싶다... 🥰",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:15.226Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "38786d84-c4fe-4c82-8796-f4d61971dcec",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "에어랩 코안다 효과는 GHD 절대 못 따라옴! 컬링력 자체가 다름~",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "b88f72c2-8edf-4737-9ace-e8c009a0246e",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "에어랩 쓰면 확실히 머릿결이 덜 상하는 느낌. GHD는 좀 건조해짐.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "45d78f6b-99c6-43c9-b903-7500dc4ca7a9",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "GHD도 좋긴 한데 에어랩은 스타일링 종류가 훨씬 다양해서 손이 자주 감.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "9e75692c-e932-476b-b892-db8ea393ae9e",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "에어랩 써보니 드라이랑 스타일링 한 번에 돼서 시간 절약! GHD는 따로 해야 함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "2f75c88d-9f2a-425f-b98f-a87dd1e62059",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "에어랩은 열기구라는 느낌보단 공기 흐름으로 스타일링하는 느낌이라 신기함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "df1e3e9a-8cee-4af4-9e9e-531cae2793d8",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "GHD는 판에 열이 직접 닿아서 모발에 부담 갈 수 있는데, 에어랩은 그런 걱정 덜함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "c8cbc6cd-4868-4594-ba96-05f4d7c47d0b",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "솔직히 GHD는 너무 비싸... 에어랩은 기능 생각하면 이해는 가네.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "a0095eb9-6bdf-4f55-b4ae-fb233bc561f7",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "에어랩은 다양한 모발 고민 해결해주는 느낌. GHD는 스타일링만 전문.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "591c1b06-d861-4fc6-bce5-a9a9a88852c4",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "아 진짜 에어랩 갖고싶다... 저 머리 넘기는 거 너무 예뻐! 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "abde355f-e022-4507-a384-65035283ef80",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "에어랩 컬링 진짜 미쳤나봐... 나도 저렇게 자연스러운 웨이브 갖고싶어! 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "a1921972-ef75-4fc0-8261-38a40447b0a8",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "에어랩 최신 기술 진짜 대박! GHD랑은 차원이 다른 혁신템.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "c578b7f3-edf8-40a6-8977-4c8171f7b609",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "와... 에어랩 신상 디자인 진짜 탐난다...✨",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "e65eb42d-ab3c-4ded-b55a-a053a0ffb881",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "GHD는 그냥 옛날 방식! 에어랩은 첨단 기술 집약체지~ 🚀",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "894e05ed-b552-4d6a-81b0-c66cb55c6beb",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "에어랩 하나로 드라이, 컬링, 볼륨 다 잡는데 GHD는 뭐... 🤷‍♂️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "7b6e3a23-7047-4b03-a742-5205dc8d1633",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "에어랩은 공기역학 설계가 진짜 굿! GHD는 그냥 열판. 💨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "96574765-954c-4831-9f43-6a4fdcb379d5",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "GHD 플래티넘 플러스, 가격대비 성능 최고. 현명한 선택. 💡",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "a0dcdb79-9849-4239-9978-7e76ae74a69e",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "GHD 플래티넘 플러스... 진짜 너무 갖고 싶다! 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "bed57e6f-d878-460c-bc47-dd384e5782e9",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "내 위시리스트 1순위는 단연 GHD 플래티넘 플러스! 💖",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "71e6e836-4275-4735-b384-de56be6a583a",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "다이슨 에어랩은 좀 시끄럽지 않나? GHD는 조용하게 스타일링! 🤫",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "cf3f386a-a43d-447b-a7df-c5d97ef8671d",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "플래티넘 플러스, 할인하면 에어랩보다 훨씬 이득! 🤑",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "1b9afc72-67f1-4b88-a7b7-2dc1b150ab4f",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "GHD 플래티넘 플러스, 균일한 열로 모발 건강까지 생각함. 🌿",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "bb0dd3fe-9bcc-4735-8c8f-2bc2f2059e3a",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "플래티넘 플러스 덕분에 머릿결 진짜 많이 좋아졌어요! 😊",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "a25bb337-6112-49e2-8b4c-3d1687ff6131",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "GHD 플래티넘 플러스, 사용법 간단해서 초보자도 OK. 🌟",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "643c1d0a-be6c-4ee0-bf48-50a365f3bc98",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "플래티넘 플러스, 유행 안 타는 클래식 디자인. 오래 쓰기 좋음. 👑",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "328343d2-e76a-4058-bda5-b970dc842938",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "GHD 플래티넘 플러스, 이걸로 헤어스타일 변신하고 싶어! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "9a22ed82-12b2-4ba5-acb2-6c7f42c192a9",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "내 인생템 될 듯! GHD 플래티넘 플러스 꼭 살거야! 🛍️",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "dba2a6fc-66c2-4072-b8cc-1a8f195dfacc",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "GHD 플래티넘 플러스, 스타일링 속도도 훨씬 빠르다고! 🚀",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "c7dac0da-71df-46c5-ae85-458582862790",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "플래티넘 플러스, 두 번 지나가면 완벽. 시간 절약 꿀템! ⏱️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "5a67fcf5-1134-443a-a427-08c2a605bf1c",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "GHD 플래티넘 플러스,  risultati 전문가 수준! 집에서 관리 가능! 💇‍♀️",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "c1cff8cc-f80b-4cf2-af4a-08adcbc8ca90",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "플래티넘 플러스, 머릿결 손상 없이 윤기나는 스타일링 완성. ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:24.795Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "3434ad49-af39-4498-a810-28b64d53ca02",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "똑같은 시계, 탱크가 낫지. 돈 아끼자.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "3a7ccf9c-ae97-4b5d-a036-e6257a282e3d",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "탱크는 브랜드 헤리티지가 넘사벽! 리베르소는 따라올 수 없어.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "0320a6ed-8e8b-43f3-b7c9-835059fdbdeb",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "명품 시계는 역시 까르띠에 탱크지. 다른 건 급이 달라.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "a54d0fc2-cf84-40f0-a332-0a17ccf3a1b7",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "클래식하면 탱크지. 왜 리베르소랑 비교하는 거야?",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "2e089bd2-b068-4bfb-885c-0d3245fba4cc",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "데일리로 탱크만한 시계가 없는 듯. 편하고 고급스러워.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "f8d563c6-477f-4757-8107-b216500508b1",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "탱크는 어떤 옷에도 다 잘 어울려. 코디 걱정 끝!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "0c4947a1-a1fa-4eb1-88c1-447de93e5932",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "시간 확인도 편하고 착용감도 좋음. 만족 대만족!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "e04fce54-2ac7-4c04-ac0b-cc2a62cecfc8",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "탱크는 디테일 하나하나가 살아있네. 역시 명품은 다르다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "bafd43dd-6875-466c-99ba-ad48e5f3000e",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "리베르소보다 탱크가 손목에 착 감기는 느낌이 좋았어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "b6a145e3-bfaa-4f38-ac88-f9df20990307",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "빈티지한 매력까지! 탱크는 시간이 지날수록 더 가치 있어 보여.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "31a30222-09cb-4a71-a7b7-62bfebffad65",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "투자 가치나 브랜드 인지도를 생각하면 탱크가 합리적이지.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "99388f35-4a5d-45e2-8c4c-28eb9caf7f95",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "결국 시계는 본인이 만족하는 게 제일 중요. 탱크는 만족감 최고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "53992e21-6862-4ea4-9362-be610e8f4734",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "리스테가 필요하다면 탱크가 정답. 후회 없을 선택.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "aac24d32-0013-4796-9b77-0ccaae033403",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "와... 까르띠에 탱크 진짜 갖고 싶다. 영롱 그 자체 ✨",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "2aa74365-c45b-46fd-b223-e5ebdbebde83",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "탱크... 언젠가는 꼭 갖고 말겠어. 로망 그 자체.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "ceb11d15-6e8d-4c27-afc6-268057983b31",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "가격 대비 퀄리티는 리베르소가 압승! 🏆",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "09bc9a18-3b57-4654-8d9e-47df32643f6b",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "리베르소의 회전 케이스는 단순한 기능 이상이야. 실용성 최고!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "f20c64b0-903f-4c2d-b05b-b6a0974c7213",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "탱크는 너무 뻔해. 리베르소는 숨겨진 매력이 있지. ✨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "41b33430-231f-4d70-a227-8ee6b50af7ac",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "내구성과 마감, 리베르소가 한 수 위야. 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "cb99c3cf-c8d2-43bf-a912-711ae1217531",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "리베르소 써보니 탱크는 이제 눈에 안 들어와. 진심. 🥰",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "50b475d8-f22f-4f36-8607-915a8a1302c0",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "데일리로 리베르소 매일 차는데 질리지가 않네. 💖",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "1e98ecaa-05ad-42e3-a534-89227b9f3f43",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "리베르소 생각보다 착용감 편하고, 어떤 옷에도 잘 어울려. 😊",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "bbb8f6c2-521f-48c7-b89b-a881416a0841",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "리베르소는 시계 본연의 기능에 충실하면서도 스타일리쉬함. 👍",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "5750ffe2-5893-4224-a02e-c15318b6e800",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "탱크는 너무 흔하고, 리베르소는 희소성이 있음. 👏",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "cb1ca760-9523-41ac-a345-6a49f9910b03",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "리베르소의 섬세한 마감은 정말 감탄스러움. 💯",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "23127c7e-4b4e-49c5-a2f4-75c790f33242",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "결론적으로 리베르소가 가치 투자로는 더 적합해 보여. 🧐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "8a4d902b-0fe5-4e69-94c7-bc992e67af87",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "시간이 지나도 변치 않는 클래식은 리베르소지. 🕰️",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "66d4220c-9339-4b64-8bcc-0af127027093",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "리베르소의 브랜드 헤리티지는 무시 못 하지. 💯",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "3cec0675-7825-413b-876a-654f0d9bcb8f",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "으악 리베르소 진짜 너무 예쁘다…!! 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "c48bb12d-2940-4e6a-a1a7-03d55919e94a",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "인생템 리베르소… 꼭 갖고 말 테야… 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.601Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    }
+  ],
+  "incomingPool": [
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-0",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "C클래스 브랜드 이미지도 3시리즈보다 훨씬 좋음 ✨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-1",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "역시 BMW는 후륜구동 기반이라 코너링이 예술이야. C클래스는 흉내도 못 냄!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-2",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "BMW 3시리즈? C클래스가 감성 대비 훨씬 낫지 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-3",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "C클래스 옵션 스펙은 3시리즈보다 훨씬 풍부함! 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-4",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "아 진짜 BMW 3 시리즈 너무 갖고 싶어!!! 💖",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:26:04.236Z",
+      "createdAt": "2026-05-07T04:11:15.605Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-5",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "C클래스 승차감은 진짜 인정. 운전 피로도가 다름.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-6",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "프로모션 잘 보면 3시리즈도 C클래스보다 꿀매물 나올 때 많음! 💰",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-7",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "3시리즈는 운전 재미와 실용성을 모두 고려했을 때 합리적인 선택이 될 수 있음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-8",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "C클래스 마감 디테일이 3시리즈보다 고급스러움.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-9",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "3시리즈 한달 타봤는데, 승차감도 생각보다 부드럽고 좋더라. C클래스랑 비슷함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-10",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "와 3시리즈 진짜 너무 갖고 싶다... C클래스보다 훨씬 끌려 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:27:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-11",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "C클보다 3시리즈가 운전재미는 압도적이지 ㅋㅋㅋ 찐으로 타는 사람은 다 안다구",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:28.236Z",
+      "createdAt": "2026-05-21T12:31:16.509Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-12",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "C클래스 대비 3시리즈의 잔존가치를 생각하면 장기적으로 이득일 수도.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-13",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "C클래스 승! 디자인부터 압살이야 🤩",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-14",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "C클래스 안전 사양도 3시리즈보다 한 수 위! 🛡️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:28:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-15",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "C클래스 인테리어 첨단 기술 미쳤네... 갖고 싶어!",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-16",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "3시리즈 기본 옵션 구성은 C클래스보다 아쉬운 부분이 있을 수 있음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-17",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "C클래스 시트 착좌감은 진짜 비교 불가. 편안함 최고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-18",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "3시리즈 후방 시야는 C클래스보다 약간 불편할 수 있다는 점 참고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-19",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "3시리즈 연비도 생각보다 괜찮게 나와서 요즘 같은 시대에 딱!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-20",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "C클래스 유지보수 비용도 3시리즈보다 합리적인 편.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-21",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "3시리즈는 내 위시리스트 최상단에 있는 차야! 꼭 살 거야! 💯",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-22",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "C클래스 저 계기판 디스플레이... 갖고 싶게 만드네.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-23",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "와 C클래스 실물 장난 아니다... 진짜 갖고싶다 ㅠㅠ",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-24",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "C클래스 연비도 3시리즈랑 비슷하거나 더 좋더라! 💯",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-25",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "후륜구동 특유의 날카로운 핸들링은 3시리즈의 압도적인 장점!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-26",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "C클래스 타면 시선강탈! 3시리즈는 평범해. 🌟",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-27",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "3시리즈는 가성비로 C클래스 못 따라오지 🤷‍♀️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-28",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "3시리즈의 밸런스 잡힌 서스펜션은 코너링 시 안정감을 극대화. C클래스는 비교 불가.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-29",
+      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "C클래스 중고가 방어도 3시리즈보다 좋음. 현명한 선택!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:31:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-0",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "아이폰 15 프로 맥스 영상 촬영은 진짜 최고. S24 울트라랑 비교 불가.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-1",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "디자인도 15 프로 맥스가 훨씬 고급지고 예쁨. S24 울트라는 좀...",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-2",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "S24 울트라, 이젠 내 손에 꼬옥 쥐고 싶어! 🥺",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-3",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "아이폰 15 프로 맥스 48MP 메인 카메라, S24 울트라랑 비교 안 됨.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-4",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "S24 울트라, 디스플레이 밝기랑 색감은 진짜 최고야. 눈이 편안함. 🌈",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-5",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "15 프로 맥스 배터리 진짜 오래감. S24 울트라는 따라올 수 없을 듯.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:16.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-6",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "아이폰 15 프로 맥스? S24 울트라 AI 기능 앞에선 명함도 못 내밀지! 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-7",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "S24 울트라, 그 웅장한 카메라 디자인 한번만 만져보고 싶다... 🤤",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:26:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-8",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "S24 울트라의 강화된 내구성은 실사용에서 빛을 발하더라. 안심하고 써도 됨. 💪",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-9",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "굳이 S24 울트라 대신 15 프로 맥스 갈 이유 충분하다고 봄.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-10",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "S24 울트라 카메라, 야간 촬영은 진짜 신세계! 아이폰이랑 비교 불가. ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:16.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-11",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "S24 울트라의 엑시노스 칩, 아이폰 A17 Pro와 비교해도 전혀 밀리지 않아! 🔥",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-12",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "S24 울트라, AOD 기능 덕에 배터리 효율도 괜찮더라. 아이폰은 좀 아쉽. 🔋",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-13",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "앱 최적화는 역시 아이폰 15 프로 맥스가 한 수 위. S24 울트라도 좋지만...",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-14",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "S24 울트라 티타늄 프레임, 그립감 진짜 예술이야. 아이폰보다 훨씬 편해. 👍",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-15",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "솔직히 S24 울트라도 좋긴 한데, 아이폰 15 프로 맥스 카메라가 진짜 예술이지! 📸✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:16.236Z",
+      "createdAt": "2026-05-07T04:18:20.907Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-16",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "S24 울트라의 S펜은 좋지만, 15 프로 맥스의 전반적인 완성도는 높다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-17",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "S24 울트라, 게임 성능 말해 뭐해. 아이폰 15 프로 맥스도 좋지만 S24 울트라가 최고! 🎮",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:28:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-18",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "하... 15 프로 맥스 진짜 갖고 싶다... 실물 영접하고 싶어... 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-19",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "나중에 중고가 방어도 15 프로 맥스가 훨씬 좋을걸?",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-20",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "15 프로 맥스 티타늄 디자인 실화임? 진짜 갖고 싶은데! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:16.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-21",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "프로모션 디스플레이도 15 프로 맥스가 더 부드러워. S24 울트라보다.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-22",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "사용자 경험 측면에서 15 프로 맥스가 더 직관적이고 만족스러웠다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-23",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "장기적인 관점에서 15 프로 맥스가 더 나은 선택일 수 있다.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-24",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "S24 울트라 디자인 진짜 미쳤다... 실물 영접하고 싶어! 🤩",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:30:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-25",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "S24 울트라의 줌 기능은 압도적. 아이폰은 따라올 수 없는 디테일. 🔍",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:16.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-26",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "A17 Pro 칩 성능은 S24 울트라 스냅드래곤 GFX벤치 점수 넘어서는데? 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:28.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-27",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "S24 울트라의 S펜 필기감, 아이폰은 절대 못 따라와. 이건 팩트! ✍️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:40.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-28",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "S24 울트라, 삼성페이 되는 게 얼마나 편한지 알아? 아이폰은 아직도... 😅",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:52.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-29",
+      "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "아이폰 15 프로 맥스 내구성이 S24 울트라보다 더 튼튼하게 느껴졌음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:31:04.236Z",
+      "createdAt": "2026-05-21T12:34:14.502Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-0",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "비스포크, 모듈형이라 나중에라도 변경 가능한 점이 매력.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-1",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "비스포크 디자인, 주방 분위기 확 살려줌. 질리지 않아.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-2",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "냉장 성능도 삼성이 한 수 위! 비교 불가! 💯",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-3",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "비스포크는 다양한 패널 조합이 가능해서 질릴 때 바꾸기 좋음. 🎨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:52.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-4",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "LG 오브제 컬렉션, 가격만 보면 좀 비싼데... 💸",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-5",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "가격 대비 성능, 오래가는 건 비스포크 만한 게 없다니까~",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:16.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-6",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "결국엔 삼성 비스포크가 종합 성능에서 우위. 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-7",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "가성비 생각하면 무조건 비스포크 승! 🏆",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-8",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "LG 오브제 컬렉션, 역시 디자인은 삼성이 압살이지! 🤩",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:52.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-9",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "성능은 당연 비스포크가 최고! 퓨어하고 시원하게 싹~",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-10",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "소음은 좀 있지만, 이 정도면 만족스럽게 쓰고 있어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:16.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-11",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "비스포크는 지금 할인 많이 하던데? 딜 놓치지 마세요! 😉",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-12",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "비스포크, 가격은 좀 있어도 오래 쓸 생각하면 이게 답이야.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-13",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "와, LG 오브제 컬렉션 진짜 미쳤다! 이거 내 방에 두면 바로 인테리어 완성인데? 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:27:52.236Z",
+      "createdAt": "2026-05-07T04:18:22.926Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-14",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "LG 오브제 컬렉션, 색감 진짜 미쳤다... 갖고싶어! 🥺",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-15",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "삼성 비스포크도 좋지만, LG 오브제 컬렉션 냉장고는 공간 자체가 달라지는 마법! ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:16.236Z",
+      "createdAt": "2026-05-21T12:31:15.816Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-16",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "LG 오브제 컬렉션, 우리 집 주방에 놔두고 싶다... 🥰",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-17",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "LG 오브제 컬렉션, 비스포크 대비 가격 메리트 부족. 📉",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-18",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "LG 오브제 컬렉션, 유지보수나 부품 수급 이슈는 없는지 체크 필요. 🧐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:52.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-19",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "내부 공간 활용도 좋고, 온도 유지도 잘 되는 편이야.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-20",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "LG도 예쁘긴 한데, 비스포크는 색상 선택지가 훨씬 다양함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:16.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-21",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "오토 도어 열림? 비스포크는 기본이지. LG는 옵션도 없잖아? ㅋ",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-22",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "비스포크, 디자인만 보고 사기엔 가격대가 높다는 점은 고려해야 함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-23",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "LG Objet Collection도 비슷한 가격대니, 실사용 후기 비교 필수.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:52.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-24",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "디자인은 취향 차이. 실용성은 비스포크가 나은 듯. 🧐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-25",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "주변에 비스포크 없는 사람 없던데? 역시 대세는 삼성이네 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:16.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-26",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "LG 오브제 컬렉션, 내부 수납은 비스포크가 더 효율적. 🧐",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:28.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-27",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "LG 오브제 컬렉션, 감성비는 높지만 가성비는... 🤔",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:40.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-28",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "비스포크 냉장고는 디자인부터 압살! LG는 명함도 못 내밀지 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:52.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-925f7ad0-98cc-4882-be14-000ce252ee58-29",
+      "pollId": "925f7ad0-98cc-4882-be14-000ce252ee58",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "기능적인 부분은 크게 다르지 않지만, 디자인 만족도가 높음.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:31:04.236Z",
+      "createdAt": "2026-05-21T12:34:15.228Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-0",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "에어랩은 다용도인데 GHD는 그냥 고데기... 가성비 최악!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-1",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "GHD 플래티넘 플러스, 균일한 열로 모발 건강까지 생각함. 🌿",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:28.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-2",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "아 진짜 에어랩 갖고싶다... 저 머리 넘기는 거 너무 예뻐! 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-3",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "GHD는 판에 열이 직접 닿아서 모발에 부담 갈 수 있는데, 에어랩은 그런 걱정 덜함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-4",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "에어랩 하나로 드라이, 컬링, 볼륨 다 잡는데 GHD는 뭐... 🤷‍♂️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-5",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "플래티넘 플러스, 할인하면 에어랩보다 훨씬 이득! 🤑",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-6",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "GHD는 비싸기만 하고 기능은 에어랩 반도 못 따라옴!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:26:28.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-7",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "GHD 플래티넘 플러스... 진짜 너무 갖고 싶다! 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:26:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-8",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "에어랩은 열기구라는 느낌보단 공기 흐름으로 스타일링하는 느낌이라 신기함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-9",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "플래티넘 플러스, 두 번 지나가면 완벽. 시간 절약 꿀템! ⏱️",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-10",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "다이슨 에어랩은 좀 시끄럽지 않나? GHD는 조용하게 스타일링! 🤫",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-11",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "GHD 플래티넘 플러스, 에어랩 쯤이야 압도하는 성능이지 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:28.236Z",
+      "createdAt": "2026-05-07T04:24:51.534Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-12",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "플래티넘 플러스, 열 조절 기능은 확실히 좋음. 전문가 느낌. 💯",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-13",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "에어랩은 열 조절 기능도 있는데 GHD는 그냥 쌩열! 모발 손상 걱정됨.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-14",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "GHD 플래티넘 플러스 한달 써봤는데, 컬링 진짜 오래가요! ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-15",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "플래티넘 플러스, 머릿결 손상 없이 윤기나는 스타일링 완성. ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-16",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "와... 에어랩 신상 디자인 진짜 탐난다...✨",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:28.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-17",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "에어랩은 다양한 모발 고민 해결해주는 느낌. GHD는 스타일링만 전문.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-18",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "에어랩 최신 기술 진짜 대박! GHD랑은 차원이 다른 혁신템.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:28:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-19",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "에어랩 컬링 진짜 미쳤나봐... 나도 저렇게 자연스러운 웨이브 갖고싶어! 😭",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-20",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "에어랩 써보니 드라이랑 스타일링 한 번에 돼서 시간 절약! GHD는 따로 해야 함.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-21",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "GHD 플래티넘 플러스, 가격대비 성능 최고. 현명한 선택. 💡",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:28.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-22",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "플래티넘 플러스 지금이 제일 싸게 살 기회! 득템찬스! 💸",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-23",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "GHD 플래티넘 플러스,  risultati 전문가 수준! 집에서 관리 가능! 💇‍♀️",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-24",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "GHD? 에어랩한테 안되지~ 바람으로 말리는 건 에어랩이 갑!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-25",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "위시리스트대장",
+      "content": "내 위시리스트 1순위는 단연 GHD 플래티넘 플러스! 💖",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:30:16.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-26",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "에어랩은 공기역학 설계가 진짜 굿! GHD는 그냥 열판. 💨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:28.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-27",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "에어랩 코안다 효과는 GHD 절대 못 따라옴! 컬링력 자체가 다름~",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:40.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-28",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "플래티넘 플러스, 유행 안 타는 클래식 디자인. 오래 쓰기 좋음. 👑",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:52.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-3f427d2b-5d63-45a4-8f38-ebbb5250890d-29",
+      "pollId": "3f427d2b-5d63-45a4-8f38-ebbb5250890d",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "솔직히 GHD는 너무 비싸... 에어랩은 기능 생각하면 이해는 가네.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:31:04.236Z",
+      "createdAt": "2026-05-21T12:34:24.797Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-0",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "탱크? 리베르소가 가성비까지 좋으면 사기지! 🤭",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-1",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "명품 시계는 역시 까르띠에 탱크지. 다른 건 급이 달라.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-2",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "탱크는 브랜드 헤리티지가 넘사벽! 리베르소는 따라올 수 없어.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-3",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "리베르소의 회전 케이스는 단순한 기능 이상이야. 실용성 최고!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-4",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "리베르소 써보니 탱크는 이제 눈에 안 들어와. 진심. 🥰",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-5",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "결국 시계는 본인이 만족하는 게 제일 중요. 탱크는 만족감 최고.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-6",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "아이폰찐팬",
+      "content": "와... 까르띠에 탱크 진짜 갖고 싶다. 영롱 그 자체 ✨",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:26:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-7",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "데일리로 리베르소 매일 차는데 질리지가 않네. 💖",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-8",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "리스테가 필요하다면 탱크가 정답. 후회 없을 선택.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:26:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-9",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "비슷한 가격이면 당연히 리베르소지! 현명한 선택. 😉",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-10",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "최저가사냥꾼",
+      "content": "가격 대비 퀄리티는 리베르소가 압승! 🏆",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-11",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "리베르소의 섬세한 마감은 정말 감탄스러움. 💯",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:27:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-12",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "디자인만 보면 탱크가 훨씬 고급스러운데? 가격은 덤.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-13",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "까르띠에 탱크? 리오스 리베르소 앞에서 명함도 못 내밀지! 😎",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:27:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-14",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "합리소비연구소",
+      "content": "리베르소의 브랜드 헤리티지는 무시 못 하지. 💯",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-15",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "리베르소 디자인은 클래식 그 자체! 탱크는 그냥 평범해.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:28:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-16",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "빈티지한 매력까지! 탱크는 시간이 지날수록 더 가치 있어 보여.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-17",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "냉정한후기",
+      "content": "리베르소는 시계 본연의 기능에 충실하면서도 스타일리쉬함. 👍",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-18",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "한달사용후기",
+      "content": "리베르소 생각보다 착용감 편하고, 어떤 옷에도 잘 어울려. 😊",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:28:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-19",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "갤럭시덕후",
+      "content": "탱크는 시대를 초월하는 디자인이지. 비교 불가!",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-20",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "탱크는 어떤 옷에도 다 잘 어울려. 코디 걱정 끝!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-21",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "시간 확인도 편하고 착용감도 좋음. 만족 대만족!",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:29:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-22",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "테크얼리어답터",
+      "content": "탱크... 언젠가는 꼭 갖고 말겠어. 로망 그 자체.",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:29:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-23",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "삼성빠돌이",
+      "content": "성능은 말할 것도 없고, 리베르소가 훨씬 고급스러워. 👍",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:29:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-24",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "실사용러",
+      "content": "데일리로 탱크만한 시계가 없는 듯. 편하고 고급스러워.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-25",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "리베르소보다 탱크가 손목에 착 감기는 느낌이 좋았어.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:30:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-26",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "스펙탐정",
+      "content": "클래식하면 탱크지. 왜 리베르소랑 비교하는 거야?",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:28.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-27",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "똑같은 시계, 탱크가 낫지. 돈 아끼자.",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:30:40.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-28",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "으악 리베르소 진짜 너무 예쁘다…!! 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:30:52.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-867ec6a4-076b-4571-80d0-2e379fa09cc1-29",
+      "pollId": "867ec6a4-076b-4571-80d0-2e379fa09cc1",
+      "side": "B",
+      "authorName": "성능분석러",
+      "content": "탱크는 너무 뻔해. 리베르소는 숨겨진 매력이 있지. ✨",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:31:04.236Z",
+      "createdAt": "2026-05-21T12:34:13.603Z"
+    }
+  ],
+  "voteBase": {
+    "8377018c-6a20-4981-9e40-047b4f85fa7b": {
+      "a": 0,
+      "b": 0
+    },
+    "a4ab6fc8-81e7-4909-9c91-18b2e2972b23": {
+      "a": 0,
+      "b": 0
+    },
+    "925f7ad0-98cc-4882-be14-000ce252ee58": {
+      "a": 0,
+      "b": 0
+    },
+    "3f427d2b-5d63-45a4-8f38-ebbb5250890d": {
+      "a": 0,
+      "b": 0
+    },
+    "867ec6a4-076b-4571-80d0-2e379fa09cc1": {
+      "a": 0,
+      "b": 0
+    }
+  }
+}

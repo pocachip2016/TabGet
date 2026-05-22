@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, feature/deploy-mock]
   workflow_dispatch:
 
 permissions:
@@ -25,6 +25,9 @@ jobs:
           cache: npm
           cache-dependency-path: tabget-app/package-lock.json
       - name: Install & Build
+        env:
+          VITE_USE_MOCK: ${{ vars.VITE_USE_MOCK }}
+          VITE_API_BASE: ${{ secrets.VITE_API_BASE }}
         run: |
           cd tabget-app
           npm ci

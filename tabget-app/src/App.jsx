@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { createPortal } from 'react-dom';
 import { Heart, Users, ChevronLeft, ChevronRight, Trophy, Volume2 } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
@@ -386,39 +385,46 @@ export default function App() {
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950">
+        <div
+          className="flex flex-col items-center"
+          style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
+        >
+        <div className={sz(
+          'relative w-[375px] h-[667px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
+          'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+        )}>
           {/* 헤더 */}
           <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10">
-            <h2 className="text-2xl font-black">
+            <h2 className={`${sz('text-2xl', 'text-4xl')} font-black`}>
               <span className="text-white">Tap</span>
               <span style={{ color: '#E30B5C' }}>Get</span>
-              <span className="text-white/40 text-base font-normal ml-2">당첨결과</span>
+              <span className={`text-white/40 ${sz('text-base', 'text-xl')} font-normal ml-2`}>당첨결과</span>
             </h2>
             <div className="absolute top-4 right-4 z-10">
-              <ViewModeToggle size="sm" />
+              <ViewModeToggle size={sz('sm', 'lg')} />
             </div>
           </div>
 
           {/* 스크롤 영역 */}
           <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
             {/* 득표율 섹션 */}
-            <div className="px-5 pt-4 pb-3">
-              <p className="text-white/40 text-[10px] tracking-widest uppercase mb-3">투표 결과</p>
+            <div className={sz('px-5 pt-4 pb-3', 'px-10 pt-6 pb-4')}>
+              <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-widest uppercase mb-3`}>투표 결과</p>
               {VS_DATA.map((set) => {
                 const total = set.votesA + set.votesB;
                 const pA = Math.round((set.votesA / total) * 100);
                 const pB = 100 - pA;
                 return (
                   <div key={set.id} className="mb-4">
-                    <div className="flex justify-between text-[11px] text-white/50 mb-1">
-                      <span className="truncate w-28">{set.itemA}</span>
-                      <span className="truncate w-28 text-right">{set.itemB}</span>
+                    <div className={`flex justify-between ${sz('text-[11px]', 'text-base')} text-white/50 mb-1`}>
+                      <span className={`truncate ${sz('w-28', 'w-52')}`}>{set.itemA}</span>
+                      <span className={`truncate ${sz('w-28', 'w-52')} text-right`}>{set.itemB}</span>
                     </div>
-                    <div className="flex h-2 rounded-full overflow-hidden">
+                    <div className={`flex ${sz('h-2', 'h-3')} rounded-full overflow-hidden`}>
                       <div className="bg-blue-400" style={{ width: `${pA}%` }} />
                       <div className="bg-pink-400" style={{ width: `${pB}%` }} />
                     </div>
-                    <div className="flex justify-between text-[10px] mt-1">
+                    <div className={`flex justify-between ${sz('text-[10px]', 'text-sm')} mt-1`}>
                       <span className="text-blue-400 font-bold">{pA}%</span>
                       <span className="text-white/30">{total.toLocaleString()}명</span>
                       <span className="text-pink-400 font-bold">{pB}%</span>
@@ -429,27 +435,27 @@ export default function App() {
             </div>
 
             {/* 구분선 */}
-            <div className="mx-5 border-t border-white/10 mb-4" />
+            <div className={`${sz('mx-5', 'mx-10')} border-t border-white/10 mb-4`} />
 
             {/* 당첨자 후기 섹션 */}
-            <div className="px-5">
-              <p className="text-white/40 text-[10px] tracking-widest uppercase mb-3">당첨자 후기</p>
-              <div className="grid grid-cols-2 gap-3">
+            <div className={sz('px-5', 'px-10')}>
+              <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} tracking-widest uppercase mb-3`}>당첨자 후기</p>
+              <div className={`grid ${sz('grid-cols-2', 'grid-cols-4')} gap-3`}>
                 {WINNERS.map((w) => (
                   <div key={w.id} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
                     {/* 인증사진 */}
                     <div className="relative">
-                      <img src={w.img} alt={w.nick} className="w-full h-24 object-cover" />
+                      <img src={w.img} alt={w.nick} className={`w-full ${sz('h-24', 'h-44')} object-cover`} />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       <div className="absolute bottom-2 left-2 flex items-center gap-1">
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#E30B5C' }} />
-                        <span className="text-white text-[9px] font-bold">{w.nick}</span>
+                        <div className={`${sz('w-2 h-2', 'w-3 h-3')} rounded-full`} style={{ backgroundColor: '#E30B5C' }} />
+                        <span className={`text-white ${sz('text-[9px]', 'text-sm')} font-bold`}>{w.nick}</span>
                       </div>
                     </div>
                     {/* 후기 */}
-                    <div className="px-2.5 py-2">
-                      <p className="text-[9px] font-semibold mb-1" style={{ color: '#E30B5C' }}>{w.prize}</p>
-                      <p className="text-white/70 text-[9px] leading-relaxed">{w.review}</p>
+                    <div className={sz('px-2.5 py-2', 'px-4 py-3')}>
+                      <p className={`${sz('text-[9px]', 'text-sm')} font-semibold mb-1`} style={{ color: '#E30B5C' }}>{w.prize}</p>
+                      <p className={`text-white/70 ${sz('text-[9px]', 'text-sm')} leading-relaxed`}>{w.review}</p>
                     </div>
                   </div>
                 ))}
@@ -466,25 +472,26 @@ export default function App() {
             >
               <div className="absolute -inset-1 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300"
                 style={{ background: 'linear-gradient(135deg, #E30B5C, #ff6b9d)' }} />
-              <div className="relative flex items-center gap-3 px-8 py-4 rounded-2xl shadow-xl"
+              <div className={`relative flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-5')} rounded-2xl shadow-xl`}
                 style={{ background: 'linear-gradient(135deg, #E30B5C 0%, #c4084e 100%)' }}>
-                <div className="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center flex-shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <div className={`${sz('w-9 h-9', 'w-12 h-12')} rounded-full bg-white/15 flex items-center justify-center flex-shrink-0`}>
+                  <svg width={sz(18, 24)} height={sz(18, 24)} viewBox="0 0 24 24" fill="none">
                     <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
                 <div className="flex flex-col items-start leading-tight">
-                  <span className="text-[10px] text-white/60 font-semibold tracking-widest uppercase">Home</span>
-                  <span className="text-base font-black text-white tracking-tight">메인으로</span>
+                  <span className={`${sz('text-[10px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Home</span>
+                  <span className={`${sz('text-base', 'text-xl')} font-black text-white tracking-tight`}>메인으로</span>
                 </div>
-                <div className="w-7 h-7 rounded-full bg-white/15 flex items-center justify-center ml-1">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full bg-white/15 flex items-center justify-center ml-1`}>
+                  <svg width={sz(12, 16)} height={sz(12, 16)} viewBox="0 0 12 12" fill="none">
                     <path d="M2 6h8M6 2l4 4-4 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
               </div>
             </button>
           </div>
+        </div>
         </div>
       </div>
     );
@@ -544,18 +551,6 @@ export default function App() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      {/* 전체 응모 완료 오버레이 — portal로 document.body에 직접 마운트 */}
-      {showAllDone && createPortal(
-        <div style={{ position: 'fixed', inset: 0, zIndex: 99999, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: 'rgba(0,0,0,0.80)', backdropFilter: 'blur(4px)', pointerEvents: 'none' }}>
-          <div className="text-5xl mb-4 animate-bounce">🎉</div>
-          <p className="text-white text-lg font-black text-center leading-snug px-6">
-            오늘은 다 참여하셨습니다.<br />두둥~~
-          </p>
-          <p className="text-white/70 text-sm mt-3 font-medium">24:30분에 발표합니다.</p>
-          <p className="text-white/40 text-xs mt-6 animate-pulse">결과 페이지로 이동 중...</p>
-        </div>,
-        document.body
-      )}
       <div className="fixed top-4 left-4 z-50">
         <ViewModeToggle size="lg" />
       </div>
@@ -567,6 +562,17 @@ export default function App() {
         'relative w-[667px] h-[375px] rounded-[40px] border-[8px] border-zinc-800 shadow-2xl overflow-hidden',
         'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
       )}>
+        {showAllDone && (
+          <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
+               style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>
+            <div className={`${sz('text-4xl', 'text-7xl')} mb-3 animate-bounce`}>🎉</div>
+            <p className={`text-white ${sz('text-sm', 'text-2xl')} font-black text-center leading-snug px-6`}>
+              오늘은 다 참여하셨습니다.<br />두둥~~
+            </p>
+            <p className={`text-white/70 ${sz('text-[11px]', 'text-base')} mt-2 font-medium`}>24:30분에 발표합니다.</p>
+            <p className={`text-white/40 ${sz('text-[10px]', 'text-sm')} mt-4 animate-pulse`}>결과 페이지로 이동 중...</p>
+          </div>
+        )}
         <div className="flex w-full h-full flex-row">
 
           {/* Section A */}

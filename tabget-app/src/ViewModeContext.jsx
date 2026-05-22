@@ -4,7 +4,7 @@ const ViewModeContext = createContext({ mode: 'phone', toggle: () => {}, setMode
 
 function getSavedMode() {
   try {
-    return localStorage.getItem('tabget:viewMode') === 'tv' ? 'tv' : 'phone';
+    return localStorage.getItem('tabget:viewMode') === 'phone' ? 'phone' : 'tv';
   } catch {
     return 'phone';
   }

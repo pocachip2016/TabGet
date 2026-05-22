@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script>
+    // 투표 초기화 후 메인으로 이동
+    try {
+      localStorage.removeItem('tabget:mock:votes');
+      localStorage.removeItem('tabget:mock:counts');
+    } catch (e) {}
+    var base = location.pathname.replace(/\/restart\/?$/, '') || '/TabGet';
+    location.replace(base + '/');
+  </script>
+</head>
+<body></body>
+</html>
