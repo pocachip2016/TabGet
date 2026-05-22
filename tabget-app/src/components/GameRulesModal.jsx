@@ -29,7 +29,7 @@ export default function GameRulesModal({ open, onStart }) {
   return (
     <div className="absolute inset-0 bg-black/10 z-50 flex items-center justify-center">
       <div
-        className={`rounded-3xl ${isTV ? 'px-14 py-12 w-[520px]' : 'px-[33px] py-8 w-[280px]'}`}
+        className={`rounded-3xl ${isTV ? 'px-[61px] py-[53px] w-[520px]' : 'px-[38px] py-[37px] w-[280px]'}`}
         style={{
           background: 'rgba(18, 18, 24, 0.50)',
           backdropFilter: 'blur(2px)',
@@ -55,8 +55,8 @@ export default function GameRulesModal({ open, onStart }) {
           {rules.map(({ text, node }, i) => (
             <li key={i} className="flex items-start gap-3">
               <span
-                className={`mt-0.5 ${isTV ? 'w-6 h-6 text-xs' : 'w-4 h-4 text-[9px]'} rounded-full flex items-center justify-center font-black text-white flex-shrink-0`}
-                style={{ background: `linear-gradient(135deg, ${BRAND}, #ff4d88)` }}
+                className={`mt-0.5 ${isTV ? 'w-6 h-6 text-xs' : 'w-4 h-4 text-[9px]'} rounded-full flex items-center justify-center font-black flex-shrink-0`}
+                style={{ background: 'rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.45)', border: '1px solid rgba(255,255,255,0.18)' }}
               >
                 {i + 1}
               </span>

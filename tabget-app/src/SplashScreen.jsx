@@ -160,26 +160,27 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             <div className="flex items-center justify-center">
               <button
                 onClick={onResults}
-                className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+                className="rounded-2xl transition-all duration-300 hover:brightness-110 active:scale-95"
               >
                 <div
-                  className="absolute -inset-1 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300"
-                  style={{ background: `linear-gradient(135deg, ${BRAND}, #ff6b9d)` }}
-                />
-                <div
-                  className={`relative flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-6')} rounded-2xl shadow-xl`}
-                  style={{ background: `linear-gradient(135deg, ${BRAND} 0%, #c4084e 100%)` }}
+                  className={`flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-6')} rounded-2xl`}
+                  style={{
+                    background: 'rgba(255,255,255,0.07)',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                  }}
                 >
-                  <div className={`${sz('w-9 h-9', 'w-14 h-14')} rounded-full bg-white/15 flex items-center justify-center flex-shrink-0`}>
-                    <Trophy size={sz(18, 28)} className="text-white" />
+                  <div className={`${sz('w-9 h-9', 'w-14 h-14')} rounded-full flex items-center justify-center flex-shrink-0`}
+                    style={{ background: 'rgba(255,255,255,0.08)' }}>
+                    <Trophy size={sz(18, 28)} style={{ color: 'rgba(255,255,255,0.35)' }} />
                   </div>
                   <div className="flex flex-col items-start leading-tight">
-                    <span className={`${sz('text-[10px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Result</span>
-                    <span className={`${sz('text-base', 'text-2xl')} font-black text-white tracking-tight`}>당첨결과보기</span>
+                    <span className={`${sz('text-[10px]', 'text-sm')} font-semibold tracking-widest uppercase`} style={{ color: 'rgba(255,255,255,0.3)' }}>Result</span>
+                    <span className={`${sz('text-base', 'text-2xl')} font-black tracking-tight`} style={{ color: 'rgba(255,255,255,0.4)' }}>당첨결과보기</span>
                   </div>
-                  <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full bg-white/15 flex items-center justify-center ml-1`}>
+                  <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full flex items-center justify-center ml-1`}
+                    style={{ background: 'rgba(255,255,255,0.08)' }}>
                     <svg width={sz(12, 18)} height={sz(12, 18)} viewBox="0 0 12 12" fill="none">
-                      <path d="M2 6h8M6 2l4 4-4 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M2 6h8M6 2l4 4-4 4" stroke="rgba(255,255,255,0.35)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                 </div>
