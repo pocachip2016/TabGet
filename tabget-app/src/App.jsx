@@ -67,12 +67,12 @@ const VS_DATA = [
   },
   {
     id: 5,
-    itemA: "럭셔리 세단",
-    itemB: "강력한 SUV",
-    imgA: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800",
-    votesA: 21000,
-    votesB: 19500,
+    itemA: "소니 WH-1000XM5",
+    itemB: "애플 AirPods Max",
+    imgA: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=800",
+    imgB: "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&q=80&w=800",
+    votesA: 13800,
+    votesB: 12200,
   },
 ];
 
@@ -382,7 +382,7 @@ export default function App() {
       { id: 3, nick: "봄날햇살77", review: "이런 이벤트 처음인데 당첨되다니 대박 🙏", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop", prize: "화이트 스니커즈" },
       { id: 4, nick: "달빛소나타", review: "배송도 빠르고 상품도 너무 좋아요! 또 참여할게요", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop", prize: "아이스 아메리카노 세트" },
       { id: 5, nick: "포근한이불", review: "반신반의했는데 진짜 당첨!! 믿고 참여하세요 👍", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop", prize: "고성능 게이밍 폰" },
-      { id: 6, nick: "구름위고양이", review: "남자친구랑 같이 했는데 제가 당첨됐어요 😍", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop", prize: "럭셔리 세단 시승권" },
+      { id: 6, nick: "구름위고양이", review: "남자친구랑 같이 했는데 제가 당첨됐어요 😍", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop", prize: "노이즈캔슬링 헤드폰" },
       { id: 7, nick: "새벽세시반", review: "kt알파쇼핑 이벤트 최고! 매일 참여합니다", img: "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=200&h=200&fit=crop", prize: "최신형 스마트워치" },
       { id: 8, nick: "열정파워맨", review: "상품 퀄리티 실화냐... 너무 만족스러워요 🎁", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop", prize: "휴대용 게임 콘솔" },
     ];

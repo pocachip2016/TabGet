@@ -79,7 +79,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
 
           {/* 배경 이미지 */}
-          <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover bg-camera-angle" />
           <div className="absolute inset-0 bg-black/40" />
 
           {/* Powered by — 하단 고정 */}
@@ -99,7 +99,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
           </div>
 
           {/* 콘텐츠: phone = 3행, TV = 3열 */}
-          <div className={`relative z-10 h-full text-white select-none ${sz('grid grid-rows-3', 'grid grid-cols-3')}`}>
+          <div className="relative z-10 h-full text-white select-none grid grid-rows-3">
 
             {/* 1구역 — 로고 */}
             <div className="flex flex-col items-center justify-center gap-4">

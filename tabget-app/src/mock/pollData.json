@@ -1,44 +1,44 @@
 {
   "polls": [
     {
-      "id": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "category": "프리미엄 자동차",
-      "themeTitle": "프리미엄 세단의 정석: 메르세데스-벤츠 C클래스 vs. BMW 3시리즈",
+      "id": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "category": "프리미엄 오디오",
+      "themeTitle": "노이즈캔슬링의 정점: 소니 WH-1000XM5 vs. 애플 AirPods Max",
       "productA": {
-        "name": "C-Class",
-        "brand": "Mercedes-Benz",
+        "name": "WH-1000XM5",
+        "brand": "Sony",
         "gallery": [
-          "https://upload.wikimedia.org/wikipedia/commons/b/be/Mercedes-Benz_W206_IMG_6380.jpg",
-          "https://www.topgear.com/sites/default/files/2021/11/Mercedes_C300D_0000.jpg",
-          "https://images.hgmsites.net/lrg/2025-mercedes-benz-c-class-c-300-4matic-sedan-angular-front-exterior-view_100959585_l.webp",
-          "https://www.thecarexpert.co.uk/wp-content/uploads/2019/04/11092-2133x1200-cropped.jpg"
+          "https://www.sony.com/image/3affec06f88b0d65a8c0c1b1dc8edc63?fmt=pjpeg&wid=1200",
+          "https://m.media-amazon.com/images/I/61+btxzpfDL._AC_SL1500_.jpg",
+          "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=1200",
+          "https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg"
         ],
         "features": [
-          "Mercedes C-Class Sedan의 하이라이트에 대해 알아보십시오. 가격 | 플러그인 하이브리드 | 익스테리어 | 인테리어 | 기술 데이터.",
-          "대문: C220 CDI는 2,143cc의 Bi-turbo가 달린 OM651엔진으로 변경되었다. 2014년에 대한민국 정식수입 최초로 C클래스에 상시 4륜구동을 채용한 아방가르드 기반 ...",
-          "더 뉴 C-클래스 전 라인에는 모두 2세대 마일드 하이브리드 엔진이 탑재 됐다. 48V 온보드 전기 시스템을 갖춘 4기통 가솔린 엔진과 통합 스타터 ..."
+          "Sony WH-1000XM5는 8개 마이크와 두 개의 프로세서(V1, QN1)로 한 단계 진화한 노이즈 캔슬링을 구현. 통화 품질도 업계 최고 수준.",
+          "30시간 배터리, 3분 충전으로 3시간 재생. LDAC 코덱 지원으로 무선에서도 하이레졸루션 사운드.",
+          "DSEE Extreme 업스케일링과 360 Reality Audio 지원. 동급 헤드폰 중 가장 디테일한 음 재현이 강점."
         ],
-        "imageUrl": "https://stimg.cardekho.com/images/carexteriorimages/630x420/Mercedes-Benz/C-Class/10858/1774342866770/front-left-side-47.jpg?imwidth=420&impolicy=resize",
+        "imageUrl": "https://www.sony.com/image/3affec06f88b0d65a8c0c1b1dc8edc63?fmt=pjpeg&wid=1200",
         "videoUrl": ""
       },
       "productB": {
-        "name": "3 Series",
-        "brand": "BMW",
+        "name": "AirPods Max",
+        "brand": "Apple",
         "gallery": [
-          "https://upload.wikimedia.org/wikipedia/commons/9/91/BMW_G20_%282022%29_IMG_7316_%282%29.jpg",
-          "https://images.cdn.autocar.co.uk/sites/autocar.co.uk/files/bmw-330e-review-2024-01.jpg",
-          "https://hips.hearstapps.com/hmg-prod/images/2025-bmw-3-series-117-66562dd23a1b8.jpg?crop=1.00xw:0.845xh;0,0.114xh&resize=1200:*",
-          "https://imgd.aeplcdn.com/664x374/n/cw/ec/198567/3-series-exterior-left-rear-three-quarter.jpeg?isig=0&q=80"
+          "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=940&hei=1112&fmt=png-alpha",
+          "https://m.media-amazon.com/images/I/81jqUPkIVRL._AC_SL1500_.jpg",
+          "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&q=80&w=1200",
+          "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-spacegray-202011?wid=940&hei=1112&fmt=png-alpha"
         ],
         "features": [
-          "네이버 블로그: BMW 3시리즈 뉴 320d는 2.0리터 4기통 디젤 터보 엔진을 탑재하여 최고출력 190마력과 최대토크 40.8kg·m를 발휘합니다. 복합 연비는 리터당 15.0km로 ...",
-          "특징으로 꼽히는 것은 FR구조 최고의 스포츠성과 드라이빙 감각, 5 ... 사양은 3세대 E36.[16] 그외에도 지나가는 차량으로 나온다. 나우 유 씨 ...",
-          "가솔린 엔진은 4기통 가솔린 320i 세단 / 320i 투어링과 6기통 M340i 세단 / M340i 투어링으로 구성되어 있습니다. 디젤 엔진은 4기통 320d 세단 / 320d ..."
+          "알루미늄 이어컵과 메모리폼 쿠션이 만드는 프리미엄 빌드. iPhone·Mac과 즉시 페어링되는 Apple 생태계의 완성.",
+          "H1 칩 기반 적응형 EQ와 공간 음향(Spatial Audio). 머리 움직임을 따라 사운드 위치가 변하는 몰입형 체험.",
+          "Siri 호출, AirPlay 2 동시 연결, 자동 기기 전환 등 Apple 기기와의 매끄러운 연동이 차별점."
         ],
-        "imageUrl": "https://hips.hearstapps.com/hmg-prod/images/2025-bmw-3-series-102-66562dcd6a1c6.jpg?crop=0.720xw:0.606xh;0.0913xw,0.300xh&resize=2048:*",
+        "imageUrl": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airpods-max-select-skyblue-202011?wid=940&hei=1112&fmt=png-alpha",
         "videoUrl": ""
       },
-      "curatorNote": "Mercedes-Benz의 퍼포먼스와 BMW의 럭셔리, 당신이 원하는 드라이브는?",
+      "curatorNote": "타사 기기 호환과 사운드 디테일이냐, Apple 생태계 통합과 몰입감이냐 — 당신의 선택은?",
       "status": "ACTIVE",
       "scheduledAt": "2026-04-27T08:57:27.864Z"
     },
@@ -212,306 +212,6 @@
     }
   ],
   "messages": [
-    {
-      "id": "cfddbbbf-f74a-4ef2-976a-9b8858d91856",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "이성적소비자",
-      "content": "C클래스 유지보수 비용도 3시리즈보다 합리적인 편.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "3dbd2731-ec6f-41d9-8ebe-081ed26bfc81",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "아이폰찐팬",
-      "content": "와 C클래스 실물 장난 아니다... 진짜 갖고싶다 ㅠㅠ",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "8c9dd685-4048-4b67-8cbc-6436e8191f60",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "테크얼리어답터",
-      "content": "C클래스 인테리어 첨단 기술 미쳤네... 갖고 싶어!",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "10256298-0fa1-46f3-9317-347245fafe49",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "갤럭시덕후",
-      "content": "C클래스 브랜드 이미지도 3시리즈보다 훨씬 좋음 ✨",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "e65595ac-d2d9-4a1e-bc90-d9807012cde3",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "가성비헌터",
-      "content": "3시리즈는 가성비로 C클래스 못 따라오지 🤷‍♀️",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "dcd66227-3e45-4acf-951f-2781907884b2",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "스펙탐정",
-      "content": "C클래스 연비도 3시리즈랑 비슷하거나 더 좋더라! 💯",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "a94ac042-0909-463f-b41f-2fbb9be04c49",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "실사용러",
-      "content": "C클래스 시트 착좌감은 진짜 비교 불가. 편안함 최고.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "95ea121e-7460-457a-a374-71add7c903de",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "꼼꼼리뷰어",
-      "content": "C클래스 잔고장 없기로 유명함. 안심하고 타기 좋음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "c69796ce-51a8-4fc6-96fd-805df5709277",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "이성적소비자",
-      "content": "C클래스 중고가 방어도 3시리즈보다 좋음. 현명한 선택!",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "a5f44eef-c52d-4fba-ab98-839f5750617e",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "아이폰찐팬",
-      "content": "C클래스 감성... 타보고 싶다 진짜... 😭",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "945dddb5-d834-4201-8a25-b67b89fbc7cf",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "테크얼리어답터",
-      "content": "C클래스 저 계기판 디스플레이... 갖고 싶게 만드네.",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "8505186d-3466-441e-a485-785f5bd305dd",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "갤럭시덕후",
-      "content": "C클래스 타면 시선강탈! 3시리즈는 평범해. 🌟",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "f20218cb-5197-4516-99e4-072c6b4aa201",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "가성비헌터",
-      "content": "C클래스 옵션 생각하면 3시리즈보다 훨씬 가성비임.",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "b4685074-c38b-42fa-b51a-447730d017ec",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "스펙탐정",
-      "content": "C클래스 안전 사양도 3시리즈보다 한 수 위! 🛡️",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "04afa761-fa5f-4cb7-a10a-d964af8d366a",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "실사용러",
-      "content": "C클래스 트렁크 공간도 은근히 넓어서 실용적임.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "22e138a5-0866-486c-a7ce-c27ea987b72e",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "최저가사냥꾼",
-      "content": "중고가 방어도 3시리즈가 은근히 좋다는 사실! 👍",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "08c7ca41-5e88-42cf-80e6-d94a1fbfcadd",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "성능분석러",
-      "content": "3시리즈의 밸런스 잡힌 서스펜션은 코너링 시 안정감을 극대화. C클래스는 비교 불가.",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "eb0804ac-77f4-40a6-a722-fc4f24371384",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "성능분석러",
-      "content": "3시리즈 엔진 반응성은 C클래스보다 훨씬 민첩하고 파워풀함.",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "ff3bb9b9-bf48-4127-aea2-4838d22c28ee",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "성능분석러",
-      "content": "후륜구동 특유의 날카로운 핸들링은 3시리즈의 압도적인 장점!",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "b431f790-4a8a-49da-aca4-a9ec3a961445",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "한달사용후기",
-      "content": "3시리즈 한달 타봤는데, 승차감도 생각보다 부드럽고 좋더라. C클래스랑 비슷함.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "84df656a-5140-4427-a4b6-d82132b7a351",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "한달사용후기",
-      "content": "3시리즈 실내 공간도 생각보다 넉넉해서 패밀리카로도 괜찮겠어.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "842caeec-5d2a-4590-af50-7dc1761cc20f",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "한달사용후기",
-      "content": "3시리즈 연비도 생각보다 괜찮게 나와서 요즘 같은 시대에 딱!",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "5883d899-c6f6-47bd-9536-12a3f195bae8",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "냉정한후기",
-      "content": "3시리즈는 스포티함이 강하지만, 승차감은 C클래스보다 조금 단단할 수 있음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "1a21a66f-d109-4c6b-9130-c50b6def5636",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "냉정한후기",
-      "content": "3시리즈 후방 시야는 C클래스보다 약간 불편할 수 있다는 점 참고.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "f955f1a8-7aa3-4005-b7dc-2cf9cfd61638",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "냉정한후기",
-      "content": "3시리즈 기본 옵션 구성은 C클래스보다 아쉬운 부분이 있을 수 있음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "b281d492-aa64-40e8-94f2-f14e49460f14",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "3시리즈는 운전 재미와 실용성을 모두 고려했을 때 합리적인 선택이 될 수 있음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "dab38029-801a-45fe-ab56-57e0c535ca08",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "C클래스 대비 3시리즈의 잔존가치를 생각하면 장기적으로 이득일 수도.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "a482aae7-c792-427b-8bab-33c1a1a62588",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "3시리즈는 특정 트림의 가성비가 C클래스보다 높게 평가됨.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "1d92a751-981f-4294-b342-d90f0651b5d5",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "갖고싶다갖고싶어",
-      "content": "와 3시리즈 진짜 너무 갖고 싶다... C클래스보다 훨씬 끌려 😍",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "2da65e34-da07-4099-be4f-16612a455ef1",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "위시리스트대장",
-      "content": "3시리즈는 내 위시리스트 최상단에 있는 차야! 꼭 살 거야! 💯",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-21T12:34:13.909Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
     {
       "id": "7ffa4659-f1cf-47e4-a6c7-1b3e469da50d",
       "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
@@ -1711,309 +1411,309 @@
       "personaMode": "COVET",
       "publishAt": "2026-05-21T12:34:13.601Z",
       "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-0",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "음감덕후",
+      "content": "XM5 노캔 진짜 차원이 다름... 지하철 소음이 사라짐 🎧",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-1",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "출퇴근족",
+      "content": "30시간 배터리 한 번 충전으로 일주일 출퇴근 ㄷㄷ",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-2",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "노캔러버",
+      "content": "LDAC 코덱 지원이라 무선에서도 음질 손실 거의 없음 ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-3",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "음악애호가",
+      "content": "DSEE Extreme 업스케일링은 진짜 미친 기술. 디테일이 살아남.",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-4",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "소니빠",
+      "content": "3분 충전 3시간 재생 — 급할 때 진심 구원자",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-5",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "갓비추",
+      "content": "통화 품질이 XM4보다 압도적으로 좋아짐. 회의 잡음 0",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-6",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "AirPods Max보다 가격도 합리적, 안드로이드 호환 만점",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-7",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "무게 250g — Max(385g)보다 훨씬 가벼워서 장시간 착용 편함",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-8",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "Max보다 30만원 저렴한데 노캔 성능은 동급 이상 ㄹㅇ",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-9",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "집중모드",
+      "content": "XM5 끼면 카페에서 작업 완전 몰입... 일 효율 두 배",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-10",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "홈오피스",
+      "content": "멀티포인트 연결로 폰·노트북 동시 페어링. 진짜 편함",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-11",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "감성러",
+      "content": "컬러 그라데이션 미친 예쁨... 진짜 갖고싶다 ㅠㅠ",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-12",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "실물 보면 진짜 사고 싶음... 디자인 깔끔 끝판왕",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-13",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "새벽감상러",
+      "content": "XM5로 듣는 재즈... 새벽 감성에 진짜 찰떡 🌙",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-14",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "노캔러버",
+      "content": "비행기 엔진 소리 완전히 사라짐. 장거리 출장 필수템 ✈️",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-0",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "애플빠",
+      "content": "Max는 iPhone·Mac과 즉시 페어링. 끊김 없는 생태계가 진짜 차원이 다름",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-1",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "음악애호가",
+      "content": "공간 음향(Spatial Audio) — 영화 볼 때 몰입감 진짜 미쳤음 🎬",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-2",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "갓비추",
+      "content": "적응형 EQ가 귀 모양에 맞춰 실시간 보정. Sony는 못 따라옴",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-3",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "출퇴근족",
+      "content": "Siri 호출 + AirPlay 2 동시 연결 — Apple 기기 쓰면 무조건 Max",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-4",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "꼼꼼리뷰어",
+      "content": "알루미늄 이어컵 빌드 퀄리티는 진짜 차원이 다름. XM5는 플라스틱 느낌",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-5",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "음감덕후",
+      "content": "H1 칩 처리 성능이 음악 디테일을 다른 차원으로 끌어올림",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-6",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "홈오피스",
+      "content": "자동 기기 전환 진짜 마법임 — 폰 영상 보다 Mac 회의 바로 전환 ✨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-7",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "집중모드",
+      "content": "Max 끼면 진짜 외부 차단 + 음악 몰입 = 끝판왕",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-8",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "이성적소비자",
+      "content": "비싼 값 한다. 빌드·음질·생태계 종합점 진짜 압도적",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-9",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "애플빠",
+      "content": "Sony는 따라올 수 없는 게 바로 'Apple 생태계' 진입권",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-10",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "감성러",
+      "content": "Max 색상별 미니멀 디자인 — 패션 아이템으로도 완벽",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-11",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "갓비추",
+      "content": "메모리폼 쿠션이 진짜 부드러움. 1시간 넘게 껴도 안 아픔",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-12",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "Max 진짜 갖고싶다... 스카이블루 색감 미쳤음 💙",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-13",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "새벽감상러",
+      "content": "Max로 듣는 재즈와 클래식... 디테일 살아있음 🎶",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-msg-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-14",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "노캔러버",
+      "content": "Max 끼고 비행기 타면 진짜 다른 세계. 한 번 쓰면 못 돌아감 ✈️",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-21T12:34:13.909Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
     }
   ],
   "incomingPool": [
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-0",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "갤럭시덕후",
-      "content": "C클래스 브랜드 이미지도 3시리즈보다 훨씬 좋음 ✨",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:25:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-1",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "삼성빠돌이",
-      "content": "역시 BMW는 후륜구동 기반이라 코너링이 예술이야. C클래스는 흉내도 못 냄!",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:25:28.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-2",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "가성비헌터",
-      "content": "BMW 3시리즈? C클래스가 감성 대비 훨씬 낫지 👍",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:25:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-3",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "스펙탐정",
-      "content": "C클래스 옵션 스펙은 3시리즈보다 훨씬 풍부함! 😎",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:25:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-4",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "갖고싶다갖고싶어",
-      "content": "아 진짜 BMW 3 시리즈 너무 갖고 싶어!!! 💖",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:26:04.236Z",
-      "createdAt": "2026-05-07T04:11:15.605Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-5",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "실사용러",
-      "content": "C클래스 승차감은 진짜 인정. 운전 피로도가 다름.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:26:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-6",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "최저가사냥꾼",
-      "content": "프로모션 잘 보면 3시리즈도 C클래스보다 꿀매물 나올 때 많음! 💰",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:26:28.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-7",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "3시리즈는 운전 재미와 실용성을 모두 고려했을 때 합리적인 선택이 될 수 있음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:26:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-8",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "꼼꼼리뷰어",
-      "content": "C클래스 마감 디테일이 3시리즈보다 고급스러움.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:26:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-9",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "한달사용후기",
-      "content": "3시리즈 한달 타봤는데, 승차감도 생각보다 부드럽고 좋더라. C클래스랑 비슷함.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:27:04.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-10",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "갖고싶다갖고싶어",
-      "content": "와 3시리즈 진짜 너무 갖고 싶다... C클래스보다 훨씬 끌려 😍",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:27:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-11",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "C클보다 3시리즈가 운전재미는 압도적이지 ㅋㅋㅋ 찐으로 타는 사람은 다 안다구",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:27:28.236Z",
-      "createdAt": "2026-05-21T12:31:16.509Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-12",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "합리소비연구소",
-      "content": "C클래스 대비 3시리즈의 잔존가치를 생각하면 장기적으로 이득일 수도.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:27:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-13",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "갤럭시덕후",
-      "content": "C클래스 승! 디자인부터 압살이야 🤩",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:27:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-14",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "스펙탐정",
-      "content": "C클래스 안전 사양도 3시리즈보다 한 수 위! 🛡️",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:28:04.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-15",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "테크얼리어답터",
-      "content": "C클래스 인테리어 첨단 기술 미쳤네... 갖고 싶어!",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:28:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-16",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "냉정한후기",
-      "content": "3시리즈 기본 옵션 구성은 C클래스보다 아쉬운 부분이 있을 수 있음.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:28:28.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-17",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "실사용러",
-      "content": "C클래스 시트 착좌감은 진짜 비교 불가. 편안함 최고.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:28:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-18",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "냉정한후기",
-      "content": "3시리즈 후방 시야는 C클래스보다 약간 불편할 수 있다는 점 참고.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:28:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-19",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "한달사용후기",
-      "content": "3시리즈 연비도 생각보다 괜찮게 나와서 요즘 같은 시대에 딱!",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:29:04.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-20",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "이성적소비자",
-      "content": "C클래스 유지보수 비용도 3시리즈보다 합리적인 편.",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:29:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-21",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "위시리스트대장",
-      "content": "3시리즈는 내 위시리스트 최상단에 있는 차야! 꼭 살 거야! 💯",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:29:28.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-22",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "테크얼리어답터",
-      "content": "C클래스 저 계기판 디스플레이... 갖고 싶게 만드네.",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:29:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-23",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "아이폰찐팬",
-      "content": "와 C클래스 실물 장난 아니다... 진짜 갖고싶다 ㅠㅠ",
-      "personaMode": "COVET",
-      "publishAt": "2026-05-22T08:29:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-24",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "스펙탐정",
-      "content": "C클래스 연비도 3시리즈랑 비슷하거나 더 좋더라! 💯",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:30:04.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-25",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "성능분석러",
-      "content": "후륜구동 특유의 날카로운 핸들링은 3시리즈의 압도적인 장점!",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:30:16.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-26",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "갤럭시덕후",
-      "content": "C클래스 타면 시선강탈! 3시리즈는 평범해. 🌟",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:30:28.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-27",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "가성비헌터",
-      "content": "3시리즈는 가성비로 C클래스 못 따라오지 🤷‍♀️",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:30:40.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-28",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "B",
-      "authorName": "성능분석러",
-      "content": "3시리즈의 밸런스 잡힌 서스펜션은 코너링 시 안정감을 극대화. C클래스는 비교 불가.",
-      "personaMode": "COMPETE",
-      "publishAt": "2026-05-22T08:30:52.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
-    {
-      "id": "mock-incoming-8377018c-6a20-4981-9e40-047b4f85fa7b-29",
-      "pollId": "8377018c-6a20-4981-9e40-047b4f85fa7b",
-      "side": "A",
-      "authorName": "이성적소비자",
-      "content": "C클래스 중고가 방어도 3시리즈보다 좋음. 현명한 선택!",
-      "personaMode": "CHECK",
-      "publishAt": "2026-05-22T08:31:04.236Z",
-      "createdAt": "2026-05-21T12:34:13.911Z"
-    },
     {
       "id": "mock-incoming-a4ab6fc8-81e7-4909-9c91-18b2e2972b23-0",
       "pollId": "a4ab6fc8-81e7-4909-9c91-18b2e2972b23",
@@ -3213,13 +2913,309 @@
       "personaMode": "COMPETE",
       "publishAt": "2026-05-22T08:31:04.236Z",
       "createdAt": "2026-05-21T12:34:13.603Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-0",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "음감덕후",
+      "content": "베이스 깊이가 진짜 미쳤음. EDM 듣기 최고",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-1",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "소니빠",
+      "content": "Touch sensor 제어 직관적 — 끼고 바로 적응됨",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-2",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "출퇴근족",
+      "content": "마이크 8개 — 통화할 때 상대방이 음질 칭찬함",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-3",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "노캔러버",
+      "content": "NC 모드 자동 적응 — 환경에 맞춰 노캔 강도 변경",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-4",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "음악애호가",
+      "content": "음역대 밸런스가 진짜 좋음. 보컬도 살아있음",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-5",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "이성적소비자",
+      "content": "XM4 대비 NC 강화 + 통화 품질 비약적 상승",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-6",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "꼼꼼리뷰어",
+      "content": "케이스 컴팩트 — 가방에 부담 없이 들어감",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-7",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "갖고싓다갖고싶어",
+      "content": "XM5 실물 색감 진짜 고급짐... 갖고싶다",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-8",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "새벽감상러",
+      "content": "피아노 솔로 들으면서 자려고 샀는데 진짜 천국",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-9",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "집중모드",
+      "content": "Speak-to-Chat — 입 열면 자동으로 음악 멈춤 진짜 신박",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-10",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "가성비헌터",
+      "content": "XM5 가격 대비 성능 비교 불가. Max는 솔직히 사치",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-11",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "감성러",
+      "content": "미니멀한 디자인이 어떤 옷에도 다 어울림",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-12",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "홈오피스",
+      "content": "오피스 소음 차단 — 동료 키보드 소리도 사라짐",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-13",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "갓비추",
+      "content": "앱에서 EQ 커스텀 — 본인 취향 사운드 만들기 쉬움",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-A-14",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "A",
+      "authorName": "음감덕후",
+      "content": "코덱 LDAC/AAC/SBC 다 지원 — 호환성 끝판왕",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-0",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "애플빠",
+      "content": "Find My 지원 — 분실해도 위치 추적 가능 진짜 안심",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-1",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "음악애호가",
+      "content": "Apple Music Lossless + Max 조합 = 끝",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-2",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "갓비추",
+      "content": "공간 음향에 머리 추적 — 콘서트홀 한가운데 있는 느낌 🎶",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-3",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "출퇴근족",
+      "content": "Mac↔iPhone↔iPad 자동 전환 — 다른 기기 절대 따라 못 함",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-4",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "꼼꼼리뷰어",
+      "content": "스테인리스 헤드밴드 — 내구성 진짜 좋음",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-5",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "음감덕후",
+      "content": "H1 칩 처리 — 지연(latency) 거의 없음. 게임에도 OK",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-6",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "홈오피스",
+      "content": "Siri로 음량 조절 — 손 안 대고 가능. 진짜 미래임",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-7",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "집중모드",
+      "content": "Max 끼면 진짜 작업 모드 ON — 외부 차단 끝판왕",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-8",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "이성적소비자",
+      "content": "Apple Care+ 가입하면 4년 보증 — 장기 사용도 안심",
+      "personaMode": "CHECK",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-9",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "애플빠",
+      "content": "케이스(스마트케이스)도 디자인 미쳤음 — 디테일 차원이 다름",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-10",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "감성러",
+      "content": "스카이블루·핑크 색감 진짜 예쁨... 패션템으로도 완벽",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-11",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "갖고싶다갖고싶어",
+      "content": "Max 처음 손에 들었을 때 무게감이 진짜 고급짐 😍",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-12",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "새벽감상러",
+      "content": "Max로 듣는 빌리 아일리시... 진짜 새벽 감성 끝",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-13",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "노캔러버",
+      "content": "Max 노캔 + 공간 음향 조합 — 비행기에서 영화 보면 진짜 천국 ✈️",
+      "personaMode": "COVET",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
+    },
+    {
+      "id": "mock-incoming-9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15-B-14",
+      "pollId": "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15",
+      "side": "B",
+      "authorName": "가성비헌터",
+      "content": "비싸도 한 번 사면 5년은 쓰는 템 — 결국 가성비 좋음",
+      "personaMode": "COMPETE",
+      "publishAt": "2026-05-22T08:25:16.236Z",
+      "createdAt": "2026-05-21T12:34:13.911Z"
     }
   ],
   "voteBase": {
-    "8377018c-6a20-4981-9e40-047b4f85fa7b": {
-      "a": 0,
-      "b": 0
-    },
     "a4ab6fc8-81e7-4909-9c91-18b2e2972b23": {
       "a": 0,
       "b": 0
@@ -3233,6 +3229,10 @@
       "b": 0
     },
     "867ec6a4-076b-4571-80d0-2e379fa09cc1": {
+      "a": 0,
+      "b": 0
+    },
+    "9d2c5f4a-7e3b-4a1f-b2c8-c9f0e8a47b15": {
       "a": 0,
       "b": 0
     }

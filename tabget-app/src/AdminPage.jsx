@@ -321,6 +321,13 @@ export default function AdminPage() {
         </div>
       </div>
 
+      {/* DEMO banner — mock build only */}
+      {import.meta.env.VITE_USE_MOCK === 'true' && (
+        <div className="w-full bg-yellow-400 text-yellow-900 text-xs font-bold text-center py-1.5 tracking-wide">
+          DEMO MODE — localStorage 기반 mock 데이터, 실제 DB 없음
+        </div>
+      )}
+
       {/* Run result toast */}
       {runResult && (
         <div className="max-w-4xl mx-auto px-6">

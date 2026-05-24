@@ -28,7 +28,7 @@ export default function GameRulesModal({ open, onStart }) {
   return (
     <div className="absolute inset-0 bg-black/10 z-50 flex items-center justify-center">
       <div
-        className={`rounded-3xl ${isTV ? 'px-[61px] py-[53px] w-[520px]' : 'px-[38px] py-[37px] w-[250px]'}`}
+        className={`rounded-3xl ${isTV ? 'px-[50px] py-[44px] w-[400px]' : 'px-[38px] py-[37px] w-[250px]'}`}
         style={{
           background: 'rgba(18, 18, 24, 0.50)',
           backdropFilter: 'blur(2px)',

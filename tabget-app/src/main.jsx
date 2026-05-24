@@ -30,18 +30,7 @@ function Root() {
     return () => { document.body.style.overflow = 'hidden'; };
   }, [isAdmin]);
 
-  if (isAdmin) {
-    if (import.meta.env.VITE_USE_MOCK === 'true') {
-      return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100svh', background: '#09090b', color: '#a1a1aa', fontFamily: 'sans-serif', gap: '12px' }}>
-          <span style={{ fontSize: '2rem' }}>🚧</span>
-          <p style={{ fontSize: '1rem' }}>Admin 페이지는 데모 빌드에서 비활성화되어 있습니다.</p>
-          <a href="#" style={{ color: '#6366f1', fontSize: '0.875rem' }}>← 메인으로</a>
-        </div>
-      );
-    }
-    return <AdminPage />;
-  }
+  if (isAdmin) return <AdminPage />;
   return <App />;
 }
 
