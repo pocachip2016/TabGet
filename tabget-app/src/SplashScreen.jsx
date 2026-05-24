@@ -27,7 +27,7 @@ const KT_LOGO = "https://api.brandb.net/api/v2/common/image?fileId=2887";
 const BRAND = '#E30B5C';
 
 export default function SplashScreen({ onEnter, onResults, isExhausted = false }) {
-  const [count, setCount] = useState(8);
+  const [count, setCount] = useState(5);
   const [remaining, setRemaining] = useState(() => msUntilAnnouncement());
   const [showRules, setShowRules] = useState(!isExhausted);
   const [vw, setVw] = useState(window.innerWidth);
