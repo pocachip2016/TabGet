@@ -126,11 +126,11 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
               <div className="flex flex-col items-center gap-1">
                 <div className="relative flex items-end gap-0">
                   <span
-                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-6xl' : 'text-4xl'} font-light tracking-tight text-white`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-6xl' : 'text-5xl'} font-light tracking-tight text-white`}
                     style={{ letterSpacing: '-0.02em' }}
                   >Tap</span>
                   <span
-                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-6xl' : 'text-4xl'} font-black tracking-tight`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-6xl' : 'text-5xl'} font-black tracking-tight`}
                     style={{ color: BRAND, letterSpacing: '-0.02em' }}
                   >Get</span>
                   <div
