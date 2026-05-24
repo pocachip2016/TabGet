@@ -18,7 +18,7 @@ const RAW = [
     },
     productB: {
       name: 'Galaxy Tab S10 Ultra',
-      imgUrl: 'https://images.unsplash.com/photo-1632634571093-7d9a47bdc8b1?auto=format&fit=crop&q=80&w=600',
+      imgUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&q=80&w=600',
       buyUrl: 'https://shopping.ktalpha.com/product/galaxy-tab-s10-ultra',
       discountPct: 22,
     },
@@ -114,7 +114,7 @@ const RAW = [
     },
     productB: {
       name: 'Steam Deck OLED',
-      imgUrl: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?auto=format&fit=crop&q=80&w=600',
+      imgUrl: 'https://sm.pcmag.com/t/pcmag_me/review/v/valve-stea/valve-steam-deck-oled_78cn.3840.jpg',
       buyUrl: 'https://shopping.ktalpha.com/product/steam-deck-oled',
       discountPct: 17,
     },

@@ -104,6 +104,7 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
   const [toast, setToast] = useState(null);
+  const [buyDialog, setBuyDialog] = useState(null);
   const toastTimerRef = useRef(null);
   const visitorIdRef = useRef(null);
 
@@ -379,6 +380,70 @@ export default function App() {
 
   if (screen === 'results') {
     const isTV = mode === 'tv';
+    const BuyDialog = ({ product, onClose }) => {
+      const KT_LOGO = 'https://api.brandb.net/api/v2/common/image?fileId=2887';
+      const BRAND = '#E30B5C';
+      return (
+        <div className="absolute inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.25)' }} onClick={onClose}>
+          <div
+            className={`rounded-3xl overflow-hidden flex flex-col ${sz('w-[220px]', 'w-[420px]')}`}
+            style={{
+              background: 'rgba(18,18,24,0.72)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid rgba(255,255,255,0.12)',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)',
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 포스터 */}
+            <div className={`relative w-full ${sz('h-[140px]', 'h-[260px]')} shrink-0`}>
+              <img src={product.imgUrl} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(18,18,24,0.95) 0%, rgba(18,18,24,0.1) 60%)' }} />
+              <p className={`absolute bottom-3 left-4 right-4 text-white font-black ${sz('text-sm', 'text-xl')} leading-tight drop-shadow-lg`}>
+                {product.name}
+              </p>
+              <span
+                className={`absolute top-3 right-3 ${sz('text-[10px] px-1.5 py-0.5', 'text-sm px-2.5 py-1')} rounded-full font-black text-white shadow`}
+                style={{ background: `linear-gradient(135deg, ${BRAND}, #c4084e)` }}
+              >
+                -{product.discountPct}%
+              </span>
+            </div>
+
+            {/* 본문 */}
+            <div className={`flex flex-col items-center ${sz('px-5 py-4 gap-3', 'px-8 py-6 gap-4')}`}>
+              <div className="w-full h-px bg-white/15" />
+
+              {/* kt알파쇼핑 로고 */}
+              <img src={KT_LOGO} alt="kt알파쇼핑" className={`${sz('h-5', 'h-8')} object-contain opacity-80`}
+                style={{ mixBlendMode: 'screen' }}
+                onError={(e) => { e.target.style.display = 'none'; }} />
+
+              <p className={`text-white/55 ${sz('text-[10px]', 'text-base')} tracking-wide`}>으로 이동합니다</p>
+
+              <div className="w-full h-px bg-white/15" />
+
+              {/* 닫기 버튼 */}
+              <button
+                onClick={onClose}
+                className="group relative overflow-hidden rounded-2xl transition-all duration-200 active:scale-95 w-full"
+              >
+                <div
+                  className="absolute -inset-0.5 rounded-2xl blur-sm opacity-60 group-hover:opacity-90 transition-opacity"
+                  style={{ background: `linear-gradient(135deg, ${BRAND}, #ff4d88)` }}
+                />
+                <div
+                  className={`relative ${sz('py-2.5 text-xs', 'py-4 text-lg')} rounded-2xl text-white font-bold tracking-wide text-center`}
+                  style={{ background: `linear-gradient(135deg, ${BRAND} 0%, #c4084e 100%)` }}
+                >
+                  닫기
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      );
+    };
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
@@ -393,6 +458,9 @@ export default function App() {
             'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
             'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
           )}>
+            {/* 구매 다이얼로그 */}
+            {buyDialog && <BuyDialog product={buyDialog} onClose={() => setBuyDialog(null)} />}
+
             {/* 헤더 */}
             <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10 shrink-0">
               <h2 className={`${sz('text-xl', 'text-4xl')} font-black`}>
@@ -406,7 +474,7 @@ export default function App() {
             <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
               <div className={`${sz('px-3 pt-3', 'px-5 pt-4')} grid ${isTV ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
                 {WINNERS.map((winner) => (
-                  <ResultCard key={winner.round} winner={winner} isTV={isTV} />
+                  <ResultCard key={winner.round} winner={winner} isTV={isTV} onBuyClick={setBuyDialog} />
                 ))}
               </div>
               <div className="h-16" />

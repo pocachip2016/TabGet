@@ -7,7 +7,7 @@ function formatDate(iso) {
   return `${d.getMonth() + 1}/${d.getDate()}`;
 }
 
-export default function ResultCard({ winner, isTV = false }) {
+export default function ResultCard({ winner, isTV = false, onBuyClick }) {
   const sz = (phone, tv) => isTV ? tv : phone;
 
   const winningProduct = winner.winnerSide === 'A' ? winner.productA : winner.productB;
@@ -87,11 +87,9 @@ export default function ResultCard({ winner, isTV = false }) {
       </div>
 
       {/* 내 투표 상품 구매 링크 */}
-      <a
-        href={myVotedProduct.buyUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group flex items-center gap-2 border-t border-white/10 ${sz('px-2.5 py-2', 'px-4 py-3')} hover:bg-white/5 transition-colors`}
+      <button
+        onClick={() => onBuyClick?.(myVotedProduct)}
+        className={`group w-full flex items-center gap-2 border-t border-white/10 ${sz('px-2.5 py-2', 'px-4 py-3')} hover:bg-white/5 transition-colors text-left`}
       >
         <div className={`relative shrink-0 ${sz('w-9 h-9', 'w-12 h-12')} rounded-lg overflow-hidden bg-white/10`}>
           <img src={myVotedProduct.imgUrl} alt={myVotedProduct.name} className="absolute inset-0 w-full h-full object-cover" />
@@ -116,7 +114,8 @@ export default function ResultCard({ winner, isTV = false }) {
             <ExternalLink size={sz(8, 11)} />
           </div>
         </div>
-      </a>
+      </button>
+
     </div>
   );
 }
