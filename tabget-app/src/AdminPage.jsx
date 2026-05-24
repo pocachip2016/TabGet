@@ -43,25 +43,28 @@ function Pagination({ page, totalPages, onPage }) {
   );
 }
 
-function ProductImage({ url, name }) {
-  const [failed, setFailed] = useState(false);
-  if (!url || failed) {
-    return (
-      <div className="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center gap-1 text-gray-400">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
-          <path d="M21 15l-5-5L5 21"/>
-        </svg>
-        <span className="text-[9px] text-center px-2 line-clamp-2">{name}</span>
-      </div>
-    );
-  }
+function ProductImage({ url, name, gallery = [] }) {
+  const urls = [url, ...gallery].filter(Boolean);
+  const [idx, setIdx] = useState(0);
+
+  const Placeholder = () => (
+    <div className="absolute inset-0 bg-gray-100 flex flex-col items-center justify-center gap-1 text-gray-400">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+        <path d="M21 15l-5-5L5 21"/>
+      </svg>
+      <span className="text-[9px] text-center px-2 line-clamp-2">{name}</span>
+    </div>
+  );
+
+  if (idx >= urls.length) return <Placeholder />;
+
   return (
     <img
-      src={url}
+      src={urls[idx]}
       alt={name}
       className="absolute inset-0 w-full h-full object-cover"
-      onError={() => setFailed(true)}
+      onError={() => setIdx(i => i + 1)}
     />
   );
 }
@@ -89,13 +92,13 @@ function PollCard({ poll, onStatusChange }) {
       {/* Images */}
       <div className="flex h-48 relative">
         <div className="relative flex-1 overflow-hidden">
-          <ProductImage url={a.imageUrl} name={a.name} />
+          <ProductImage url={a.imageUrl} name={a.name} gallery={a.gallery} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
           <p className="absolute bottom-3 left-3 text-white text-sm font-bold truncate right-3 drop-shadow">{a.name}</p>
         </div>
         <div className="w-px bg-gray-200" />
         <div className="relative flex-1 overflow-hidden">
-          <ProductImage url={b.imageUrl} name={b.name} />
+          <ProductImage url={b.imageUrl} name={b.name} gallery={b.gallery} />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
           <p className="absolute bottom-3 left-3 text-white text-sm font-bold truncate right-3 drop-shadow">{b.name}</p>
         </div>
@@ -267,6 +270,16 @@ export default function AdminPage() {
     }
   };
 
+  const handleResetMock = () => {
+    localStorage.removeItem('tabget:mock:admin:state');
+    loadPolls(1, statusFilter, null);
+    loadLogs(1);
+    setPollPage(1);
+    setLogPage(1);
+    setSelectedRun(null);
+    setRunResult({ ok: true, msg: 'mock 상태 초기화 완료' });
+  };
+
   const handleRunCuration = async () => {
     setRunning(true);
     setRunResult(null);
@@ -320,6 +333,19 @@ export default function AdminPage() {
           </div>
         </div>
       </div>
+
+      {/* DEMO banner — mock build only */}
+      {import.meta.env.VITE_USE_MOCK === 'true' && (
+        <div className="w-full bg-yellow-400 text-yellow-900 text-xs font-bold flex items-center justify-between px-4 py-1.5 tracking-wide">
+          <span>DEMO MODE — localStorage 기반 mock 데이터, 실제 DB 없음</span>
+          <button
+            onClick={handleResetMock}
+            className="ml-4 px-2.5 py-0.5 rounded bg-yellow-700/20 hover:bg-yellow-700/40 text-yellow-900 font-bold text-xs transition"
+          >
+            mock 초기화
+          </button>
+        </div>
+      )}
 
       {/* Run result toast */}
       {runResult && (

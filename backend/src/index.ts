@@ -11,6 +11,7 @@ import { serperStatus } from "./lib/serper.js";
 import { agentLog } from "./lib/logger.js";
 import { AgentCallbackHandler } from "./lib/agentCallbackHandler.js";
 import { geminiLimiter } from "./lib/gemini-quota.js";
+import { buildMockBatch, saveBatch, publishDue, generateAndPublish, generateBatch, topUpBattle } from "./battle/generate.js";
 
 const app = Fastify({ logger: true });
 await app.register(cors, { origin: true });
@@ -106,6 +107,36 @@ cron.schedule(schedule, async () => {
 }, { timezone: "Asia/Seoul" });
 
 agentLog("INFO", "scheduler:registered", { schedule, timezone: "Asia/Seoul" });
+
+// ─── 배틀 배치 cron (매일 17:00 KST = PT 자정 리셋 1h 후, BATTLE_ENABLED=true 게이트) ────────────
+if (process.env.BATTLE_ENABLED === "true") {
+  cron.schedule("0 17 * * *", async () => {
+    try {
+      const { remainingToday: pre } = geminiLimiter.status();
+      agentLog("INFO", "battle:batch:cron:start", { remainingToday: pre });
+
+      const activePolls = await prisma.poll.findMany({
+        where: { status: "ACTIVE" },
+        select: { id: true },
+        take: 10,
+      });
+      for (const p of activePolls) {
+        if (geminiLimiter.status().remainingToday < 2) {
+          agentLog("WARN", "battle:batch:cron:quota-break", { pollId: p.id });
+          break;
+        }
+        const { aAdded, bAdded } = await topUpBattle(p.id, 10, 10);
+        agentLog("INFO", "battle:batch:cron", { pollId: p.id, aAdded, bAdded });
+      }
+
+      const { remainingToday: post } = geminiLimiter.status();
+      agentLog("INFO", "battle:batch:cron:done", { remainingToday: post });
+    } catch (e) {
+      agentLog("ERROR", "battle:batch:cron:error", { error: e instanceof Error ? e.message : String(e) });
+    }
+  }, { timezone: "Asia/Seoul" });
+  agentLog("INFO", "battle:batch:cron:registered", { schedule: "17:00 KST daily (1h after PT midnight RPD reset)" });
+}
 // ────────────────────────────────────────────────────────────────────────────
 
 app.post("/run-curation", async (_, reply) => {
@@ -137,10 +168,53 @@ app.get<{ Querystring: PollQuery }>("/polls", async (req) => {
     votedPollIds = myVotes.map((v) => v.pollId);
   }
 
+  // 양쪽 메시지(PUBLISHED|SCHEDULED) 보유 poll만 서빙
+  const poolIds = poolPolls.map((p) => p.id);
+  const sideStats = await prisma.message.groupBy({
+    by: ["pollId", "side"],
+    where: { pollId: { in: poolIds }, status: { in: ["PUBLISHED", "SCHEDULED"] } },
+    _count: true,
+  });
+  const aSet = new Set<string>();
+  const bSet = new Set<string>();
+  for (const s of sideStats) {
+    if (s._count > 0) {
+      if (s.side === "A") aSet.add(s.pollId);
+      else if (s.side === "B") bSet.add(s.pollId);
+    }
+  }
+  const bothSidesPolls = poolPolls.filter((p) => aSet.has(p.id) && bSet.has(p.id));
+
   // 미투표 먼저, 부족하면 투표한 것으로 채워 항상 최대 5개 반환
-  const unvoted = poolPolls.filter((p) => !votedPollIds.includes(p.id));
-  const voted   = poolPolls.filter((p) =>  votedPollIds.includes(p.id));
+  const unvoted = bothSidesPolls.filter((p) => !votedPollIds.includes(p.id));
+  const voted   = bothSidesPolls.filter((p) =>  votedPollIds.includes(p.id));
   const selected = [...unvoted, ...voted].slice(0, 5);
+
+  // 배치 메시지 전체 조회 (side별 최대 50개)
+  const selectedIds = selected.map(p => p.id);
+
+  // 선택된 poll들의 due-scheduled 메시지를 한번에 PUBLISHED로 승격
+  await prisma.message.updateMany({
+    where: { pollId: { in: selectedIds }, status: "SCHEDULED", publishAt: { lte: new Date() } },
+    data: { status: "PUBLISHED" },
+  });
+
+  const recentMessages = await prisma.message.findMany({
+    where: { pollId: { in: selectedIds }, status: "PUBLISHED" },
+    orderBy: { publishAt: "asc" },
+    select: { id: true, pollId: true, side: true, authorName: true, content: true, personaMode: true, publishAt: true, createdAt: true },
+  });
+
+  const msgByPoll = new Map<string, typeof recentMessages>();
+  for (const m of recentMessages) {
+    if (!msgByPoll.has(m.pollId)) msgByPoll.set(m.pollId, []);
+    msgByPoll.get(m.pollId)!.push(m);
+  }
+  const capMessages = (msgs: typeof recentMessages) => {
+    const a = msgs.filter(m => m.side === "A").slice(-50);
+    const b = msgs.filter(m => m.side === "B").slice(-50);
+    return [...a, ...b];
+  };
 
   const polls = selected.map((p) => ({
     id: p.id,
@@ -153,6 +227,7 @@ app.get<{ Querystring: PollQuery }>("/polls", async (req) => {
     scheduledAt: p.scheduledAt,
     votesA: p.baseVotesA + p.votes.filter((v) => v.side === "A").length,
     votesB: p.baseVotesB + p.votes.filter((v) => v.side === "B").length,
+    messages: capMessages(msgByPoll.get(p.id) ?? []),
   }));
 
   return { polls, votedPollIds };
@@ -196,6 +271,73 @@ app.post<{ Params: VoteParams; Body: VoteBody }>(
     }
   }
 );
+
+// ─── Battle API ──────────────────────────────────────────────────────────────
+
+interface PollParams {
+  id: string;
+}
+
+interface MessagesQuery {
+  since?: string; // ISO timestamp, return messages after this
+}
+
+app.get<{ Params: PollParams; Querystring: MessagesQuery }>(
+  "/polls/:id/messages",
+  async (req, reply) => {
+    const poll = await prisma.poll.findUnique({ where: { id: req.params.id }, select: { id: true } });
+    if (!poll) return reply.code(404).send({ error: "poll_not_found" });
+
+    // Publish any scheduled messages that are now due
+    await publishDue(req.params.id);
+
+    const since = req.query.since ? new Date(req.query.since) : undefined;
+
+    const messages = await prisma.message.findMany({
+      where: {
+        pollId: req.params.id,
+        status: "PUBLISHED",
+        ...(since ? { createdAt: { gt: since } } : {}),
+      },
+      orderBy: { publishAt: "asc" },
+      select: {
+        id: true,
+        side: true,
+        authorName: true,
+        content: true,
+        personaMode: true,
+        publishAt: true,
+        createdAt: true,
+      },
+    });
+
+    return { messages };
+  }
+);
+
+app.post<{ Params: PollParams }>(
+  "/polls/:id/battle/tick",
+  async (req, reply) => {
+    const poll = await prisma.poll.findUnique({ where: { id: req.params.id }, select: { id: true } });
+    if (!poll) return reply.code(404).send({ error: "poll_not_found" });
+    const generated = await generateAndPublish(req.params.id);
+    return { generated };
+  }
+);
+
+app.post<{ Params: PollParams }>(
+  "/polls/:id/battle/seed",
+  async (req, reply) => {
+    const poll = await prisma.poll.findUnique({ where: { id: req.params.id }, select: { id: true } });
+    if (!poll) return reply.code(404).send({ error: "poll_not_found" });
+
+    const batch = buildMockBatch(req.params.id);
+    const count = await saveBatch(batch);
+    return { seeded: count };
+  }
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 app.get("/serper-status", async () => serperStatus());
 
@@ -316,6 +458,35 @@ app.get<{ Querystring: AdminTrendLogsQuery }>("/admin/trend-logs", async (req) =
   ]);
 
   return { logs, total, page, limit, totalPages: Math.ceil(total / limit) };
+});
+
+interface SeedAllQuery {
+  count?: string;
+}
+
+app.post<{ Querystring: SeedAllQuery }>("/admin/battle/seed-all", async (req) => {
+  const count = Math.min(100, Math.max(1, Number(req.query.count ?? 40)));
+
+  // poll당 2 RPD 사용 (A+B 각 1회). 남은 quota에 맞게 poll 수 제한
+  const { remainingToday } = geminiLimiter.status();
+  const maxPolls = Math.max(0, Math.floor(remainingToday / 2));
+  if (maxPolls === 0) {
+    return { polls: [], total: 0, skipped: "quota_exhausted", remainingToday };
+  }
+
+  const activePolls = await prisma.poll.findMany({
+    where: { status: "ACTIVE" },
+    select: { id: true, themeTitle: true },
+    orderBy: { scheduledAt: "desc" },
+    take: Math.min(20, maxPolls),
+  });
+  const results = await Promise.all(
+    activePolls.map(async (p) => {
+      const generated = await generateBatch(p.id, count);
+      return { id: p.id, themeTitle: p.themeTitle, generated };
+    })
+  );
+  return { polls: results, total: results.reduce((s, r) => s + r.generated, 0) };
 });
 // ─────────────────────────────────────────────────────────────────────────────
 

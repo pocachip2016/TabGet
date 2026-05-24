@@ -14,6 +14,8 @@ module.exports = {
       restart_delay: 3000,
       env: {
         NODE_ENV: 'development',
+        // BATTLE_ENABLED은 backend/.env 에서 관리 (기본 false, true로 설정 시 1시간 cron 활성화)
+        // LLM_PROVIDER=gemini + GEMINI_API_KEY 필요 (~72 RPD/day, 무료 한도의 7%)
       },
     },
     {
