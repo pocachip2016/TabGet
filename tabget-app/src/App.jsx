@@ -395,7 +395,7 @@ export default function App() {
       return (
         <div className="absolute inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.25)' }} onClick={onClose}>
           <div
-            className={`rounded-3xl overflow-hidden flex flex-col ${sz('w-[220px]', 'w-[420px]')}`}
+            className={`rounded-3xl overflow-hidden flex flex-col ${isTV ? 'w-[420px]' : isPortrait ? 'w-[220px]' : 'w-[190px]'}`}
             style={{
               background: 'rgba(18,18,24,0.72)',
               backdropFilter: 'blur(16px)',
@@ -405,7 +405,7 @@ export default function App() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* 포스터 */}
-            <div className={`relative w-full ${sz('h-[140px]', 'h-[260px]')} shrink-0`}>
+            <div className={`relative w-full ${isTV ? 'h-[260px]' : isPortrait ? 'h-[140px]' : 'h-[90px]'} shrink-0`}>
               <img src={product.imgUrl} alt={product.name} className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(18,18,24,0.95) 0%, rgba(18,18,24,0.1) 60%)' }} />
               <p className={`absolute bottom-3 left-4 right-4 text-white font-black ${sz('text-sm', 'text-xl')} leading-tight drop-shadow-lg`}>
@@ -420,7 +420,7 @@ export default function App() {
             </div>
 
             {/* 본문 */}
-            <div className={`flex flex-col items-center ${sz('px-5 py-4 gap-3', 'px-8 py-6 gap-4')}`}>
+            <div className={`flex flex-col items-center ${isTV ? 'px-8 py-6 gap-4' : isPortrait ? 'px-5 py-4 gap-3' : 'px-3 py-2 gap-2'}`}>
               <div className="w-full h-px bg-white/15" />
 
               {/* kt알파쇼핑 로고 */}
@@ -463,25 +463,28 @@ export default function App() {
           className="flex flex-col items-center"
           style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
         >
-          <div className={sz(
-            'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
-            'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
-          )}>
+          <div className={
+            isTV
+              ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+              : isPortrait
+                ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+                : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+          }>
             {/* 구매 다이얼로그 */}
             {buyDialog && <BuyDialog product={buyDialog} onClose={() => setBuyDialog(null)} />}
 
             {/* 헤더 */}
-            <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10 shrink-0">
-              <h2 className={`${sz('text-xl', 'text-4xl')} font-black`}>
+            <div className={`flex flex-col items-center border-b border-white/10 shrink-0 ${isTV ? 'pt-5 pb-3' : isPortrait ? 'pt-5 pb-3' : 'pt-2 pb-2'}`}>
+              <h2 className={`${isTV ? 'text-4xl' : isPortrait ? 'text-xl' : 'text-base'} font-black`}>
                 <span className="text-white">Tap</span>
                 <span style={{ color: '#E30B5C' }}>Get</span>
-                <span className={`text-white/40 ${sz('text-sm', 'text-xl')} font-normal ml-2`}>당첨결과</span>
+                <span className={`text-white/40 ${isTV ? 'text-xl' : 'text-sm'} font-normal ml-2`}>당첨결과</span>
               </h2>
             </div>
 
             {/* 카드 그리드 스크롤 영역 */}
-            <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
-              <div className={`${sz('px-3 pt-3', 'px-5 pt-4')} grid ${isTV ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+            <div className="h-full overflow-y-auto pb-16" style={{ scrollbarWidth: 'none' }}>
+              <div className={`${isTV ? 'px-5 pt-4' : 'px-3 pt-3'} grid ${isTV || !isPortrait ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
                 {WINNERS.map((winner) => (
                   <ResultCard key={winner.round} winner={winner} isTV={isTV} onBuyClick={setBuyDialog} />
                 ))}
@@ -490,7 +493,7 @@ export default function App() {
             </div>
 
             {/* 메인으로 버튼 - 하단 고정 */}
-            <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-10 pt-6 bg-gradient-to-t from-zinc-950 to-transparent">
+            <div className={`absolute bottom-0 left-0 right-0 flex justify-center ${isPortrait || isTV ? 'pb-10 pt-6' : 'pb-4 pt-3'} bg-gradient-to-t from-zinc-950 to-transparent`}>
               <button
                 onClick={() => setScreen('splash')}
                 className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"

@@ -115,19 +115,19 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             <span className={`${sz('text-[9px]', 'text-sm')} font-bold hidden opacity-70`} style={{ color: BRAND }}>kt알파쇼핑</span>
           </div>
 
-          {/* 콘텐츠: TV·portrait phone = 3행, landscape phone = 3열 */}
-          <div className={`relative z-10 h-full text-white select-none grid ${!isTV && !isPortrait ? 'grid-cols-3' : 'grid-rows-3'}`}>
+          {/* 콘텐츠: TV·portrait = 3행, landscape phone = 상단/중앙/하단 */}
+          <div className={`relative z-10 h-full text-white select-none grid ${isTV || isPortrait ? 'grid-rows-3' : 'grid-rows-[auto_1fr_auto]'}`}>
 
             {/* 1구역 — 로고 */}
-            <div className="flex flex-col items-center justify-center gap-4">
+            <div className={`flex flex-col items-center justify-center gap-4 ${!isTV && !isPortrait ? 'pt-3' : ''}`}>
               <div className="flex flex-col items-center gap-1">
                 <div className="relative flex items-end gap-0">
                   <span
-                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-4xl'} font-light tracking-tight text-white`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-3xl'} font-light tracking-tight text-white`}
                     style={{ letterSpacing: '-0.02em' }}
                   >Tap</span>
                   <span
-                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-4xl'} font-black tracking-tight`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-3xl'} font-black tracking-tight`}
                     style={{ color: BRAND, letterSpacing: '-0.02em' }}
                   >Get</span>
                   <div
@@ -139,9 +139,11 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                   className="w-full h-[1.5px] rounded-full"
                   style={{ background: `linear-gradient(to right, transparent, ${BRAND}, transparent)` }}
                 />
-                <p className={`text-white/40 ${isTV ? 'text-sm' : 'text-[9px]'} tracking-[0.35em] uppercase mt-1`}>
-                  Vote · Compare · Win
-                </p>
+                {(isTV || isPortrait) && (
+                  <p className="text-white/40 text-[9px] tracking-[0.35em] uppercase mt-1">
+                    Vote · Compare · Win
+                  </p>
+                )}
               </div>
             </div>
 
@@ -174,7 +176,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             </div>
 
             {/* 3구역 — 당첨결과 버튼 */}
-            <div className="flex items-center justify-center">
+            <div className={`flex items-center justify-center ${!isTV && !isPortrait ? 'pb-3' : ''}`}>
               <button
                 onClick={onResults}
                 className={`relative overflow-hidden rounded-2xl transition-all duration-300 active:scale-95 ${isExhausted ? 'group hover:scale-105' : 'hover:brightness-110'}`}
