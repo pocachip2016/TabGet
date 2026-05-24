@@ -132,27 +132,6 @@ function resolveAdminLogs() {
 // 큐레이션 실행 시 생성할 가짜 poll 템플릿 — runCuration 호출마다 round-robin
 const CURATION_TEMPLATES = [
   {
-    category: '무선이어폰',
-    themeTitle: '노이즈캔슬링 무선이어폰: 에어팟 프로 2 vs. 갤럭시 버즈 3 프로',
-    productA: {
-      name: 'AirPods Pro 2',
-      brand: 'Apple',
-      imageUrl: 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQD83?wid=940&hei=1112&fmt=png-alpha',
-      gallery: [],
-      features: ['적응형 노이즈 캔슬링', '공간 음향', 'H2 칩'],
-      videoUrl: '',
-    },
-    productB: {
-      name: 'Galaxy Buds 3 Pro',
-      brand: 'Samsung',
-      imageUrl: 'https://m.media-amazon.com/images/I/61TJxNXDP4L._AC_SL1500_.jpg',
-      gallery: [],
-      features: ['Wing-tip 디자인', '24bit 하이파이', '듀얼 드라이버'],
-      videoUrl: '',
-    },
-    curatorNote: 'iPhone 통합이냐 갤럭시 통합이냐 — 당신의 생태계는?',
-  },
-  {
     category: '정수기',
     themeTitle: '직수형 정수기: 코웨이 마이한뼘 vs. LG 퓨리케어',
     productA: {
@@ -219,7 +198,12 @@ export async function fetchAdminPolls({ page = 1, limit = 10, status = 'ALL', ru
 }
 
 export async function fetchTrendLogs({ page = 1, limit = 20 } = {}) {
-  const logs = resolveAdminLogs();
+  // 매칭되는 poll이 하나도 없는 log(빈 칩)는 제외 — extraPolls pruning, 날짜 불일치 등 모든 케이스 대응
+  const allLogs = resolveAdminLogs();
+  const allPolls = resolveAdminPolls();
+  const pollDateKeys = new Set(allPolls.map(p => p.createdAt.slice(0, 10)));
+  const logs = allLogs.filter(log => pollDateKeys.has(log.createdAt.slice(0, 10)));
+
   const total = logs.length;
   const totalPages = Math.max(1, Math.ceil(total / limit));
   const start = (page - 1) * limit;

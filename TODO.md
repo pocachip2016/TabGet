@@ -1,5 +1,10 @@
 # TabGet — 3기능 구현 TODO
 
+## deploy-mock 잔여 (feature/deploy-mock 브랜치)
+- [x] Step 1.4: /admin pathname → #admin hash redirect (main.jsx)
+- [ ] Step 1.5: 빌드 + 브라우저 admin 수동 확인
+- [ ] Step 1.6: commit + push + GH Pages 배포 검증
+
 **브랜치**: `feature/upgrade`  
 **상세 계획**: `/home/ktalpha/.claude_acc2/plans/hazy-wandering-clover.md`
 
