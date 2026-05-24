@@ -1,21 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useViewMode } from '../ViewModeContext';
+import { useIsPortrait } from '../hooks/useIsPortrait';
 import { enterFullscreen } from '../lib/fullscreen';
 
 const BRAND = '#E30B5C';
 
 export default function ViewModeToggle({ size = 'md' }) {
-  const { mode, setMode, orientation, setOrientation } = useViewMode();
+  const { mode, setMode, setOrientation } = useViewMode();
   const isTV = mode === 'tv';
 
-  const [vw, setVw] = useState(window.innerWidth);
-  const [vh, setVh] = useState(window.innerHeight);
-  useEffect(() => {
-    const handler = () => { setVw(window.innerWidth); setVh(window.innerHeight); };
-    window.addEventListener('resize', handler);
-    return () => window.removeEventListener('resize', handler);
-  }, []);
-  const effectivePortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
+  const effectivePortrait = useIsPortrait();
 
   const [isAdmin, setIsAdmin] = useState(window.location.hash === '#admin');
   useEffect(() => {

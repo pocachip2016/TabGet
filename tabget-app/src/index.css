@@ -84,6 +84,7 @@
 body {
   background: black;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #root {

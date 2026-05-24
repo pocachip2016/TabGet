@@ -5,6 +5,7 @@ import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
 import ResultCard from './components/ResultCard';
 import { useViewMode } from './ViewModeContext';
+import { useIsPortrait } from './hooks/useIsPortrait';
 import { fetchPolls, submitVote, ApiError } from './api/client';
 import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
@@ -96,6 +97,7 @@ export default function App() {
   const frameRef = useRef(null);
   const voteCastRef = useRef(false); // 이번 세션에 투표 발생 여부
   const allDoneProcessedRef = useRef(false); // "모두 응모" 전환 완료 여부
+  const lastTapRef = useRef({ side: null, time: 0 });
 
   const [polls, setPolls] = useState([]);
   const [votedPollIds, setVotedPollIds] = useState([]);
@@ -110,11 +112,11 @@ export default function App() {
   const hintTimersRef = useRef({ show: null, hide: null });
   const visitorIdRef = useRef(null);
 
-  const { mode, orientation } = useViewMode();
+  const { mode } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const [vw, setVw] = useState(window.innerWidth);
   const [vh, setVh] = useState(window.innerHeight);
-  const isPortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
+  const isPortrait = useIsPortrait();
   const isMobile = mode !== 'tv' && vw <= 640;
   const tvScale = mode === 'tv' ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
   if (visitorIdRef.current === null) {
@@ -197,6 +199,20 @@ export default function App() {
       }
     };
     animFrameRef.current = requestAnimationFrame(step);
+  };
+
+  // iOS Safari는 dblclick 신뢰도가 낮아 자체 더블탭 감지로 대체.
+  // 350ms 이내 같은 side 두 번 탭 → 투표, 그 외 → 선택.
+  const handleTap = (side, e) => {
+    const now = Date.now();
+    const last = lastTapRef.current;
+    if (last.side === side && now - last.time < 350) {
+      lastTapRef.current = { side: null, time: 0 };
+      handleDoubleClick(side, e);
+    } else {
+      lastTapRef.current = { side, time: now };
+      handleClick(side);
+    }
   };
 
   // 단일 클릭: 상품 선택
@@ -490,7 +506,7 @@ export default function App() {
                     ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
                     : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
             }
-            style={isMobile ? { width: vw, height: vh } : {}}
+            style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
           >
             {/* 구매 다이얼로그 */}
             {buyDialog && <BuyDialog product={buyDialog} onClose={() => setBuyDialog(null)} />}
@@ -626,7 +642,7 @@ export default function App() {
                 ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
                 : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
         }
-        style={isMobile ? { width: vw, height: vh } : {}}
+        style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
       >
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
@@ -651,13 +667,12 @@ export default function App() {
           {/* Section A */}
           <div
             style={{ transform: 'translateZ(0)' }}
-            className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
+            className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer touch-manipulation select-none
               ${isWinnerRevealed && votedSide === 'B' ? 'opacity-40 grayscale blur-sm'
                 : selectedSide === 'A' ? 'opacity-100 brightness-105'
                 : selectedSide === 'B' ? 'opacity-55'
                 : 'opacity-100'}`}
-            onClick={() => handleClick('A')}
-            onDoubleClick={(e) => handleDoubleClick('A', e)}
+            onClick={(e) => handleTap('A', e)}
           >
             <ProductSlideshow
               images={[currentSet.imgA, ...currentSet.galleryA].filter(Boolean)}
@@ -710,13 +725,12 @@ export default function App() {
           {/* Section B */}
           <div
             style={{ transform: 'translateZ(0)' }}
-            className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer
+            className={`relative flex-1 overflow-hidden transition-all duration-500 cursor-pointer touch-manipulation select-none
               ${isWinnerRevealed && votedSide === 'A' ? 'opacity-40 grayscale blur-sm'
                 : selectedSide === 'B' ? 'opacity-100 brightness-105'
                 : selectedSide === 'A' ? 'opacity-55'
                 : 'opacity-100'}`}
-            onClick={() => handleClick('B')}
-            onDoubleClick={(e) => handleDoubleClick('B', e)}
+            onClick={(e) => handleTap('B', e)}
           >
             <ProductSlideshow
               images={[currentSet.imgB, ...currentSet.galleryB].filter(Boolean)}

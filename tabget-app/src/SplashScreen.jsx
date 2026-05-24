@@ -3,6 +3,7 @@ import { Trophy } from 'lucide-react';
 import GameRulesModal from './components/GameRulesModal';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
+import { useIsPortrait } from './hooks/useIsPortrait';
 import { enterFullscreen } from './lib/fullscreen';
 
 // 다음 00:30까지 남은 ms
@@ -33,10 +34,10 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   const [vw, setVw] = useState(window.innerWidth);
   const [vh, setVh] = useState(window.innerHeight);
 
-  const { mode, orientation } = useViewMode();
+  const { mode } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const isTV = mode === 'tv';
-  const isPortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
+  const isPortrait = useIsPortrait();
   const isMobile = !isTV && vw <= 640;
   const tvScale = isTV ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
 
@@ -93,7 +94,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                   ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
                   : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
           }
-          style={isMobile ? { width: vw, height: vh } : {}}
+          style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
         >
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
 
