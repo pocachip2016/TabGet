@@ -90,13 +90,17 @@ export default function ViewModeToggle({ size = 'md' }) {
       >
         🛠️ Admin
       </button>
-      <div className="h-px bg-zinc-200 my-0.5" />
-      <button
-        onClick={() => setOrientation(effectivePortrait ? 'landscape' : 'portrait')}
-        className={`${base} bg-zinc-200 text-zinc-500 hover:bg-zinc-300 hover:text-zinc-700`}
-      >
-        {effectivePortrait ? '↔ 가로화면' : '↕ 세로화면'}
-      </button>
+      {!isTV && (
+        <>
+          <div className="h-px bg-zinc-200 my-0.5" />
+          <button
+            onClick={() => setOrientation(effectivePortrait ? 'landscape' : 'portrait')}
+            className={`${base} bg-zinc-200 text-zinc-500 hover:bg-zinc-300 hover:text-zinc-700`}
+          >
+            {effectivePortrait ? '↔ 가로화면' : '↕ 세로화면'}
+          </button>
+        </>
+      )}
       <div className="h-px bg-zinc-200 my-0.5" />
       <button
         onClick={goRestart}
