@@ -111,6 +111,7 @@ export default function App() {
   const { mode } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const [tvScale, setTvScale] = useState(1);
+  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
   if (visitorIdRef.current === null) {
     visitorIdRef.current = getVisitorId();
   }
@@ -147,6 +148,14 @@ export default function App() {
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
   }, [mode]);
+
+  // 방향 감지
+  useEffect(() => {
+    const mq = window.matchMedia('(orientation: portrait)');
+    const handler = (e) => setIsPortrait(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   // TV 키보드 네비게이션
   useEffect(() => {
@@ -580,10 +589,13 @@ export default function App() {
         className="flex flex-col items-center"
         style={mode === 'tv' ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
-      <div ref={frameRef} className={sz(
-        'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden',
-        'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
-      )}>
+      <div ref={frameRef} className={
+        mode === 'tv'
+          ? 'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
+          : isPortrait
+            ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+            : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+      }>
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>
@@ -596,13 +608,13 @@ export default function App() {
           </div>
         )}
         {!votedSide && !isWinnerRevealed && (
-          <div className={`animate-blink absolute ${sz('top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[9px]', 'text-xl')} font-medium z-30 whitespace-nowrap pointer-events-none`}>
+          <div className={`animate-blink absolute ${sz(isPortrait ? 'top-[48%]' : 'top-3', 'top-8')} left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-md ${sz('px-3 py-1.5', 'px-8 py-3')} rounded-full border border-white/20 ${sz('text-[9px]', 'text-xl')} font-medium z-30 whitespace-nowrap pointer-events-none`}>
             <span className="text-yellow-200 font-bold">클릭</span><span className="text-white font-bold">(선택)</span>
             <span className="mx-1.5"> </span>
             <span className="text-yellow-400 font-bold">더블클릭</span><span className="text-white font-bold">(이벤트참여)</span>
           </div>
         )}
-        <div className="flex w-full h-full flex-row">
+        <div className={`flex w-full h-full ${isPortrait && mode !== 'tv' ? 'flex-col' : 'flex-row'}`}>
 
           {/* Section A */}
           <div
@@ -624,7 +636,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${sz('left-2 w-[45%]', 'left-2 right-2')} z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${mode === 'tv' ? 'left-2 right-2' : isPortrait ? 'left-2 right-2' : 'left-2 w-[45%]'} z-10`}>
               <BattleFeed side="A" initialMessages={currentSet?.messages ?? []} />
             </div>
 
@@ -678,7 +690,7 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
 
-            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${sz('right-2 w-[45%]', 'left-2 right-2')} z-10`}>
+            <div className={`absolute ${sz('bottom-20', 'bottom-48')} ${mode === 'tv' ? 'left-2 right-2' : isPortrait ? 'left-2 right-2' : 'right-2 w-[45%]'} z-10`}>
               <BattleFeed side="B" initialMessages={currentSet?.messages ?? []} />
             </div>
 
