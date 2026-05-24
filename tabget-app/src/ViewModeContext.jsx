@@ -1,17 +1,17 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const ViewModeContext = createContext({ mode: 'phone', toggle: () => {}, setMode: () => {} });
+const ViewModeContext = createContext({ mode: 'phone', toggle: () => {}, setMode: () => {}, orientation: 'auto', setOrientation: () => {} });
 
-function getSavedMode() {
-  try {
-    return localStorage.getItem('tabget:viewMode') === 'phone' ? 'phone' : 'tv';
-  } catch {
-    return 'phone';
-  }
+function getSaved(key, fallback) {
+  try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; }
 }
 
 export function ViewModeProvider({ children }) {
-  const [mode, setMode] = useState(getSavedMode);
+  const [mode, setMode] = useState(() => getSaved('tabget:viewMode', 'phone') === 'tv' ? 'tv' : 'phone');
+  const [orientation, setOrientation] = useState(() => {
+    const v = getSaved('tabget:orientation', 'auto');
+    return ['portrait', 'landscape', 'auto'].includes(v) ? v : 'auto';
+  });
 
   const setModeAndSave = (next) => {
     setMode(next);
@@ -24,17 +24,25 @@ export function ViewModeProvider({ children }) {
     return next;
   });
 
-  // 다른 탭에서 변경 시 동기화
+  const setOrientationAndSave = (next) => {
+    setOrientation(next);
+    try { localStorage.setItem('tabget:orientation', next); } catch {}
+  };
+
   useEffect(() => {
     const handler = (e) => {
       if (e.key === 'tabget:viewMode') setMode(e.newValue === 'tv' ? 'tv' : 'phone');
+      if (e.key === 'tabget:orientation') {
+        const v = e.newValue;
+        if (['portrait', 'landscape', 'auto'].includes(v)) setOrientation(v);
+      }
     };
     window.addEventListener('storage', handler);
     return () => window.removeEventListener('storage', handler);
   }, []);
 
   return (
-    <ViewModeContext.Provider value={{ mode, toggle, setMode: setModeAndSave }}>
+    <ViewModeContext.Provider value={{ mode, toggle, setMode: setModeAndSave, orientation, setOrientation: setOrientationAndSave }}>
       {children}
     </ViewModeContext.Provider>
   );

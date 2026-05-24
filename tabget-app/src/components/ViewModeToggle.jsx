@@ -5,8 +5,17 @@ import { enterFullscreen } from '../lib/fullscreen';
 const BRAND = '#E30B5C';
 
 export default function ViewModeToggle({ size = 'md' }) {
-  const { mode, setMode } = useViewMode();
+  const { mode, setMode, orientation, setOrientation } = useViewMode();
   const isTV = mode === 'tv';
+
+  const [vw, setVw] = useState(window.innerWidth);
+  const [vh, setVh] = useState(window.innerHeight);
+  useEffect(() => {
+    const handler = () => { setVw(window.innerWidth); setVh(window.innerHeight); };
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
+  const effectivePortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
 
   const [isAdmin, setIsAdmin] = useState(window.location.hash === '#admin');
   useEffect(() => {
@@ -80,6 +89,13 @@ export default function ViewModeToggle({ size = 'md' }) {
         style={isAdmin ? { background: `linear-gradient(135deg, ${BRAND}, #c4084e)`, boxShadow: `0 4px 20px ${BRAND}55` } : {}}
       >
         🛠️ Admin
+      </button>
+      <div className="h-px bg-zinc-200 my-0.5" />
+      <button
+        onClick={() => setOrientation(effectivePortrait ? 'landscape' : 'portrait')}
+        className={`${base} bg-zinc-200 text-zinc-500 hover:bg-zinc-300 hover:text-zinc-700`}
+      >
+        {effectivePortrait ? '↔ 가로화면' : '↕ 세로화면'}
       </button>
       <div className="h-px bg-zinc-200 my-0.5" />
       <button

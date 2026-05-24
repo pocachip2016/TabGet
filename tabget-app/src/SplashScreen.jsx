@@ -30,31 +30,26 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   const [count, setCount] = useState(8);
   const [remaining, setRemaining] = useState(() => msUntilAnnouncement());
   const [showRules, setShowRules] = useState(!isExhausted);
-  const [tvScale, setTvScale] = useState(1);
-  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
+  const [vw, setVw] = useState(window.innerWidth);
+  const [vh, setVh] = useState(window.innerHeight);
 
-  const { mode } = useViewMode();
+  const { mode, orientation } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const isTV = mode === 'tv';
+  const isPortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
+  const isMobile = !isTV && vw <= 640;
+  const tvScale = isTV ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
 
   // isExhausted 가 비동기로 true 되면 모달 닫기
   useEffect(() => {
     if (isExhausted) setShowRules(false);
   }, [isExhausted]);
 
+  // viewport 크기 추적 (orientation 포함)
   useEffect(() => {
-    if (mode !== 'tv') { setTvScale(1); return; }
-    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820) * 0.9);
-    calc();
-    window.addEventListener('resize', calc);
-    return () => window.removeEventListener('resize', calc);
-  }, [mode]);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(orientation: portrait)');
-    const handler = (e) => setIsPortrait(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    const handler = () => { setVw(window.innerWidth); setVh(window.innerHeight); };
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
   }, []);
 
   // 일반 카운트다운 (exhausted 아닐 때, 모달 표시 중엔 정지)
@@ -75,24 +70,31 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   }, [isExhausted, showRules]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      {/* ViewModeToggle — 스케일 바깥에 고정 */}
-      <div className="fixed top-4 left-4 z-50">
-        <ViewModeToggle size="lg" />
-      </div>
+    <div className={isMobile ? 'fixed inset-0 bg-black' : 'flex items-center justify-center min-h-screen bg-white'}>
+      {/* ViewModeToggle — 모바일에서는 숨김 */}
+      {!isMobile && (
+        <div className="fixed top-4 left-4 z-50">
+          <ViewModeToggle size="lg" />
+        </div>
+      )}
 
       <div
         className="flex flex-col items-center"
         style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
         {/* 프레임 */}
-        <div className={
-          isTV
-            ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden'
-            : isPortrait
-              ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
-              : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
-        }>
+        <div
+          className={
+            isMobile
+              ? 'relative overflow-hidden'
+              : isTV
+                ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden'
+                : isPortrait
+                  ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+                  : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+          }
+          style={isMobile ? { width: vw, height: vh } : {}}
+        >
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
 
           {/* 배경 이미지 */}
@@ -116,10 +118,10 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
           </div>
 
           {/* 콘텐츠: TV·portrait = 3행, landscape phone = 상단/중앙/하단 */}
-          <div className={`relative z-10 h-full text-white select-none grid ${isTV || isPortrait ? 'grid-rows-3' : 'grid-rows-[auto_1fr_auto]'}`}>
+          <div className="relative z-10 h-full text-white select-none grid grid-rows-3">
 
             {/* 1구역 — 로고 */}
-            <div className={`flex flex-col items-center justify-center gap-4 ${!isTV && !isPortrait ? 'pt-3' : ''}`}>
+            <div className="flex flex-col items-center justify-center gap-4">
               <div className="flex flex-col items-center gap-1">
                 <div className="relative flex items-end gap-0">
                   <span
@@ -176,7 +178,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             </div>
 
             {/* 3구역 — 당첨결과 버튼 */}
-            <div className={`flex items-center justify-center ${!isTV && !isPortrait ? 'pb-3' : ''}`}>
+            <div className="flex items-center justify-center">
               <button
                 onClick={onResults}
                 className={`relative overflow-hidden rounded-2xl transition-all duration-300 active:scale-95 ${isExhausted ? 'group hover:scale-105' : 'hover:brightness-110'}`}

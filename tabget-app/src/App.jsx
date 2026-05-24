@@ -108,10 +108,13 @@ export default function App() {
   const toastTimerRef = useRef(null);
   const visitorIdRef = useRef(null);
 
-  const { mode } = useViewMode();
+  const { mode, orientation } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
-  const [tvScale, setTvScale] = useState(1);
-  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
+  const [vw, setVw] = useState(window.innerWidth);
+  const [vh, setVh] = useState(window.innerHeight);
+  const isPortrait = orientation === 'portrait' ? true : orientation === 'landscape' ? false : vw <= vh;
+  const isMobile = mode !== 'tv' && vw <= 640;
+  const tvScale = mode === 'tv' ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
   if (visitorIdRef.current === null) {
     visitorIdRef.current = getVisitorId();
   }
@@ -140,21 +143,11 @@ export default function App() {
     return () => { cancelled = true; };
   }, []);
 
-  // TV 뷰포트 축소 (1280×720 미만 창)
+  // viewport 크기 추적 (orientation + tvScale 포함)
   useEffect(() => {
-    if (mode !== 'tv') { setTvScale(1); return; }
-    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820) * 0.9);
-    calc();
-    window.addEventListener('resize', calc);
-    return () => window.removeEventListener('resize', calc);
-  }, [mode]);
-
-  // 방향 감지
-  useEffect(() => {
-    const mq = window.matchMedia('(orientation: portrait)');
-    const handler = (e) => setIsPortrait(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    const handler = () => { setVw(window.innerWidth); setVh(window.innerHeight); };
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
   }, []);
 
   // TV 키보드 네비게이션
@@ -455,21 +448,28 @@ export default function App() {
     };
 
     return (
-      <div className="flex items-center justify-center min-h-screen bg-white">
-        <div className="fixed top-4 left-4 z-50">
-          <ViewModeToggle size="lg" />
-        </div>
+      <div className={isMobile ? 'fixed inset-0 bg-zinc-950' : 'flex items-center justify-center min-h-screen bg-white'}>
+        {!isMobile && (
+          <div className="fixed top-4 left-4 z-50">
+            <ViewModeToggle size="lg" />
+          </div>
+        )}
         <div
           className="flex flex-col items-center"
           style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
         >
-          <div className={
-            isTV
-              ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
-              : isPortrait
-                ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
-                : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
-          }>
+          <div
+            className={
+              isMobile
+                ? 'relative overflow-hidden bg-zinc-950'
+                : isTV
+                  ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+                  : isPortrait
+                    ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+                    : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+            }
+            style={isMobile ? { width: vw, height: vh } : {}}
+          >
             {/* 구매 다이얼로그 */}
             {buyDialog && <BuyDialog product={buyDialog} onClose={() => setBuyDialog(null)} />}
 
@@ -584,21 +584,28 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white font-sans">
-      <div className="fixed top-4 left-4 z-50">
-        <ViewModeToggle size="lg" />
-      </div>
+    <div className={isMobile ? 'fixed inset-0 bg-black font-sans' : 'flex flex-col items-center justify-center min-h-screen bg-white font-sans'}>
+      {!isMobile && (
+        <div className="fixed top-4 left-4 z-50">
+          <ViewModeToggle size="lg" />
+        </div>
+      )}
       <div
         className="flex flex-col items-center"
         style={mode === 'tv' ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
-      <div ref={frameRef} className={
-        mode === 'tv'
-          ? 'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
-          : isPortrait
-            ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
-            : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
-      }>
+      <div ref={frameRef}
+        className={
+          isMobile
+            ? 'relative overflow-hidden'
+            : mode === 'tv'
+              ? 'relative w-[1280px] h-[720px] border-[20px] border-zinc-800 rounded-xl shadow-2xl overflow-hidden'
+              : isPortrait
+                ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+                : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+        }
+        style={isMobile ? { width: vw, height: vh } : {}}
+      >
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>
