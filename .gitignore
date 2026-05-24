@@ -1,0 +1,32 @@
+# Environment variables - never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+
+# Build output
+dist/
+
+# Serper 런타임 데이터 (ephemeral)
+**/data/serper-usage.json
+**/data/serper-cache.json
+**/data/agent.log
+
+# Claude Code 로컬 설정
+.claude/settings.local.json
+
+# Editor swap/temp files
+*.swp
+*.swo
+*~
+
+# Agent / Gemini 런타임 데이터
+backend/data/agent.log
+backend/data/gemini.log
+backend/data/gemini-usage.json
+
+# OS
+.DS_Store
+Thumbs.db
