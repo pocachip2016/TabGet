@@ -673,7 +673,12 @@ export default function App() {
             </div>
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-sm', 'text-5xl')} font-bold drop-shadow-md text-white`}>{currentSet.itemA}</h3>
+              <h3
+                className={`${sz('text-sm', 'text-5xl')} font-black tracking-tight text-white`}
+                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85), 0 0 18px rgba(0,0,0,0.5)' }}
+              >
+                {currentSet.itemA}
+              </h3>
               <div className={`flex items-center gap-1.5 mt-1 ${sz('text-[11px]', 'text-2xl')} text-white/80`}>
                 <Users size={sz(11, 32)} />
                 <span>{displayVotesA.toLocaleString()}명 참여 중</span>
@@ -727,7 +732,12 @@ export default function App() {
             </div>
 
             <div className="absolute bottom-4 left-4 right-4">
-              <h3 className={`${sz('text-sm', 'text-5xl')} font-bold drop-shadow-md text-white text-right`}>{currentSet.itemB}</h3>
+              <h3
+                className={`${sz('text-sm', 'text-5xl')} font-black tracking-tight text-white text-right`}
+                style={{ textShadow: '0 2px 8px rgba(0,0,0,0.85), 0 0 18px rgba(0,0,0,0.5)' }}
+              >
+                {currentSet.itemB}
+              </h3>
               <div className={`flex items-center justify-end gap-1.5 mt-1 ${sz('text-[11px]', 'text-2xl')} text-white/80`}>
                 <Users size={sz(11, 32)} />
                 <span>{displayVotesB.toLocaleString()}명 참여 중</span>
