@@ -43,7 +43,7 @@ export default function GameRulesModal({ open, onStart }) {
           <div className="w-full h-px bg-white/15 mb-4" />
           <p className={`${isTV ? 'text-sm' : 'text-[9px]'} font-semibold tracking-[0.3em] uppercase text-white/40 mb-1`}>How to play</p>
           <h2 className={`${isTV ? 'text-3xl' : 'text-base'} font-black text-white tracking-tight`}>
-            Game Rules
+            <P>G</P>ame <P>R</P>ules
           </h2>
           <div
             className="mt-2 h-[1.5px] w-10 rounded-full"
