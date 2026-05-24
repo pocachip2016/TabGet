@@ -31,6 +31,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   const [remaining, setRemaining] = useState(() => msUntilAnnouncement());
   const [showRules, setShowRules] = useState(!isExhausted);
   const [tvScale, setTvScale] = useState(1);
+  const [isPortrait, setIsPortrait] = useState(() => window.matchMedia('(orientation: portrait)').matches);
 
   const { mode } = useViewMode();
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
@@ -48,6 +49,13 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
   }, [mode]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(orientation: portrait)');
+    const handler = (e) => setIsPortrait(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   // 일반 카운트다운 (exhausted 아닐 때, 모달 표시 중엔 정지)
   useEffect(() => {
@@ -78,10 +86,13 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
         style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
         {/* 프레임 */}
-        <div className={sz(
-          'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden',
-          'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden'
-        )}>
+        <div className={
+          isTV
+            ? 'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden'
+            : isPortrait
+              ? 'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+              : 'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden'
+        }>
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
 
           {/* 배경 이미지 */}
@@ -89,7 +100,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
           <div className="absolute inset-0 bg-black/40" />
 
           {/* Powered by — 하단 고정 */}
-          <div className="absolute bottom-5 left-0 right-0 z-20 flex items-center justify-center gap-2">
+          <div className="absolute bottom-3 left-0 right-0 z-20 flex items-center justify-center gap-2">
             <span className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-wider`}>powered by</span>
             <img
               src={KT_LOGO}
@@ -104,19 +115,19 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
             <span className={`${sz('text-[9px]', 'text-sm')} font-bold hidden opacity-70`} style={{ color: BRAND }}>kt알파쇼핑</span>
           </div>
 
-          {/* 콘텐츠: phone = 3행, TV = 3열 */}
-          <div className="relative z-10 h-full text-white select-none grid grid-rows-3">
+          {/* 콘텐츠: TV·portrait phone = 3행, landscape phone = 3열 */}
+          <div className={`relative z-10 h-full text-white select-none grid ${!isTV && !isPortrait ? 'grid-cols-3' : 'grid-rows-3'}`}>
 
             {/* 1구역 — 로고 */}
             <div className="flex flex-col items-center justify-center gap-4">
               <div className="flex flex-col items-center gap-1">
                 <div className="relative flex items-end gap-0">
                   <span
-                    className={`${sz('text-5xl', 'text-[7rem]')} font-light tracking-tight text-white`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-4xl'} font-light tracking-tight text-white`}
                     style={{ letterSpacing: '-0.02em' }}
                   >Tap</span>
                   <span
-                    className={`${sz('text-5xl', 'text-[7rem]')} font-black tracking-tight`}
+                    className={`${isTV ? 'text-[7rem]' : isPortrait ? 'text-5xl' : 'text-4xl'} font-black tracking-tight`}
                     style={{ color: BRAND, letterSpacing: '-0.02em' }}
                   >Get</span>
                   <div
@@ -128,7 +139,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                   className="w-full h-[1.5px] rounded-full"
                   style={{ background: `linear-gradient(to right, transparent, ${BRAND}, transparent)` }}
                 />
-                <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-[0.35em] uppercase mt-1`}>
+                <p className={`text-white/40 ${isTV ? 'text-sm' : 'text-[9px]'} tracking-[0.35em] uppercase mt-1`}>
                   Vote · Compare · Win
                 </p>
               </div>
@@ -139,7 +150,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
               {isExhausted ? (
                 <div className="flex flex-col items-center gap-2 px-6 text-center">
                   <p className={`text-white/60 ${sz('text-[11px]', 'text-base')} tracking-widest`}>발표시간까지</p>
-                  <p className={`text-white ${sz('text-xl', 'text-5xl')} font-black tabular-nums tracking-tight`}>
+                  <p className={`text-white ${isTV ? 'text-5xl' : isPortrait ? 'text-xl' : 'text-lg'} font-black tabular-nums tracking-tight`}>
                     {formatHMS(remaining)}
                   </p>
                   <p className={`text-white/40 ${sz('text-[11px]', 'text-base')}`}>남았습니다</p>
@@ -149,13 +160,13 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                   <div
                     key={count}
                     onClick={() => { enterFullscreen(); onEnter(); }}
-                    className={`${sz('w-24 h-24', 'w-52 h-52')} rounded-full flex items-center justify-center countdown-pop shadow-xl cursor-pointer transition-all duration-200 active:scale-95`}
+                    className={`${isTV ? 'w-52 h-52' : isPortrait ? 'w-24 h-24' : 'w-20 h-20'} rounded-full flex items-center justify-center countdown-pop shadow-xl cursor-pointer transition-all duration-200 active:scale-95`}
                     style={{
                       border: `2px solid ${BRAND}55`,
                       background: `radial-gradient(circle, ${BRAND}22 0%, transparent 70%)`,
                     }}
                   >
-                    <span className={`${sz('text-4xl', 'text-9xl')} font-black text-white`}>{count}</span>
+                    <span className={`${isTV ? 'text-9xl' : isPortrait ? 'text-4xl' : 'text-3xl'} font-black text-white`}>{count}</span>
                   </div>
                   <p className={`text-white/40 ${sz('text-[11px]', 'text-base')} tracking-widest`}>Click to Start!</p>
                 </>
@@ -173,25 +184,25 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                     style={{ background: `linear-gradient(135deg, ${BRAND}, #ff6b9d)` }} />
                 )}
                 <div
-                  className={`relative flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-6')} rounded-2xl shadow-xl`}
+                  className={`relative flex items-center gap-3 ${isTV ? 'px-12 py-6' : isPortrait ? 'px-8 py-4' : 'px-5 py-3'} rounded-2xl shadow-xl`}
                   style={isExhausted
                     ? { background: `linear-gradient(135deg, ${BRAND} 0%, #c4084e 100%)` }
                     : { background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.15)' }
                   }
                 >
-                  <div className={`${sz('w-9 h-9', 'w-14 h-14')} rounded-full flex items-center justify-center flex-shrink-0`}
+                  <div className={`${isTV ? 'w-14 h-14' : isPortrait ? 'w-9 h-9' : 'w-7 h-7'} rounded-full flex items-center justify-center flex-shrink-0`}
                     style={{ background: isExhausted ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)' }}>
-                    <Trophy size={sz(18, 28)} style={{ color: isExhausted ? 'white' : 'rgba(255,255,255,0.35)' }} />
+                    <Trophy size={isTV ? 28 : isPortrait ? 18 : 14} style={{ color: isExhausted ? 'white' : 'rgba(255,255,255,0.35)' }} />
                   </div>
                   <div className="flex flex-col items-start leading-tight">
                     <span className={`${sz('text-[9px]', 'text-sm')} font-semibold tracking-widest uppercase`}
                       style={{ color: isExhausted ? 'rgba(255,255,255,0.6)' : 'rgba(255,255,255,0.3)' }}>Result</span>
-                    <span className={`${sz('text-sm', 'text-2xl')} font-black tracking-tight`}
+                    <span className={`${isTV ? 'text-2xl' : isPortrait ? 'text-sm' : 'text-xs'} font-black tracking-tight`}
                       style={{ color: isExhausted ? 'white' : 'rgba(255,255,255,0.4)' }}>당첨결과보기</span>
                   </div>
-                  <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full flex items-center justify-center ml-1`}
+                  <div className={`${isTV ? 'w-10 h-10' : 'w-7 h-7'} rounded-full flex items-center justify-center ml-1`}
                     style={{ background: isExhausted ? 'rgba(255,255,255,0.15)' : 'rgba(255,255,255,0.08)' }}>
-                    <svg width={sz(12, 18)} height={sz(12, 18)} viewBox="0 0 12 12" fill="none">
+                    <svg width={isTV ? 18 : 12} height={isTV ? 18 : 12} viewBox="0 0 12 12" fill="none">
                       <path d="M2 6h8M6 2l4 4-4 4"
                         stroke={isExhausted ? 'white' : 'rgba(255,255,255,0.35)'}
                         strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
