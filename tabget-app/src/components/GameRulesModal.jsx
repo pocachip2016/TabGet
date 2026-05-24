@@ -43,7 +43,7 @@ export default function GameRulesModal({ open, onStart }) {
           <div className="w-full h-px bg-white/15 mb-4" />
           <p className={`${isTV ? 'text-sm' : 'text-[9px]'} font-semibold tracking-[0.3em] uppercase text-white/40 mb-1`}>How to play</p>
           <h2 className={`${isTV ? 'text-3xl' : 'text-base'} font-black text-white tracking-tight`}>
-            Double<P>Tab</P>으로 경품<P>Get</P>
+            Game Rules
           </h2>
           <div
             className="mt-2 h-[1.5px] w-10 rounded-full"
@@ -68,7 +68,10 @@ export default function GameRulesModal({ open, onStart }) {
         </ul>
 
         {/* 버튼 */}
-        <div className="w-full h-px bg-white/15 mb-5" />
+        <div className="w-full h-px bg-white/15 mb-4" />
+        <p className={`text-center ${isTV ? 'text-xl' : 'text-[11px]'} font-black text-white mb-4`}>
+          Double<P>Tab</P>으로 경품<P>Get</P>
+        </p>
         <div className="flex justify-center">
           <button
             onClick={() => { enterFullscreen(); onStart(); }}
