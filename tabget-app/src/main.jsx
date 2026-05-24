@@ -24,10 +24,16 @@ function Root() {
   }
 
   const [hash, setHash] = useState(window.location.hash);
+  const [restartKey, setRestartKey] = useState(0);
   useEffect(() => {
     const handler = () => setHash(window.location.hash);
     window.addEventListener('hashchange', handler);
-    return () => window.removeEventListener('hashchange', handler);
+    const restart = () => setRestartKey(k => k + 1);
+    window.addEventListener('tabget:restart', restart);
+    return () => {
+      window.removeEventListener('hashchange', handler);
+      window.removeEventListener('tabget:restart', restart);
+    };
   }, []);
 
   const isAdmin = hash === '#admin';
@@ -37,8 +43,8 @@ function Root() {
     return () => { document.body.style.overflow = 'hidden'; };
   }, [isAdmin]);
 
-  if (isAdmin) return <AdminPage />;
-  return <App />;
+  if (isAdmin) return <AdminPage key={restartKey} />;
+  return <App key={restartKey} />;
 }
 
 createRoot(document.getElementById('root')).render(

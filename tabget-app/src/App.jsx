@@ -3,10 +3,12 @@ import { Heart, Users, Trophy } from 'lucide-react';
 import SplashScreen from './SplashScreen';
 import ProductSlideshow from './components/ProductSlideshow';
 import ViewModeToggle from './components/ViewModeToggle';
+import ResultCard from './components/ResultCard';
 import { useViewMode } from './ViewModeContext';
 import { fetchPolls, submitVote, ApiError } from './api/client';
 import BattleFeed from './components/BattleFeed';
 import { getVisitorId } from './lib/visitor';
+import { WINNERS } from './mock/winnersData';
 import './index.css';
 
 function normalizePoll(p) {
@@ -139,7 +141,7 @@ export default function App() {
   // TV 뷰포트 축소 (1280×720 미만 창)
   useEffect(() => {
     if (mode !== 'tv') { setTvScale(1); return; }
-    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820));
+    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820) * 0.9);
     calc();
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
@@ -376,16 +378,7 @@ export default function App() {
   }
 
   if (screen === 'results') {
-    const WINNERS = [
-      { id: 1, nick: "행운의별빛", review: "진짜 당첨될 줄 몰랐어요!! 너무 행복해요 🎉", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop", prize: "프리미엄 무선 이어폰" },
-      { id: 2, nick: "초코라떼맛", review: "친구한테 자랑했더니 부러워해요 ㅋㅋ 감사합니다!", img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop", prize: "최신형 스마트워치" },
-      { id: 3, nick: "봄날햇살77", review: "이런 이벤트 처음인데 당첨되다니 대박 🙏", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&h=200&fit=crop", prize: "화이트 스니커즈" },
-      { id: 4, nick: "달빛소나타", review: "배송도 빠르고 상품도 너무 좋아요! 또 참여할게요", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop", prize: "아이스 아메리카노 세트" },
-      { id: 5, nick: "포근한이불", review: "반신반의했는데 진짜 당첨!! 믿고 참여하세요 👍", img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop", prize: "고성능 게이밍 폰" },
-      { id: 6, nick: "구름위고양이", review: "남자친구랑 같이 했는데 제가 당첨됐어요 😍", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop", prize: "노이즈캔슬링 헤드폰" },
-      { id: 7, nick: "새벽세시반", review: "kt알파쇼핑 이벤트 최고! 매일 참여합니다", img: "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=200&h=200&fit=crop", prize: "최신형 스마트워치" },
-      { id: 8, nick: "열정파워맨", review: "상품 퀄리티 실화냐... 너무 만족스러워요 🎁", img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop", prize: "휴대용 게임 콘솔" },
-    ];
+    const isTV = mode === 'tv';
 
     return (
       <div className="flex items-center justify-center min-h-screen bg-white">
@@ -394,108 +387,65 @@ export default function App() {
         </div>
         <div
           className="flex flex-col items-center"
-          style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
+          style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
         >
-        <div className={sz(
-          'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
-          'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
-        )}>
-          {/* 헤더 */}
-          <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10">
-            <h2 className={`${sz('text-xl', 'text-4xl')} font-black`}>
-              <span className="text-white">Tap</span>
-              <span style={{ color: '#E30B5C' }}>Get</span>
-              <span className={`text-white/40 ${sz('text-sm', 'text-xl')} font-normal ml-2`}>당첨결과</span>
-            </h2>
-          </div>
-
-          {/* 스크롤 영역 */}
-          <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
-            {/* 득표율 섹션 */}
-            <div className={sz('px-5 pt-4 pb-3', 'px-10 pt-6 pb-4')}>
-              <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-widest uppercase mb-3`}>투표 결과</p>
-              {VS_DATA.map((set) => {
-                const total = set.votesA + set.votesB;
-                const pA = Math.round((set.votesA / total) * 100);
-                const pB = 100 - pA;
-                return (
-                  <div key={set.id} className="mb-4">
-                    <div className={`flex justify-between ${sz('text-[10px]', 'text-base')} text-white/50 mb-1`}>
-                      <span className={`truncate ${sz('w-28', 'w-52')}`}>{set.itemA}</span>
-                      <span className={`truncate ${sz('w-28', 'w-52')} text-right`}>{set.itemB}</span>
-                    </div>
-                    <div className={`flex ${sz('h-2', 'h-3')} rounded-full overflow-hidden`}>
-                      <div className="bg-blue-400" style={{ width: `${pA}%` }} />
-                      <div className="bg-pink-400" style={{ width: `${pB}%` }} />
-                    </div>
-                    <div className={`flex justify-between ${sz('text-[9px]', 'text-sm')} mt-1`}>
-                      <span className="text-blue-400 font-bold">{pA}%</span>
-                      <span className="text-white/30">{total.toLocaleString()}명</span>
-                      <span className="text-pink-400 font-bold">{pB}%</span>
-                    </div>
-                  </div>
-                );
-              })}
+          <div className={sz(
+            'relative w-[300px] h-[534px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950',
+            'relative w-[1280px] h-[720px] rounded-xl border-[20px] border-zinc-800 shadow-2xl overflow-hidden bg-zinc-950'
+          )}>
+            {/* 헤더 */}
+            <div className="flex flex-col items-center pt-5 pb-3 border-b border-white/10 shrink-0">
+              <h2 className={`${sz('text-xl', 'text-4xl')} font-black`}>
+                <span className="text-white">Tap</span>
+                <span style={{ color: '#E30B5C' }}>Get</span>
+                <span className={`text-white/40 ${sz('text-sm', 'text-xl')} font-normal ml-2`}>당첨결과</span>
+              </h2>
             </div>
 
-            {/* 구분선 */}
-            <div className={`${sz('mx-5', 'mx-10')} border-t border-white/10 mb-4`} />
-
-            {/* 당첨자 후기 섹션 */}
-            <div className={sz('px-5', 'px-10')}>
-              <p className={`text-white/40 ${sz('text-[9px]', 'text-sm')} tracking-widest uppercase mb-3`}>당첨자 후기</p>
-              <div className={`grid ${sz('grid-cols-2', 'grid-cols-4')} gap-3`}>
-                {WINNERS.map((w) => (
-                  <div key={w.id} className="bg-white/5 rounded-2xl overflow-hidden border border-white/10">
-                    {/* 인증사진 */}
-                    <div className="relative">
-                      <img src={w.img} alt={w.nick} className={`w-full ${sz('h-24', 'h-44')} object-cover`} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-2 left-2 flex items-center gap-1">
-                        <div className={`${sz('w-2 h-2', 'w-3 h-3')} rounded-full`} style={{ backgroundColor: '#E30B5C' }} />
-                        <span className={`text-white ${sz('text-[9px]', 'text-sm')} font-bold`}>{w.nick}</span>
-                      </div>
-                    </div>
-                    {/* 후기 */}
-                    <div className={sz('px-2.5 py-2', 'px-4 py-3')}>
-                      <p className={`${sz('text-[9px]', 'text-sm')} font-semibold mb-1`} style={{ color: '#E30B5C' }}>{w.prize}</p>
-                      <p className={`text-white/70 ${sz('text-[9px]', 'text-sm')} leading-relaxed`}>{w.review}</p>
-                    </div>
-                  </div>
+            {/* 카드 그리드 스크롤 영역 */}
+            <div className="h-full overflow-y-auto pb-20" style={{ scrollbarWidth: 'none' }}>
+              <div className={`${sz('px-3 pt-3', 'px-5 pt-4')} grid ${isTV ? 'grid-cols-2' : 'grid-cols-1'} gap-3`}>
+                {WINNERS.map((winner) => (
+                  <ResultCard key={winner.round} winner={winner} isTV={isTV} />
                 ))}
               </div>
+              <div className="h-16" />
             </div>
-            <div className="h-16" />
-          </div>
 
-          {/* 메인으로 버튼 - 하단 고정 */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-10 pt-6 bg-gradient-to-t from-zinc-950 to-transparent">
-            <button
-              onClick={() => setScreen('splash')}
-              className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              <div className="absolute -inset-1 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300"
-                style={{ background: 'linear-gradient(135deg, #E30B5C, #ff6b9d)' }} />
-              <div className={`relative flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-5')} rounded-2xl shadow-xl`}
-                style={{ background: 'linear-gradient(135deg, #E30B5C 0%, #c4084e 100%)' }}>
-                <div className={`${sz('w-9 h-9', 'w-12 h-12')} rounded-full bg-white/15 flex items-center justify-center flex-shrink-0`}>
-                  <svg width={sz(18, 24)} height={sz(18, 24)} viewBox="0 0 24 24" fill="none">
-                    <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+            {/* 메인으로 버튼 - 하단 고정 */}
+            <div className="absolute bottom-0 left-0 right-0 flex justify-center pb-10 pt-6 bg-gradient-to-t from-zinc-950 to-transparent">
+              <button
+                onClick={() => setScreen('splash')}
+                className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-105 active:scale-95"
+              >
+                <div className="absolute -inset-1 rounded-2xl blur-md opacity-50 group-hover:opacity-80 transition-opacity duration-300"
+                  style={{ background: 'linear-gradient(135deg, #E30B5C, #ff6b9d)' }} />
+                <div className={`relative flex items-center gap-3 ${sz('px-8 py-4', 'px-12 py-5')} rounded-2xl shadow-xl`}
+                  style={{ background: 'linear-gradient(135deg, #E30B5C 0%, #c4084e 100%)' }}>
+                  <div className={`${sz('w-9 h-9', 'w-12 h-12')} rounded-full bg-white/15 flex items-center justify-center flex-shrink-0`}>
+                    <svg width={sz(18, 24)} height={sz(18, 24)} viewBox="0 0 24 24" fill="none">
+                      <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <div className="flex flex-col items-start leading-tight">
+                    <span className={`${sz('text-[9px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Home</span>
+                    <span className={`${sz('text-sm', 'text-xl')} font-black text-white tracking-tight`}>메인으로</span>
+                  </div>
+                  <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full bg-white/15 flex items-center justify-center ml-1`}>
+                    <svg width={sz(12, 16)} height={sz(12, 16)} viewBox="0 0 12 12" fill="none">
+                      <path d="M2 6h8M6 2l4 4-4 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
                 </div>
-                <div className="flex flex-col items-start leading-tight">
-                  <span className={`${sz('text-[9px]', 'text-sm')} text-white/60 font-semibold tracking-widest uppercase`}>Home</span>
-                  <span className={`${sz('text-sm', 'text-xl')} font-black text-white tracking-tight`}>메인으로</span>
-                </div>
-                <div className={`${sz('w-7 h-7', 'w-10 h-10')} rounded-full bg-white/15 flex items-center justify-center ml-1`}>
-                  <svg width={sz(12, 16)} height={sz(12, 16)} viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6h8M6 2l4 4-4 4" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-              </div>
-            </button>
+              </button>
+            </div>
           </div>
-        </div>
+          {isTV && (
+            <div className="flex flex-col items-center">
+              <div className="w-[180px] h-[40px] bg-gradient-to-b from-zinc-700 to-zinc-900" style={{ clipPath: 'polygon(20% 0, 80% 0, 100% 100%, 0% 100%)' }} />
+              <div className="w-[480px] h-[14px] rounded-b-xl bg-gradient-to-b from-zinc-800 to-zinc-950 shadow-xl" />
+            </div>
+          )}
         </div>
       </div>
     );
@@ -560,7 +510,7 @@ export default function App() {
       </div>
       <div
         className="flex flex-col items-center"
-        style={mode === 'tv' ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
+        style={mode === 'tv' ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
       <div ref={frameRef} className={sz(
         'relative w-[534px] h-[300px] rounded-[32px] border-[6px] border-zinc-800 shadow-2xl overflow-hidden',
@@ -722,10 +672,10 @@ export default function App() {
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-emerald-400/80 shadow-[0_0_6px_rgba(52,211,153,0.8)] z-50 pointer-events-none" />
           )}
           {mode === 'tv' && (
-            <>
-              <div className="w-40 h-3 bg-zinc-800 rounded-b-sm" />
-              <div className="w-72 h-2 bg-zinc-700 rounded-full shadow-lg" />
-            </>
+            <div className="flex flex-col items-center">
+              <div className="w-[180px] h-[40px] bg-gradient-to-b from-zinc-700 to-zinc-900" style={{ clipPath: 'polygon(20% 0, 80% 0, 100% 100%, 0% 100%)' }} />
+              <div className="w-[480px] h-[14px] rounded-b-xl bg-gradient-to-b from-zinc-800 to-zinc-950 shadow-xl" />
+            </div>
           )}
         </div>
       </div>

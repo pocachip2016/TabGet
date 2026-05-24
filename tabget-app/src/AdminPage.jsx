@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, RefreshCw, Play, CheckCircle, Clock, Archive, AlertCircle, X } from 'lucide-react';
 import { fetchAdminPolls, patchPollStatus, fetchTrendLogs, runCuration, activateAllPending } from './api/client';
+import ViewModeToggle from './components/ViewModeToggle';
 
 const STATUS_OPTIONS = ['ALL', 'PENDING', 'ACTIVE', 'ARCHIVED'];
 
@@ -298,7 +299,16 @@ export default function AdminPage() {
   };
 
   return (
-    <div className="w-full min-h-screen bg-gray-50 text-gray-900 font-sans">
+    <div className="w-full min-h-screen bg-gray-50 text-gray-900 font-sans flex">
+      {/* 좌측 사이드바 — 토글 전용 공간 (스플래시와 동일 레이아웃) */}
+      <aside className="shrink-0 w-32 pt-4 pl-4">
+        <div className="sticky top-4">
+          <ViewModeToggle size="lg" />
+        </div>
+      </aside>
+
+      {/* 우측 메인 콘텐츠 */}
+      <div className="flex-1 min-w-0">
       {/* Header */}
       <div className="sticky top-0 z-20 w-full bg-white/90 backdrop-blur border-b border-gray-200">
         <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -428,6 +438,7 @@ export default function AdminPage() {
           </div>
           <Pagination page={pollData.page} totalPages={pollData.totalPages} onPage={setPollPage} />
         </section>
+      </div>
       </div>
     </div>
   );

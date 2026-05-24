@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useViewMode } from '../ViewModeContext';
+import { enterFullscreen } from '../lib/fullscreen';
 
 const BRAND = '#E30B5C';
 
@@ -18,7 +19,7 @@ export default function GameRulesModal({ open, onStart }) {
 
   useEffect(() => {
     if (!open) return;
-    const handler = (e) => { if (e.key === 'Enter') onStart(); };
+    const handler = (e) => { if (e.key === 'Enter') { enterFullscreen(); onStart(); } };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [open, onStart]);
@@ -70,7 +71,7 @@ export default function GameRulesModal({ open, onStart }) {
         <div className="w-full h-px bg-white/15 mb-5" />
         <div className="flex justify-center">
           <button
-            onClick={onStart}
+            onClick={() => { enterFullscreen(); onStart(); }}
             className="group relative overflow-hidden rounded-2xl transition-all duration-200 active:scale-95"
           >
             <div

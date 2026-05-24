@@ -3,6 +3,7 @@ import { Trophy } from 'lucide-react';
 import GameRulesModal from './components/GameRulesModal';
 import ViewModeToggle from './components/ViewModeToggle';
 import { useViewMode } from './ViewModeContext';
+import { enterFullscreen } from './lib/fullscreen';
 
 // 다음 00:30까지 남은 ms
 function msUntilAnnouncement() {
@@ -35,9 +36,14 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const isTV = mode === 'tv';
 
+  // isExhausted 가 비동기로 true 되면 모달 닫기
+  useEffect(() => {
+    if (isExhausted) setShowRules(false);
+  }, [isExhausted]);
+
   useEffect(() => {
     if (mode !== 'tv') { setTvScale(1); return; }
-    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820));
+    const calc = () => setTvScale(Math.min(1, window.innerWidth / 1360, window.innerHeight / 820) * 0.9);
     calc();
     window.addEventListener('resize', calc);
     return () => window.removeEventListener('resize', calc);
@@ -69,7 +75,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
 
       <div
         className="flex flex-col items-center"
-        style={isTV ? { transform: `scale(${tvScale})`, transformOrigin: 'top center' } : {}}
+        style={isTV ? { transform: `translateY(40px) scale(${tvScale})`, transformOrigin: 'top center' } : {}}
       >
         {/* 프레임 */}
         <div className={sz(
@@ -142,7 +148,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
                 <>
                   <div
                     key={count}
-                    onClick={onEnter}
+                    onClick={() => { enterFullscreen(); onEnter(); }}
                     className={`${sz('w-24 h-24', 'w-52 h-52')} rounded-full flex items-center justify-center countdown-pop shadow-xl cursor-pointer transition-all duration-200 active:scale-95`}
                     style={{
                       border: `2px solid ${BRAND}55`,
@@ -197,6 +203,14 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
 
           </div>
         </div>
+
+        {/* TV 받침대 — TV 모드에서만 표시, 프레임 폭 기준 */}
+        {isTV && (
+          <div className="flex flex-col items-center">
+            <div className="w-[180px] h-[40px] bg-gradient-to-b from-zinc-700 to-zinc-900" style={{ clipPath: 'polygon(20% 0, 80% 0, 100% 100%, 0% 100%)' }} />
+            <div className="w-[480px] h-[14px] rounded-b-xl bg-gradient-to-b from-zinc-800 to-zinc-950 shadow-xl" />
+          </div>
+        )}
       </div>
     </div>
   );
