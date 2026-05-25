@@ -33,7 +33,7 @@ export default function ViewModeToggle({ size = 'md' }) {
     window.dispatchEvent(new Event('tabget:restart'));
   };
 
-  // sm / md: compact inline pill toggle (unchanged)
+  // sm / md: compact inline pill toggle
   if (size !== 'lg') {
     const outer = 'p-0.5 rounded-xl gap-0.5 flex items-center';
     const pill = size === 'sm'
@@ -45,14 +45,23 @@ export default function ViewModeToggle({ size = 'md' }) {
           onClick={() => goMain('phone')}
           className={`${pill} transition-all duration-200 ${!isTV && !isAdmin ? 'bg-white text-zinc-900' : 'text-white/35'}`}
         >
-          📱Phone
+          📱
         </button>
         <button
           onClick={() => goMain('tv')}
           className={`${pill} transition-all duration-200 ${isTV && !isAdmin ? 'bg-white text-zinc-900' : 'text-white/35'}`}
         >
-          📺TV
+          📺
         </button>
+        {!isTV && (
+          <button
+            onClick={() => setOrientation(effectivePortrait ? 'landscape' : 'portrait')}
+            className={`${pill} transition-all duration-200 text-white/70`}
+            title={effectivePortrait ? '가로화면으로' : '세로화면으로'}
+          >
+            {effectivePortrait ? '↔' : '↕'}
+          </button>
+        )}
       </div>
     );
   }
