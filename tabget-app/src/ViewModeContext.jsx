@@ -1,16 +1,16 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
-const ViewModeContext = createContext({ mode: 'tv', toggle: () => {}, setMode: () => {}, orientation: 'auto', setOrientation: () => {} });
+const ViewModeContext = createContext({ mode: 'phone', toggle: () => {}, setMode: () => {}, orientation: 'landscape', setOrientation: () => {} });
 
 function getSaved(key, fallback) {
   try { return localStorage.getItem(key) ?? fallback; } catch { return fallback; }
 }
 
 export function ViewModeProvider({ children }) {
-  const [mode, setMode] = useState(() => getSaved('tabget:viewMode', 'tv') === 'tv' ? 'tv' : 'phone');
+  const [mode, setMode] = useState(() => getSaved('tabget:viewMode', 'phone') === 'tv' ? 'tv' : 'phone');
   const [orientation, setOrientation] = useState(() => {
-    const v = getSaved('tabget:orientation', 'auto');
-    return ['portrait', 'landscape', 'auto'].includes(v) ? v : 'auto';
+    const v = getSaved('tabget:orientation', 'landscape');
+    return ['portrait', 'landscape', 'auto'].includes(v) ? v : 'landscape';
   });
 
   const setModeAndSave = (next) => {
