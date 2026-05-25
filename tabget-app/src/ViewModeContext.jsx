@@ -7,7 +7,13 @@ function getSaved(key, fallback) {
 }
 
 export function ViewModeProvider({ children }) {
-  const [mode, setMode] = useState(() => getSaved('tabget:viewMode', 'phone') === 'tv' ? 'tv' : 'phone');
+  const [mode, setMode] = useState(() => {
+    const saved = (() => { try { return localStorage.getItem('tabget:viewMode'); } catch { return null; } })();
+    if (saved === 'tv' || saved === 'phone') return saved;
+    // 첫 진입: 디바이스 크기로 분기 — PC는 TV, 모바일(vw<=640)은 phone
+    if (typeof window !== 'undefined' && window.innerWidth > 640) return 'tv';
+    return 'phone';
+  });
   const [orientation, setOrientation] = useState(() => {
     const v = getSaved('tabget:orientation', 'landscape');
     return ['portrait', 'landscape', 'auto'].includes(v) ? v : 'landscape';

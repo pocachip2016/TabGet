@@ -98,6 +98,13 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
         >
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
 
+          {/* 모바일 풀화면 좌상단 메뉴 */}
+          {isMobile && (
+            <div className="absolute top-3 left-3 z-40">
+              <ViewModeToggle size="md" />
+            </div>
+          )}
+
           {/* 배경 이미지 */}
           <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover bg-camera-angle" />
           <div className="absolute inset-0 bg-black/40" />

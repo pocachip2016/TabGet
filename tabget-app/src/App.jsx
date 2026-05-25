@@ -644,6 +644,12 @@ export default function App() {
         }
         style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
       >
+        {/* 모바일 풀화면 좌상단 메뉴 */}
+        {isMobile && (
+          <div className="absolute top-3 left-3 z-40">
+            <ViewModeToggle size="md" />
+          </div>
+        )}
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>

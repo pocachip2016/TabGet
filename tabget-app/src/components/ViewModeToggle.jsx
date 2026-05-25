@@ -45,14 +45,23 @@ export default function ViewModeToggle({ size = 'md' }) {
           onClick={() => goMain('phone')}
           className={`${pill} transition-all duration-200 ${!isTV && !isAdmin ? 'bg-white text-zinc-900' : 'text-white/35'}`}
         >
-          📱Phone
+          📱
         </button>
         <button
           onClick={() => goMain('tv')}
           className={`${pill} transition-all duration-200 ${isTV && !isAdmin ? 'bg-white text-zinc-900' : 'text-white/35'}`}
         >
-          📺TV
+          📺
         </button>
+        {!isTV && (
+          <button
+            onClick={() => setOrientation(effectivePortrait ? 'landscape' : 'portrait')}
+            className={`${pill} transition-all duration-200 text-white/70`}
+            title={effectivePortrait ? '가로화면' : '세로화면'}
+          >
+            {effectivePortrait ? '↔' : '↕'}
+          </button>
+        )}
       </div>
     );
   }
