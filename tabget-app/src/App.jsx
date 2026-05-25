@@ -117,7 +117,7 @@ export default function App() {
   const [vw, setVw] = useState(window.innerWidth);
   const [vh, setVh] = useState(window.innerHeight);
   const isPortrait = useIsPortrait();
-  const isMobile = mode !== 'tv' && vw <= 640;
+  const isMobile = false;  // 모바일에서도 데스크탑 frame 사용 (풀화면 비활성)
   const tvScale = mode === 'tv' ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
   if (visitorIdRef.current === null) {
     visitorIdRef.current = getVisitorId();
@@ -644,12 +644,6 @@ export default function App() {
         }
         style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
       >
-        {/* 모바일 풀화면 좌상단 메뉴 */}
-        {isMobile && (
-          <div className="absolute top-3 left-3 z-40">
-            <ViewModeToggle size="md" />
-          </div>
-        )}
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>

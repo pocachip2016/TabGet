@@ -38,7 +38,7 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
   const sz = (phone, tv) => mode === 'tv' ? tv : phone;
   const isTV = mode === 'tv';
   const isPortrait = useIsPortrait();
-  const isMobile = !isTV && vw <= 640;
+  const isMobile = false;  // 모바일에서도 데스크탑 frame 사용 (풀화면 비활성)
   const tvScale = isTV ? Math.min(1, vw / 1360, vh / 820) * 0.9 : 1;
 
   // isExhausted 가 비동기로 true 되면 모달 닫기
@@ -97,13 +97,6 @@ export default function SplashScreen({ onEnter, onResults, isExhausted = false }
           style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
         >
           <GameRulesModal open={showRules} onStart={() => setShowRules(false)} />
-
-          {/* 모바일 풀화면 좌상단 메뉴 */}
-          {isMobile && (
-            <div className="absolute top-3 left-3 z-40">
-              <ViewModeToggle size="md" />
-            </div>
-          )}
 
           {/* 배경 이미지 */}
           <img src={BG_IMAGE} alt="" className="absolute inset-0 w-full h-full object-cover bg-camera-angle" />
