@@ -9,7 +9,8 @@ export default function ProductSlideshow({
   animDuration = 3500,
   animDelay = 0,
 }) {
-  const [validImages, setValidImages] = useState([]);
+  // 옵티미스틱 초기 렌더 — preload 끝나기 전에도 일단 표시. invalid한 건 onload 검증 후 useEffect 에서 제거.
+  const [validImages, setValidImages] = useState(() => [...new Set(images.filter(Boolean))]);
   const [current, setCurrent] = useState(0);
   const isVisibleRef = useRef(true);
   const intervalRef = useRef(null);
