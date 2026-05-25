@@ -7,14 +7,17 @@ function getSaved(key, fallback) {
 }
 
 export function ViewModeProvider({ children }) {
+  const isMobileDev = typeof window !== 'undefined' && window.innerWidth <= 640;
   const [mode, setMode] = useState(() => {
+    // 모바일 디바이스는 localStorage 무시 — 항상 phone (TV frame은 화면 넘침)
+    if (isMobileDev) return 'phone';
     const saved = (() => { try { return localStorage.getItem('tabget:viewMode'); } catch { return null; } })();
     if (saved === 'tv' || saved === 'phone') return saved;
-    // 첫 진입: 디바이스 크기로 분기 — PC는 TV, 모바일(vw<=640)은 phone
-    if (typeof window !== 'undefined' && window.innerWidth > 640) return 'tv';
-    return 'phone';
+    return 'tv';  // PC 첫 진입: TV
   });
   const [orientation, setOrientation] = useState(() => {
+    // 모바일 디바이스는 항상 landscape (세로 frame은 메뉴 가림)
+    if (isMobileDev) return 'landscape';
     const v = getSaved('tabget:orientation', 'landscape');
     return ['portrait', 'landscape', 'auto'].includes(v) ? v : 'landscape';
   });
