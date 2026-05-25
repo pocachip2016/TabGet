@@ -644,12 +644,6 @@ export default function App() {
         }
         style={isMobile ? { width: '100vw', height: '100dvh' } : {}}
       >
-        {/* isMobile 일 때 내부 우상단 toggle */}
-        {isMobile && (
-          <div className="absolute top-3 right-3 z-40">
-            <ViewModeToggle size="sm" />
-          </div>
-        )}
         {showAllDone && (
           <div className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none"
                style={{ background: 'rgba(0,0,0,0.82)', backdropFilter: 'blur(6px)' }}>
