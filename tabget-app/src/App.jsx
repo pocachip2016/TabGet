@@ -36,8 +36,8 @@ const VS_DATA = [
     id: 1,
     itemA: "프리미엄 무선 이어폰",
     itemB: "최신형 스마트워치",
-    imgA: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=800",
+    imgA: "/TabGet/img/unsplash-1590658268037.jpg",
+    imgB: "/TabGet/img/unsplash-1523275335684.jpg",
     votesA: 12450,
     votesB: 11820,
   },
@@ -45,8 +45,8 @@ const VS_DATA = [
     id: 2,
     itemA: "화이트 스니커즈",
     itemB: "어글리 슈즈",
-    imgA: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800",
+    imgA: "/TabGet/img/unsplash-1549298916.jpg",
+    imgB: "/TabGet/img/unsplash-1542291026.jpg",
     votesA: 8900,
     votesB: 9200,
   },
@@ -54,8 +54,8 @@ const VS_DATA = [
     id: 3,
     itemA: "아이스 아메리카노",
     itemB: "따뜻한 카페라떼",
-    imgA: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=800",
+    imgA: "/TabGet/img/unsplash-1509042239860.jpg",
+    imgB: "/TabGet/img/unsplash-1541167760496.jpg",
     votesA: 15600,
     votesB: 14200,
   },
@@ -63,8 +63,8 @@ const VS_DATA = [
     id: 4,
     itemA: "고성능 게이밍 폰",
     itemB: "휴대용 게임 콘솔",
-    imgA: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1531525645387-7f14be1bdbbd?auto=format&fit=crop&q=80&w=800",
+    imgA: "/TabGet/img/unsplash-1511707171634.jpg",
+    imgB: "/TabGet/img/unsplash-1531525645387.jpg",
     votesA: 7800,
     votesB: 8500,
   },
@@ -72,8 +72,8 @@ const VS_DATA = [
     id: 5,
     itemA: "소니 WH-1000XM5",
     itemB: "애플 AirPods Max",
-    imgA: "https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=800",
-    imgB: "https://images.unsplash.com/photo-1599669454699-248893623440?auto=format&fit=crop&q=80&w=800",
+    imgA: "/TabGet/img/unsplash-1583394838336.jpg",
+    imgB: "/TabGet/img/unsplash-1599669454699.jpg",
     votesA: 13800,
     votesB: 12200,
   },
@@ -421,7 +421,7 @@ export default function App() {
   if (screen === 'results') {
     const isTV = mode === 'tv';
     const BuyDialog = ({ product, onClose }) => {
-      const KT_LOGO = 'https://api.brandb.net/api/v2/common/image?fileId=2887';
+      const KT_LOGO = '/TabGet/img/kt-logo.png';
       const BRAND = '#E30B5C';
       return (
         <div className="absolute inset-0 z-50 flex items-center justify-center" style={{ background: 'rgba(0,0,0,0.25)' }} onClick={onClose}>

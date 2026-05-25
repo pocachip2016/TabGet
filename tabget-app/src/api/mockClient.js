@@ -137,7 +137,7 @@ const CURATION_TEMPLATES = [
     productA: {
       name: '마이한뼘 III',
       brand: '코웨이',
-      imageUrl: 'https://m.media-amazon.com/images/I/61Qd-NoT9bL._AC_SL1500_.jpg',
+      imageUrl: '',
       gallery: [],
       features: ['미네랄 필터', '한 손으로 출수', '주기 알림'],
       videoUrl: '',
@@ -145,7 +145,7 @@ const CURATION_TEMPLATES = [
     productB: {
       name: '퓨리케어 오브제',
       brand: 'LG',
-      imageUrl: 'https://m.media-amazon.com/images/I/51FQbtX2A9L._AC_SL1500_.jpg',
+      imageUrl: '',
       gallery: [],
       features: ['컬러 인테리어', 'UV 살균', '터치 디스플레이'],
       videoUrl: '',
@@ -158,7 +158,7 @@ const CURATION_TEMPLATES = [
     productA: {
       name: '팬텀 NEO',
       brand: '바디프랜드',
-      imageUrl: 'https://m.media-amazon.com/images/I/61bSILQHTpL._AC_SL1500_.jpg',
+      imageUrl: '',
       gallery: [],
       features: ['공기압 마사지 41포인트', 'L자형 트랙', '체형 자동 인식'],
       videoUrl: '',
@@ -166,7 +166,7 @@ const CURATION_TEMPLATES = [
     productB: {
       name: 'K2',
       brand: '휴테크',
-      imageUrl: 'https://m.media-amazon.com/images/I/41C9Ja9DOFL._AC_.jpg',
+      imageUrl: '',
       gallery: [],
       features: ['스트레칭 프로그램', '4D AI 롤러', '음악 동기화'],
       videoUrl: '',

@@ -45,7 +45,7 @@ export default function ResultCard({ winner, isTV = false, onBuyClick }) {
           {/* 흐린 배경 레이어 */}
           <div
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=600)', filter: 'blur(6px)', transform: 'scale(1.1)' }}
+            style={{ backgroundImage: 'url(/TabGet/img/unsplash-1549465220.jpg)', filter: 'blur(6px)', transform: 'scale(1.1)' }}
           />
           <div className="absolute inset-0 bg-black/25" />
 

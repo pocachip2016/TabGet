@@ -23,8 +23,8 @@ function formatHMS(ms) {
   return `${hh}시 ${mm}분 ${ss}초`;
 }
 
-const BG_IMAGE = "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&q=80&w=1200";
-const KT_LOGO = "https://api.brandb.net/api/v2/common/image?fileId=2887";
+const BG_IMAGE = "/TabGet/img/unsplash-1549465220.jpg";
+const KT_LOGO = "/TabGet/img/kt-logo.png";
 const BRAND = '#E30B5C';
 
 export default function SplashScreen({ onEnter, onResults, isExhausted = false }) {
